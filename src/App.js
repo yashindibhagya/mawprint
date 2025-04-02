@@ -1,24 +1,116 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import ProjectDetails from './components/ProjectDetails';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Services from './components/Services';
+import Education from './components/Education';
 
 function App() {
+  // We're only keeping track of active section now, removed darkMode state
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'services', 'education', 'work', 'skills', 'contact'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Effect to restore scroll position and active tab if coming from project details
+  useEffect(() => {
+    // Check if we're returning from project details
+    const savedPosition = sessionStorage.getItem('scrollPosition');
+    const savedTab = sessionStorage.getItem('activeTab');
+
+    if (savedPosition && window.location.pathname === '/') {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition));
+        if (savedTab) {
+          setActiveSection(savedTab);
+        }
+      }, 100);
+
+      // Clear the saved position after restoring
+      sessionStorage.removeItem('scrollPosition');
+      sessionStorage.removeItem('activeTab');
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen font-sans bg-black text-white transition-colors duration-300 relative overflow-hidden">
+        {/* Gradient background elements */}
+        <div className="fixed inset-0 z-0 overflow-hidden">
+          {/* Primary gradients */}
+          <div className="absolute -top-[40%] -right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 blur-3xl"></div>
+          <div className="absolute -bottom-[40%] -left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-500/20 to-sky-500/10 blur-3xl"></div>
+
+          {/* Additional color spots for more depth */}
+          <div className="absolute top-[30%] left-[15%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-pink-500/10 to-rose-500/5 blur-3xl"></div>
+          <div className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-indigo-500/10 to-blue-500/5 blur-3xl"></div>
+
+          {/* Small accent gradients */}
+          <div className="absolute top-[60%] right-[30%] w-[200px] h-[200px] rounded-full bg-gradient-to-r from-cyan-500/15 to-teal-500/10 blur-2xl"></div>
+          <div className="absolute top-[10%] left-[20%] w-[300px] h-[300px] rounded-full bg-gradient-to-l from-violet-500/15 to-purple-500/10 blur-2xl"></div>
+        </div>
+
+        {/* Routes container with higher z-index to appear above gradients */}
+        <div className="relative z-10">
+          <Routes>
+            <Route path="/project/:id" element={
+              <>
+                <Header
+                  activeSection={activeSection}
+                  isProjectPage={true}
+                />
+                <ProjectDetails />
+                <Footer />
+              </>
+            } />
+            <Route path="/" element={
+              <>
+                <Header
+                  activeSection={activeSection}
+                />
+                <Hero />
+                <About />
+                <Services />
+                <Education />
+                <Projects />
+                <Skills />
+                <Contact />
+                <Footer />
+              </>
+            } />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
