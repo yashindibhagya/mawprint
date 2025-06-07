@@ -132,7 +132,7 @@ const Projects = () => {
             description: "Home appliances e-commerce store with modern user interface."
         },
         {
-            id: 12,
+            id: 13,
             title: "DIPESHA",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
@@ -140,6 +140,7 @@ const Projects = () => {
             image: forestImage,
             description: "Home appliances e-commerce store with modern user interface."
         },
+
     ];
 
     const filteredProjects = activeTab === 'all'

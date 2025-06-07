@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser'; // Install with: npm install @emailjs/browser
 
 const Contact = () => {
+    const form = useRef();
     // Form state
     const [formData, setFormData] = useState({
         name: '',
@@ -22,8 +23,7 @@ const Contact = () => {
 
     // Initialize EmailJS
     useEffect(() => {
-        // Replace with your actual EmailJS public key from the Dashboard
-        emailjs.init("YOUR_PUBLIC_KEY");
+        emailjs.init("VqmLO9PXzRgCoE7z1"); // Your public key
     }, []);
 
     // Social links with modern technical styling
@@ -79,15 +79,24 @@ const Contact = () => {
     // Handle form changes
     const handleChange = (e) => {
         const { name, value } = e.target;
+        // Map the EmailJS field names to our form state
+        const fieldMap = {
+            from_name: 'name',
+            from_email: 'email',
+            subject: 'subject',
+            message: 'message'
+        };
+
         setFormData({
             ...formData,
-            [name]: value
+            [fieldMap[name] || name]: value
         });
     };
 
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Form submission started');
 
         // Validate form
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -113,23 +122,28 @@ const Contact = () => {
         });
 
         try {
-            // Send email using EmailJS
+            console.log('Preparing to send email...');
+
+            // Prepare email parameters
             const templateParams = {
                 to_email: 'yashindibhagya@gmail.com',
                 from_name: formData.name,
-                from_email: formData.email,
+                reply_to: formData.email,
                 subject: formData.subject,
                 message: formData.message
             };
 
-            // Replace with your actual service ID and template ID from EmailJS
-            const response = await emailjs.send(
-                'YOUR_SERVICE_ID',
-                'YOUR_TEMPLATE_ID',
-                templateParams
+            console.log('Sending with params:', templateParams);
+
+            // Send email using EmailJS
+            const result = await emailjs.send(
+                'service_lx3foyj',
+                'template_4qyx2dj',
+                templateParams,
+                'VqmLO9PXzRgCoE7z1'
             );
 
-            console.log('Email sent successfully!', response);
+            console.log('EmailJS response:', result);
 
             // Success handling
             setFormStatus({
@@ -151,12 +165,12 @@ const Contact = () => {
                 });
             }, 5000);
         } catch (error) {
-            console.error('Failed to send email:', error);
+            console.error('Detailed error:', error);
 
             // Error handling
             setFormStatus({
                 status: 'error',
-                message: 'Failed to send message. Please try again later.'
+                message: error.message || 'Failed to send message. Please try again later.'
             });
         }
     };
@@ -306,7 +320,7 @@ const Contact = () => {
                                             </div>
                                         </div>
                                     ) : (
-                                        <form onSubmit={handleSubmit} className="space-y-5">
+                                        <form ref={form} onSubmit={handleSubmit} className="space-y-5">
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                                 <div>
                                                     <label className="block text-xs text-indigo-300 mb-2 font-medium">
@@ -314,7 +328,7 @@ const Contact = () => {
                                                     </label>
                                                     <input
                                                         type="text"
-                                                        name="name"
+                                                        name="from_name"
                                                         value={formData.name}
                                                         onChange={handleChange}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 
@@ -330,7 +344,7 @@ const Contact = () => {
                                                     </label>
                                                     <input
                                                         type="email"
-                                                        name="email"
+                                                        name="from_email"
                                                         value={formData.email}
                                                         onChange={handleChange}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white 

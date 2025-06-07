@@ -52,18 +52,18 @@ import water1 from '../assets/img/water/1.png';
 
 import zoo1 from '../assets/img/zoo/1.png';
 
+import burger1 from '../assets/img/burger/1.png';
+import burger2 from '../assets/img/burger/2.png';
+import burger3 from '../assets/img/burger/3.png';
+
 // Mock UI screen images - replace with your actual images
 export const nikemock = [
     { id: 1, image: nike1 },
 ];
 export const burgermock = [
-    { id: 1, title: 'About Us', image: nikeImage },
-    { id: 2, title: 'Blog', image: nikeImage },
-    { id: 3, title: 'Projects', image: nikeImage },
-    { id: 4, title: 'Technology', image: nikeImage },
-    { id: 5, title: 'Privacy Policy', image: nikeImage },
-    { id: 6, title: 'Contact Us', image: nikeImage },
-    { id: 7, title: 'AI Marketing', image: nikeImage }
+    { id: 1, image: burger1 },
+    { id: 1, image: burger2 },
+    { id: 1, image: burger3 },
 ];
 export const docmock = [
     { id: 1, image: doctor1 },
@@ -162,14 +162,14 @@ export const projectsData = [
     {
         id: 2,
         title: "BURGER HOUSE",
-        category: "UI/UX DESIGN | WEB DESIGN",
+        category: "UI/UX DESIGN",
         client: "BURGER HOUSE",
         duration: "1 WEEK",
         type: "uiux",
         image: burgerImage,
         mockupImage: burgerImage,
-        description: "Premium Burger Restaurant Digital Experience",
-        overview: "The Burger House UI project combines dramatic food photography with a sophisticated dark aesthetic to create an immersive, appetite-stimulating interface that stands out in the competitive restaurant digital space.",
+        description: "A comprehensive UI/UX design for a modern burger restaurant's website, focusing on appetizing visuals, intuitive navigation, and a seamless ordering experience.",
+        overview: "The Burger House website design aims to create an engaging digital platform that showcases the restaurant's menu, brand identity, and encourages online ordering through an attractive and user-friendly interface.",
         brandOverview: "Burger House is a UI design concept I created for a premium burger restaurant, showcasing my skills in food-focused digital experiences. The design combines dramatic food photography with a sophisticated dark aesthetic to create an immersive, appetite-stimulating interface. I positioned the fictional brand as a modern, artisanal burger establishment that appeals to food enthusiasts seeking quality ingredients and bold flavors in a memorable digital experience.",
         challenge: "For this self-initiated project, I challenged myself to create a visually striking UI that would showcase food photography while maintaining excellent usability, design a distinctive aesthetic that would stand out in the crowded restaurant digital space, develop intuitive user flows that simplify ordering while encouraging menu exploration, balance bold visual choices with information hierarchy and accessibility, craft a cohesive design system that could scale across multiple pages and device sizes, and integrate social proof elements like reviews in a visually compelling way.",
         solution: "I designed a bold, dark-themed interface that places vibrant food photography at the center of the experience. The high-contrast approach makes the colors of the ingredients visually pop against the black backdrop, creating immediate visual impact. Key elements of my solution include a dramatic black backdrop with floating ingredient elements that create depth and movement, carefully selected typography pairing that balances visual appeal with readability, a modular card system for menu items that maintains consistency while showcasing each product, strategic use of red accent colors to draw attention to CTAs and important elements, and a simplified navigation structure that prioritizes the core user journeys.",
@@ -183,8 +183,8 @@ export const projectsData = [
         ],
         tools: ["Figma", "Adobe Photoshop"],
         uiScreens: burgermock,
-        conclusion: "This personal project demonstrates my ability to create visually impactful UI designs for the food and restaurant industry. By focusing on a dark aesthetic that makes the food imagery pop, I was able to create a distinctive digital experience that would help a brand like this stand out in a competitive market. The project showcases my understanding of visual hierarchy, typography, and layout principles, as well as my ability to create designs that balance aesthetic appeal with usability. The modular component system I developed provides flexibility for expansion, showing my consideration for long-term scalability.",
-        websiteUrl: "https://burgerhouse-demo.com" // Replace with actual URL if available
+        conclusion: "The Burger House website design successfully creates an immersive digital experience that captures the brand's essence, making it easy and appealing for customers to explore the menu and place orders online.",
+        websiteUrl: "" // Replace with actual URL if available
     },
     {
         id: 3,
@@ -421,7 +421,7 @@ export const projectsData = [
     },
     {
         id: 12,
-        title: "NEXTURNA",
+        title: "TROPICAL WATER",
         category: "UI/UX DESIGN | WEB DESIGN",
         client: "NEXTURNA",
         duration: "4 WEEKS",
@@ -447,8 +447,8 @@ export const projectsData = [
     },
     {
         id: 13,
-        title: "NEXTURNA",
-        category: "UI/UX DESIGN | WEB DESIGN",
+        title: "FOREST HAVEN",
+        category: "UI/UX DESIGN",
         client: "NEXTURNA",
         duration: "4 WEEKS",
         type: "uiux",
@@ -467,9 +467,8 @@ export const projectsData = [
             "Intuitive navigation with clear visual hierarchy"
         ],
         tools: ["Figma", "Adobe Photoshop"],
-        uiScreens: forestmock,
+        uiScreens: naturemock,
         conclusion: "This project emphasized the importance of collaboration and attention to detail, from designing the logo to maintaining consistency across all pages. The final outcome reflects a polished and functional design that not only meets user needs but also positions Nexturna as a forward-thinking brand in the digital space.",
-        websiteUrl: "https://nexturna.com" // Replace with actual URL
     },
     // Add more projects as needed
 ];
