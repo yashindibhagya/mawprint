@@ -40,11 +40,12 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center h-16">
                     {/* Logo and Dark Mode Toggle */}
-                    <div className="flex-shrink-0 flex items-center mr-8">
+                    <div className=" flex items-center mr-8 space-x-3">
                         <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                            <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-[#2a4c34] font-bold text-xl">O</div>
-                            <span className="ml-2 font-bold text-xl text-yellow-500">Yashindi</span>
+                            <div className="w-8 h-8 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] rounded-lg flex items-center justify-center">YB</div>
+                            <span className="text-1xl font-extrabold tracking-tight">YASHINDI</span>
                         </div>
+
 
                         {/* Dark Mode Toggle - Modified to show appropriate icon for default dark mode 
                         <button
