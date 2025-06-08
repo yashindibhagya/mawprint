@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/img/logo 3.png';
 
 const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,12 +41,10 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center h-16">
                     {/* Logo and Dark Mode Toggle */}
-                    <div className=" flex items-center mr-8 space-x-3">
+                    <div className="flex items-center mr-8 space-x-3">
                         <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                            <div className="w-8 h-8 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] rounded-lg flex items-center justify-center">YB</div>
-                            <span className="text-1xl font-extrabold tracking-tight">YASHINDI</span>
+                            <img src={logo} alt="Yashindi Bhagya" className="h-12 w-auto" />
                         </div>
-
 
                         {/* Dark Mode Toggle - Modified to show appropriate icon for default dark mode 
                         <button

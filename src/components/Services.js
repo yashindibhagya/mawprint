@@ -27,7 +27,7 @@ const ServicesSection = () => {
         {
             id: 2,
             number: '02.',
-            title: 'WEB DEVELOPMENT',
+            title: 'MOBILE APP DEVELOPMENT',
             description: 'Building responsive and high-performance websites tailored to meet your business goals.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,7 +43,7 @@ const ServicesSection = () => {
         {
             id: 3,
             number: '03.',
-            title: 'BRANDING',
+            title: 'WEB DEVELOPMENT',
             description: 'Helping your business stand out with unique and memorable branding solutions.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -52,7 +52,7 @@ const ServicesSection = () => {
                     <path d="M2 12l10 5 10-5" />
                 </svg>
             ),
-            tags: ['Identity', 'Logo Design', 'Strategy', 'Guidelines']
+            tags: ['Responsive', 'Frontend', 'Backend', 'Performance']
         }
     ], []);
 
