@@ -218,26 +218,23 @@ const Contact = () => {
                             </div>
 
                             {/* Social links */}
-                            <div className="mt-8">
-                                <h3 className="text-white text-lg font-medium mb-4">Find me on</h3>
-                                <div className="flex flex-wrap gap-4">
-                                    {socialLinks.map((social) => (
-                                        <a
-                                            key={social.name}
-                                            href={social.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="group"
-                                        >
-                                            <div className={`p-3 rounded-xl bg-white/[0.03] backdrop-blur-sm border border-white/10 transition-all duration-300 
-                                            hover:bg-gradient-to-br ${social.gradient} hover:border-white/0 hover:scale-105 hover:shadow-lg`}>
-                                                <div className="text-white/70 group-hover:text-white transition-colors">
-                                                    {social.icon}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    ))}
-                                </div>
+                            <div className="flex gap-4">
+                                {socialLinks.map(social => (
+                                    <a
+                                        key={social.name}
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group relative"
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] rounded-lg blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <div className="relative w-10 h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-white/30 group-hover:transform group-hover:scale-110">
+                                            <span className="text-gray-400 group-hover:text-white transition-colors duration-300">
+                                                {social.icon}
+                                            </span>
+                                        </div>
+                                    </a>
+                                ))}
                             </div>
                         </div>
 

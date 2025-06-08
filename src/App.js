@@ -17,24 +17,18 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'education', 'work', 'skills', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + 100;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
-          }
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(sectionId);
         }
-      }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -63,8 +57,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen font-sans bg-black text-white transition-colors duration-300 relative overflow-hidden">
-        {/* Gradient background elements */}
+      <div className="min-h-screen bg-black text-white relative">
+        {/* Background gradients */}
         <div className="fixed inset-0 z-0 overflow-hidden">
           {/* Primary gradients */}
           <div className="absolute -top-[40%] -right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 blur-3xl"></div>
@@ -79,21 +73,21 @@ function App() {
           <div className="absolute top-[10%] left-[20%] w-[300px] h-[300px] rounded-full bg-gradient-to-l from-violet-500/15 to-purple-500/10 blur-2xl"></div>
         </div>
 
-        {/* Routes container with higher z-index to appear above gradients */}
+        {/* Main content wrapper with consistent max-width */}
         <div className="relative z-10">
           <Routes>
             <Route path="/project/:id" element={
-              <>
+              <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
                 <Header
                   activeSection={activeSection}
                   isProjectPage={true}
                 />
                 <ProjectDetails />
                 <Footer />
-              </>
+              </div>
             } />
             <Route path="/" element={
-              <>
+              <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
                 <Header
                   activeSection={activeSection}
                 />
@@ -105,7 +99,7 @@ function App() {
                 <Skills />
                 <Contact />
                 <Footer />
-              </>
+              </div>
             } />
           </Routes>
         </div>

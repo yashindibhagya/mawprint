@@ -38,7 +38,7 @@ const ServicesSection = () => {
                     <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
                 </svg>
             ),
-            tags: ['Responsive', 'Frontend', 'Backend', 'Performance']
+            tags: ['Responsive', 'Frontend', 'Backend', 'Performance', 'REACT NATIVE']
         },
         {
             id: 3,
@@ -56,7 +56,7 @@ const ServicesSection = () => {
         }
     ], []);
 
-    // Generate random positions for tags when a service is hovered
+    // Generate random positi, 'REACT', 'HTML', 'CSS'ons for tags when a service is hovered
     useEffect(() => {
         if (hoveredService !== null) {
             const service = services.find(s => s.id === hoveredService);

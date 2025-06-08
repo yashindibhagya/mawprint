@@ -34,7 +34,7 @@ const EducationExperience = () => {
     }, []);
 
     return (
-        <section className="py-12 sm:py-16 md:py-8 relative">
+        <section className="py-16 sm:py-20 md:py-24 relative">
             <div className="absolute inset-0 pointer-events-none">
                 {[...Array(50)].map((_, i) => (
                     <div
@@ -48,121 +48,130 @@ const EducationExperience = () => {
                     />
                 ))}
             </div>
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-5xl mx-auto">
+
+            <div className="flex flex-col items-center">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent">
+                        Education & Experience
+                    </h2>
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                        My academic journey and professional experience in the field of design and development
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl">
                     {/* Education Section */}
-                    <div>
-                        <div className="flex items-center mb-8">
-                            <h2 className="text-2xl sm:text-3xl md:text-6xl font-bold bg-gradient-to-l from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent">
-                                Education
-                            </h2>
-                        </div>
-                        <div className="space-y-8">
+                    <div className="space-y-8">
+                        <h3 className="text-2xl font-bold text-white mb-8">Education</h3>
+                        <div className="space-y-12">
                             {/* BSc Degree */}
-                            <div className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b from-[#ff58d8] to-[#4f4cfa]">
-                                <div className="absolute -left-[5px] top-0 w-3 h-3 rounded-full bg-[#ff58d8]"></div>
-                                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1">
-                                    <h3 className="text-lg font-semibold text-white mb-2">
+                            <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa]">
+                                <div className="absolute left-0 top-0 w-2 h-2 bg-[#ff58d8] rounded-full transform -translate-x-[3px]"></div>
+                                <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-6 rounded-xl">
+                                    <h4 className="text-xl font-semibold text-white mb-2">
                                         BSc (Hons) Computer Science
-                                    </h3>
-                                    <p className="text-sm text-gray-300 font-medium mb-1">
+                                    </h4>
+                                    <p className="text-gray-400 mb-2">
                                         National School of Business Management (Undergraduate)
                                     </p>
-                                    <p className="text-xs text-teal-300 mb-3 font-medium">
+                                    <p className="text-sm text-gray-500">
                                         2022-2025
                                     </p>
-                                    <p className="text-sm text-gray-400">
-                                        Focused on software development, algorithms, and advanced computer science concepts. Specializing in UI/UX design and modern web technologies.
-                                    </p>
+                                    <div className="mt-4">
+                                        <ul className="list-disc list-inside text-gray-400 space-y-2">
+                                            <li className="text-sm">
+                                                Focused on software development, algorithms, and advanced computer science concepts. Specializing in UI/UX design and modern web technologies.
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Advanced Level */}
-                            <div className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b from-[#bc50ff] to-[#4f4cfa]">
-                                <div className="absolute -left-[5px] top-0 w-3 h-3 rounded-full bg-[#bc50ff]"></div>
-                                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1">
-                                    <h3 className="text-lg font-semibold text-white mb-2">
+                            <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b from-[#bc50ff] to-[#4f4cfa]">
+                                <div className="absolute left-0 top-0 w-2 h-2 bg-[#bc50ff] rounded-full transform -translate-x-[3px]"></div>
+                                <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-6 rounded-xl">
+                                    <h4 className="text-xl font-semibold text-white mb-2">
                                         G.C.E. Advanced Level
-                                    </h3>
-                                    <p className="text-sm text-gray-300 font-medium mb-1">
+                                    </h4>
+                                    <p className="text-gray-400 mb-2">
                                         Sujatha Vidalaya, Nugegoda
                                     </p>
-                                    <p className="text-xs text-teal-300 mb-3 font-medium">
+                                    <p className="text-sm text-gray-500">
                                         2018-2021
                                     </p>
-                                    <p className="text-sm text-gray-400">
-                                        Excelled in Combined Mathematics stream with a strong foundation in analytical thinking and problem-solving skills.
-                                    </p>
+                                    <div className="mt-4">
+                                        <ul className="list-disc list-inside text-gray-400 space-y-2">
+                                            <li className="text-sm">
+                                                Excelled in Combined Mathematics stream with a strong foundation in analytical thinking and problem-solving skills.
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Experience Section */}
-                    <div>
-                        <div className="flex items-center mb-8">
-                            <h2 className="text-2xl sm:text-3xl md:text-6xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent">
-                                Experience
-                            </h2>
-                        </div>
-                        <div className="space-y-8">
+                    <div className="space-y-8">
+                        <h3 className="text-2xl font-bold text-white mb-8">Experience</h3>
+                        <div className="space-y-12">
                             {/* Amerck */}
-                            <div className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b from-[#ff58d8] to-[#bc50ff]">
-                                <div className="absolute -left-[5px] top-0 w-3 h-3 rounded-full bg-[#ff58d8]"></div>
-                                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1">
-                                    <h3 className="text-lg font-semibold text-white mb-2">
+                            <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b from-[#ff58d8] to-[#bc50ff]">
+                                <div className="absolute left-0 top-0 w-2 h-2 bg-[#ff58d8] rounded-full transform -translate-x-[3px]"></div>
+                                <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-6 rounded-xl">
+                                    <h4 className="text-xl font-semibold text-white mb-2">
                                         UI/UX Designer
-                                    </h3>
-                                    <p className="text-sm text-gray-300 font-medium mb-1">
+                                    </h4>
+                                    <p className="text-gray-400 mb-2">
                                         Amerck
                                     </p>
-                                    <p className="text-xs text-teal-300 mb-3 font-medium">
+                                    <p className="text-sm text-gray-500">
                                         2025 May - Present
                                     </p>
-                                    <ul className="text-sm text-gray-400 space-y-2">
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Designed responsive user interfaces for cross-platform web and mobile applications across healthcare.
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Conducted user research and usability testing to inform design decisions
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Collaborated with development team to ensure pixel-perfect implementation
-                                        </li>
-                                    </ul>
+                                    <div className="mt-4">
+                                        <ul className="list-disc list-inside text-gray-400 space-y-2">
+                                            <li className="text-sm">
+                                                Designed responsive user interfaces for cross-platform web and mobile applications across healthcare.
+                                            </li>
+                                            <li className="text-sm">
+                                                Conducted user research and usability testing to inform design decisions
+                                            </li>
+                                            <li className="text-sm">
+                                                Collaborated with development team to ensure pixel-perfect implementation
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* New Pacific Systems */}
-                            <div className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b from-[#bc50ff] to-[#4f4cfa]">
-                                <div className="absolute -left-[5px] top-0 w-3 h-3 rounded-full bg-[#bc50ff]"></div>
-                                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1">
-                                    <h3 className="text-lg font-semibold text-white mb-2">
+                            <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b from-[#bc50ff] to-[#4f4cfa]">
+                                <div className="absolute left-0 top-0 w-2 h-2 bg-[#bc50ff] rounded-full transform -translate-x-[3px]"></div>
+                                <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-6 rounded-xl">
+                                    <h4 className="text-xl font-semibold text-white mb-2">
                                         UI/UX Designer
-                                    </h3>
-                                    <p className="text-sm text-gray-300 font-medium mb-1">
+                                    </h4>
+                                    <p className="text-gray-400 mb-2">
                                         New Pacific Systems
                                     </p>
-                                    <p className="text-xs text-teal-300 mb-3 font-medium">
+                                    <p className="text-sm text-gray-500">
                                         2023 Jan - 2023 Dec
                                     </p>
-                                    <ul className="text-sm text-gray-400 space-y-2">
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Designed responsive web and mobile interfaces for enterprise clients
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Created and maintained design system documentation
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-teal-300 mr-2">•</span>
-                                            Facilitated design workshops and stakeholder presentations
-                                        </li>
-                                    </ul>
+                                    <div className="mt-4">
+                                        <ul className="list-disc list-inside text-gray-400 space-y-2">
+                                            <li className="text-sm">
+                                                Designed responsive web and mobile interfaces for enterprise clients
+                                            </li>
+                                            <li className="text-sm">
+                                                Created and maintained design system documentation
+                                            </li>
+                                            <li className="text-sm">
+                                                Facilitated design workshops and stakeholder presentations
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
