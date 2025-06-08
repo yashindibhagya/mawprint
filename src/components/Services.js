@@ -113,14 +113,14 @@ const ServicesSection = () => {
                         >
                             <div className="flex flex-col items-center text-center">
                                 {/* Service Number */}
-                                <div className="text-2xl font-bold text-gray-500 mb-2 group-hover:text-gray-400 transition-colors duration-300">
+                                <div className="text-1xl font-bold text-gray-500 mb-2 group-hover:text-gray-400 transition-colors duration-300">
                                     {service.number}
                                 </div>
 
                                 {/* Service Content */}
                                 <div className="relative">
                                     {/* Title */}
-                                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-300 mb-6 transition-all duration-300 group-hover:text-white">
+                                    <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-300 mb-6 transition-all duration-300 group-hover:text-white">
                                         {service.title}
                                     </h2>
 
