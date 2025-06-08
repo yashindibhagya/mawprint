@@ -7,7 +7,44 @@ const Hero = () => {
         width: typeof window !== 'undefined' ? window.innerWidth : 0,
         height: typeof window !== 'undefined' ? window.innerHeight : 0,
     });
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
     const heroRef = useRef(null);
+
+    const texts = ['UI/UX Designer', 'Mobile App Developer'];
+
+    // Typewriter effect
+    useEffect(() => {
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const pauseTime = 2000;
+
+        const timeout = setTimeout(() => {
+            const current = texts[currentIndex];
+
+            if (!isDeleting) {
+                // Typing
+                if (currentText.length < current.length) {
+                    setCurrentText(current.substring(0, currentText.length + 1));
+                } else {
+                    // Finished typing, start deleting after pause
+                    setTimeout(() => setIsDeleting(true), pauseTime);
+                }
+            } else {
+                // Deleting
+                if (currentText.length > 0) {
+                    setCurrentText(current.substring(0, currentText.length - 1));
+                } else {
+                    // Finished deleting, move to next text
+                    setIsDeleting(false);
+                    setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+                }
+            }
+        }, isDeleting ? deleteSpeed : typeSpeed);
+
+        return () => clearTimeout(timeout);
+    }, [currentText, currentIndex, isDeleting, texts]);
 
     // Handle scroll to sections
     const scrollToSection = (sectionId) => {
@@ -83,6 +120,15 @@ const Hero = () => {
                         transform: translateX(0);
                     }
                 }
+
+                @keyframes blink {
+                    0%, 50% {
+                        opacity: 1;
+                    }
+                    51%, 100% {
+                        opacity: 0;
+                    }
+                }
                 
                 .animate-gradient {
                     background-size: 200% 200%;
@@ -99,6 +145,12 @@ const Hero = () => {
                 
                 .animate-marquee2 {
                     animation: marquee2 25s linear infinite;
+                }
+
+                .typewriter-cursor {
+                    animation: blink 1s infinite;
+                    color: #a855f7;
+                    font-weight: 300;
                 }
 
                 /* Responsive styles */
@@ -261,13 +313,12 @@ const Hero = () => {
                             </span>
                         </h1>
 
-                        <div className="space-y-0.5 sm:space-y-1 mb-3 sm:mb-4 md:mb-6">
+                        {/* Typewriter Effect for roles */}
+                        <div className="mb-3 sm:mb-4 md:mb-6" style={{ minHeight: '2.5rem' }}>
                             <h2 className="hero-title text-xl sm:text-2xl md:text-3xl font-medium text-white/90">
-                                UI/UX Designer
+                                {currentText}
+                                <span className="typewriter-cursor">|</span>
                             </h2>
-                            <h3 className="hero-subtitle text-lg sm:text-xl md:text-2xl font-medium text-white/80">
-                                Mobile App Developer
-                            </h3>
                         </div>
 
                         {/* Description with better readability */}
@@ -298,17 +349,17 @@ const Hero = () => {
                             </button>
                         </div>
 
-                        {/* Stats */}
+                        {/* Stats 
                         <div className="hero-stats flex gap-6 sm:gap-8 mt-6 sm:mt-8 md:mt-12">
                             <div>
-                                <p className="text-2xl sm:text-3xl font-bold text-white">10+</p>
+                                <p className="text-2xl sm:text-3xl font-bold text-white">2+</p>
                                 <p className="text-gray-400 text-xs sm:text-sm">Years of Experience</p>
                             </div>
                             <div>
                                 <p className="text-2xl sm:text-3xl font-bold text-white">50+</p>
                                 <p className="text-gray-400 text-xs sm:text-sm">Projects Completed</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Right Content - Image with enhanced presentation */}
