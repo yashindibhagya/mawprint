@@ -24,11 +24,26 @@ module.exports = {
             },
             animation: {
                 'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'marquee': 'marquee 25s linear infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'social-hover': 'socialHover 0.3s ease-out forwards',
             },
             keyframes: {
                 pulse: {
                     '0%, 100%': { opacity: 1 },
                     '50%': { opacity: 0.5 },
+                },
+                marquee: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
+                },
+                socialHover: {
+                    '0%': { transform: 'scale(1)' },
+                    '100%': { transform: 'scale(1.1)' },
                 },
             },
         },

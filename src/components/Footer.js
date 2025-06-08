@@ -1,8 +1,11 @@
 import React from 'react';
 import { socialLinks } from '../config/socialLinks';
+import logo from '../assets/img/logo 3.png';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const navigate = useNavigate();
 
     // Quick links
     const links = [
@@ -31,12 +34,7 @@ const Footer = () => {
                     <div className="md:col-span-5 space-y-8">
                         <div className="space-y-4">
                             <div className="flex items-center space-x-3">
-                                <div className="w-12 h-12 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] rounded-xl flex items-center justify-center transform transition-transform hover:scale-110">
-                                    <span className="text-white text-xl font-bold">YB</span>
-                                </div>
-                                <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
-                                    YASHINDI
-                                </h2>
+                                <img src={logo} alt="Yashindi Bhagya" className="h-12 w-auto" />
                             </div>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
                                 Crafting intuitive digital experiences through innovative UI/UX design and mobile app development.
