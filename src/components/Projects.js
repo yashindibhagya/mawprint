@@ -1,3 +1,4 @@
+// Live Demo
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,66 +26,88 @@ const Projects = () => {
     const projects = [
         {
             id: 1,
-            title: "NEXTURNA",
+            title: "NIKE",
             subtitle: "Future-Forward Software Beyond Limits",
             category: "UI/UX Design",
             type: "uiux",
             image: nikeImage,
-            description: "A software company website with modern design and interactive elements."
+            description: "A software company website with modern design and interactive elements.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
+
         },
         {
             id: 2,
-            title: "VIVAYAM",
+            title: "BURGER HOUSE",
             subtitle: "Traditional Dhotis",
             category: "E-Commerce",
             type: "uiux",
             image: burgerImage,
-            description: "E-commerce platform for traditional clothing with a contemporary interface."
+            description: "E-commerce platform for traditional clothing with a contemporary interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 3,
-            title: "STYLADE",
+            title: "DOC NET",
             subtitle: "Curate Your Fashion Styles",
             category: "Mobile App",
             type: "uiux",
             image: doctorImage,
-            description: "Fashion curation mobile application with personalized recommendations."
+            description: "Fashion curation mobile application with personalized recommendations.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 4,
-            title: "PARICHA",
+            title: "THE BAKERY SHOP",
             subtitle: "Online Shopping Platform",
             category: "E-Commerce",
             type: "uiux",
             image: bakeryImage,
-            description: "Full-featured e-commerce platform with advanced filtering and search."
+            description: "Full-featured e-commerce platform with advanced filtering and search.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 5,
-            title: "EDWINN",
+            title: "FLORONA",
             subtitle: "Designs by Edwinn",
             category: "Portfolio",
             type: "uiux",
             image: plantImage,
-            description: "Designer portfolio website showcasing creative work and services."
+            description: "Designer portfolio website showcasing creative work and services.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 6,
-            title: "DIPESHA",
+            title: "E-LEARNING",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "mobile",
             image: learningImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["React Native", "Firebase"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 7,
-            title: "DIPESHA",
+            title: "INSURANCE",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "mobile",
             image: taskImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["React Native"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 8,
@@ -93,52 +116,70 @@ const Projects = () => {
             category: "E-Commerce",
             type: "mobile",
             image: gestureImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["React Native", "Firebase", "Cloudinary"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 9,
-            title: "DIPESHA",
+            title: "NATURE WONDERS",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
             image: natureImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 10,
-            title: "DIPESHA",
+            title: "EVENT EDGE",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
             image: dashboardImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 11,
-            title: "DIPESHA",
+            title: "EPICUREAN DELIGHT",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
             image: hotelImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 12,
-            title: "DIPESHA",
+            title: "TROPICAL WATER",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
             image: waterImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
         {
             id: 13,
-            title: "DIPESHA",
+            title: "FOREST HAVEN",
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
             image: forestImage,
-            description: "Home appliances e-commerce store with modern user interface."
+            description: "Home appliances e-commerce store with modern user interface.",
+            technologies: ["Figma", "Adobe Photoshop"],
+            liveLink: "#",
+            githubLink: "#"
         },
 
     ];
@@ -164,7 +205,7 @@ const Projects = () => {
     };
 
     return (
-        <section id="work" className="py-12 sm:py-16 md:py-20 transition-colors duration-300 ">
+        <section id="work" className="py-12 sm:py-16 md:py-20 transition-colors duration-300">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Responsive Title Section */}
                 <div className="mb-12 sm:mb-16 md:mb-20 text-center">
@@ -199,15 +240,6 @@ const Projects = () => {
                             UI/UX Designs
                         </button>
                         <button
-                            onClick={() => setActiveTab('webdesign')}
-                            className={`px-6 sm:px-8 py-2 text-sm sm:text-base font-medium rounded-full transition-all duration-300 ${activeTab === 'webdesign'
-                                ? 'text-white bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa]'
-                                : 'text-gray-300 hover:text-white border border-gray-700 hover:border-gray-500'
-                                }`}
-                        >
-                            Web Design
-                        </button>
-                        <button
                             onClick={() => setActiveTab('mobile')}
                             className={`px-6 sm:px-8 py-2 text-sm sm:text-base font-medium rounded-full transition-all duration-300 ${activeTab === 'mobile'
                                 ? 'text-white bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa]'
@@ -221,40 +253,52 @@ const Projects = () => {
 
                 {/* Check if there are projects to display */}
                 {filteredProjects.length > 0 ? (
-                    /* Portfolio-style Projects Grid */
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-4 max-w-6xl mx-auto">
-                        {filteredProjects.map((project) => (
+                    /* Updated Projects Grid with New Style */
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {filteredProjects.map(project => (
                             <div
                                 key={project.id}
-                                className="relative rounded-xl overflow-hidden cursor-pointer group aspect-[4/3]"
+                                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-white/20 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
                                 onClick={() => handleProjectClick(project.id)}
                             >
-                                {/* Simple Image Card */}
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover"
-                                    onError={handleImageError}
-                                />
-
-                                {/* Title overlay */}
-                                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 z-30 bg-gradient-to-t from-black/90 to-transparent">
-                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide mb-1 leading-tight">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-xs sm:text-sm text-white/80 mb-2">
-                                        {project.subtitle}
-                                    </p>
-                                    <div className="inline-block px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-xs text-white">
-                                        {project.category}
-                                    </div>
+                                {/* Project Image */}
+                                <div className="relative overflow-hidden">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                                        onError={handleImageError}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
 
-                                {/* Hover effect with solid button */}
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-40">
-                                    <span className="px-8 py-3 bg-white rounded-full text-sm font-bold text-gray-900 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-xl">
-                                        View Project
-                                    </span>
+                                {/* Project Content */}
+                                <div className="p-6">
+                                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                                    <p className="text-gray-400 mb-4">{project.description}</p>
+
+                                    {/* Technologies */}
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                        {project.technologies.map((tech, index) => (
+                                            <span
+                                                key={index}
+                                                className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-300 border border-white/10"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Action Buttons 
+                                    <div className="flex gap-4">
+                                        <a
+                                            href={project.githubLink}
+                                            className="flex-1 text-center px-4 py-2 rounded-full bg-gradient-to-r from-[#ff58d8] to-[#4f4cfa] text-white text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            Live Demo
+                                        </a>
+                                    </div> */}
                                 </div>
                             </div>
                         ))}

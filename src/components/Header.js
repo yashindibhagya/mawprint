@@ -39,34 +39,18 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
     return (
         <header className={`fixed w-full z-50 ${bgColor} shadow-md mt-3 transition-colors duration-300`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center h-16">
-                    {/* Logo and Dark Mode Toggle */}
-                    <div className="flex items-center mr-8 space-x-3">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo */}
+                    <div className="flex-shrink-0">
                         <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
                             <img src={logo} alt="Yashindi Bhagya" className="h-12 w-auto" />
                         </div>
-
-                        {/* Dark Mode Toggle - Modified to show appropriate icon for default dark mode 
-                        <button
-                            onClick={toggleDarkMode}
-                            className="ml-4 p-2 rounded-full focus:outline-none"
-                            aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                        >
-                            {darkMode !== false ? (
-                                <svg className="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fillRule="evenodd" clipRule="evenodd" />
-                                </svg>
-                            ) : (
-                                <svg className="w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                                </svg>
-                            )}
-                        </button> */}
                     </div>
 
-                    {/* Center Navigation */}
-                    <div className="hidden md:flex flex-1 justify-center">
-                        <div className="flex space-x-8">
+                    {/* Navigation and Contact Button Container */}
+                    <div className="hidden md:flex items-center space-x-8 flex-1 justify-center">
+                        {/* Navigation */}
+                        <nav className="flex space-x-8">
                             {[
                                 { name: 'Home', section: 'home' },
                                 { name: 'About', section: 'about' },
@@ -75,7 +59,7 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
                                 <button
                                     key={item.name}
                                     onClick={() => scrollToSection(item.section)}
-                                    className={`px-1 py-2 text-sm font-medium transition-colors duration-200 
+                                    className={`px-3 py-2 text-sm font-medium transition-colors duration-200 
                                         ${activeSection === item.section && !isProjectPage
                                             ? 'bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent'
                                             : darkMode !== false ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-gray-600'
@@ -84,21 +68,19 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
                                     {item.name}
                                 </button>
                             ))}
-                        </div>
-                    </div>
+                        </nav>
 
-                    {/* Contact Button */}
-                    <div className="hidden md:block">
+                        {/* Contact Button - Now part of the centered container */}
                         <button
                             onClick={() => scrollToSection('contact')}
-                            className="px-6 py-2 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] text-white rounded-full hover:opacity-90 transition-opacity duration-200 font-medium"
+                            className="px-6 py-2 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] text-white rounded-full hover:opacity-90 transition-opacity duration-200 font-medium whitespace-nowrap"
                         >
                             Contact Me
                         </button>
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="md:hidden ml-auto">
+                    <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
                             className={`inline-flex items-center justify-center p-2 rounded-md ${textColor} ${hoverColor} focus:outline-none`}

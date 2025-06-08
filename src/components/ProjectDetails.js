@@ -178,7 +178,7 @@ const ProjectDetails = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center min-h-screen bg-black">
+            <div className="flex justify-center items-center min-h-screen">
                 <div className="relative w-20 h-20">
                     <div className="absolute top-0 left-0 w-full h-full border-4 border-t-transparent border-l-transparent border-lime-500 rounded-full animate-spin"></div>
                     <div className="absolute top-2 left-2 w-16 h-16 border-4 border-t-transparent border-l-transparent border-purple-500 rounded-full animate-spin-slow"></div>
@@ -189,7 +189,7 @@ const ProjectDetails = () => {
 
     if (!project) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-black text-white">
+            <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 text-white">
                 <h2 className="text-2xl font-bold mb-4">Project Not Found</h2>
                 <p className="mb-6">The project you're looking for doesn't exist or has been removed.</p>
                 <button
@@ -203,8 +203,17 @@ const ProjectDetails = () => {
     }
 
     return (
-        <div className="bg-black text-white overflow-hidden relative">
-            {/* Lightbox component - it will only show when lightbox.isOpen is true */}
+        <div className="text-white overflow-hidden relative">
+            {/* Background gradients matching main theme */}
+            <div className="fixed inset-0 z-0 overflow-hidden">
+                {/* Primary gradients */}
+                <div className="absolute -top-[40%] -right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 blur-3xl"></div>
+                <div className="absolute -bottom-[40%] -left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-500/20 to-sky-500/10 blur-3xl"></div>
+                {/* Additional color spots */}
+                <div className="absolute top-[30%] left-[15%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-pink-500/10 to-rose-500/5 blur-3xl"></div>
+                <div className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-indigo-500/10 to-blue-500/5 blur-3xl"></div>
+            </div>
+
             <AnimatePresence>
                 {lightbox.isOpen && (
                     <ImageLightbox
@@ -216,28 +225,20 @@ const ProjectDetails = () => {
                 )}
             </AnimatePresence>
 
-            {/* Starry background effect */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="stars absolute inset-0" style={{
-                    backgroundImage: 'radial-gradient(2px 2px at 40px 60px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 100px 150px, #fff, rgba(0,0,0,0)), radial-gradient(1px 1px at 200px 80px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 300px 250px, #fff, rgba(0,0,0,0)), radial-gradient(1px 1px at 400px 100px, #fff, rgba(0,0,0,0)), radial-gradient(1px 1px at 500px 200px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 300px, #fff, rgba(0,0,0,0)), radial-gradient(1px 1px at 150px 400px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 250px 500px, #fff, rgba(0,0,0,0)), radial-gradient(1px 1px at 350px 50px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 450px 350px, #fff, rgba(0,0,0,0))',
-                    backgroundSize: '550px 550px'
-                }}></div>
-            </div>
-
-            {/* Back Button - Aligned with container instead of fixed left position */}
+            {/* Back Button */}
             <div className="container mx-auto px-4 relative z-40 mt-24 mb-8">
                 <button
                     onClick={handleBackToProjects}
-                    className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md text-lime-500 border border-lime-500 rounded-full hover:bg-lime-500 hover:text-black transition-all duration-300 shadow-lg shadow-lime-500/20 group"
+                    className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md text-white border border-white/10 rounded-full hover:bg-gradient-to-r hover:from-[#ff58d8] hover:to-[#4f4cfa] transition-all duration-300 shadow-lg hover:shadow-purple-500/20 group"
                 >
                     <svg className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    <span>BACK</span>
+                    <span>Back to Projects</span>
                 </button>
             </div>
 
-            {/* Header Section - Reduced vertical spacing */}
+            {/* Header Section */}
             <div className="relative pt-4 pb-8 px-4 overflow-hidden">
                 <div className="container mx-auto text-center relative z-10">
                     <motion.div
@@ -249,7 +250,7 @@ const ProjectDetails = () => {
                         <div className="text-center mb-3">
                             <div className="text-sm uppercase tracking-widest text-gray-400">{project.category}</div>
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-bold text-lime-500 my-4 tracking-wider">
+                        <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent my-4 tracking-wider">
                             {project.title}
                         </h1>
                         <div className="text-2xl md:text-3xl text-white/80 max-w-3xl mx-auto">
@@ -259,14 +260,14 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Project Info Section - Evenly spaced columns with proper alignment */}
+            {/* Project Info Section */}
             <div className="relative py-8 px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="container mx-auto max-w-6xl border-y border-gray-800 py-8"
+                    className="container mx-auto max-w-6xl border-y border-white/10 py-8"
                 >
                     <div className="grid grid-cols-3 gap-0">
                         <div
@@ -275,7 +276,7 @@ const ProjectDetails = () => {
                             onMouseLeave={() => handleHover('category', false)}
                         >
                             <div className="uppercase text-gray-400 font-bold mb-3 tracking-wider">CATEGORY</div>
-                            <div className={`text-lg font-medium transition-colors duration-300 ${hoverStates.category ? 'text-lime-500' : 'text-white'}`}>
+                            <div className={`text-lg font-medium transition-colors duration-300 ${hoverStates.category ? 'text-[#ff58d8]' : 'text-white'}`}>
                                 UI/UX DESIGN | WEB DESIGN
                             </div>
                         </div>
@@ -286,7 +287,7 @@ const ProjectDetails = () => {
                             onMouseLeave={() => handleHover('startDate', false)}
                         >
                             <div className="uppercase text-gray-400 font-bold mb-3 tracking-wider">START DATE</div>
-                            <div className={`text-lg font-medium transition-colors duration-300 ${hoverStates.startDate ? 'text-lime-500' : 'text-white'}`}>
+                            <div className={`text-lg font-medium transition-colors duration-300 ${hoverStates.startDate ? 'text-[#bc50ff]' : 'text-white'}`}>
                                 {project.duration}
                             </div>
                         </div>
@@ -331,46 +332,8 @@ const ProjectDetails = () => {
                 </motion.div>
             </div>
 
-            {/* Project Showcase - Smaller Size and reduced vertical spacing */}
+            {/* Project Showcase */}
             <div className="relative py-8 px-4 overflow-hidden">
-                {/* Animated network lines in background */}
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <svg width="100%" height="100%" className="absolute inset-0">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#ff41c8" />
-                                <stop offset="100%" stopColor="#21d4fd" />
-                            </linearGradient>
-                        </defs>
-                        <g stroke="url(#grad1)" strokeWidth="0.5">
-                            <motion.path
-                                d="M0,50 Q250,150 500,50 T1000,50"
-                                fill="none"
-                                initial={{ pathLength: 0, opacity: 0 }}
-                                whileInView={{ pathLength: 1, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, ease: "easeInOut" }}
-                            />
-                            <motion.path
-                                d="M0,150 Q250,50 500,150 T1000,150"
-                                fill="none"
-                                initial={{ pathLength: 0, opacity: 0 }}
-                                whileInView={{ pathLength: 1, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
-                            />
-                            <motion.path
-                                d="M-100,100 L1100,100"
-                                fill="none"
-                                initial={{ pathLength: 0, opacity: 0 }}
-                                whileInView={{ pathLength: 1, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
-                            />
-                        </g>
-                    </svg>
-                </div>
-
                 <div className="container mx-auto">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -390,8 +353,8 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Brand Overview Section - Reduced vertical spacing */}
-            <div className="relative py-8 px-4 border-t border-gray-800">
+            {/* Brand Overview Section */}
+            <div className="relative py-8 px-4 border-t border-white/10">
                 <div className="container mx-auto max-w-5xl text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -399,13 +362,14 @@ const ProjectDetails = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-lime-500 mb-4 hover:text-white transition-colors duration-300">
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center text-sm text-[#ff58d8] mb-4 hover:text-white transition-colors duration-300">
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                             VISIT WEBSITE
                         </a>
-                        <h2 className="text-3xl md:text-4xl font-bold text-lime-500 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent mb-4">
                             BRAND OVERVIEW
                         </h2>
                         <p className="text-white/80 text-lg leading-relaxed max-w-4xl mx-auto">
@@ -415,11 +379,8 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Challenge & Solution - Reduced vertical spacing */}
+            {/* Challenge & Solution */}
             <div className="relative py-8 px-4 overflow-hidden">
-                <div className="absolute top-0 left-0 w-1/2 h-1/2 blur-[100px] rounded-full"></div>
-                <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-blue-500/10 blur-[100px] rounded-full"></div>
-
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <motion.div
@@ -429,7 +390,7 @@ const ProjectDetails = () => {
                             transition={{ duration: 0.7, ease: "easeOut" }}
                             className="space-y-4"
                         >
-                            <h2 className="text-3xl font-bold text-white border-l-4 border-lime-500 pl-4">THE CHALLENGE</h2>
+                            <h2 className="text-3xl font-bold text-white border-l-4 border-[#ff58d8] pl-4">THE CHALLENGE</h2>
                             <p className="text-gray-300 leading-relaxed">{project.challenge}</p>
                         </motion.div>
 
@@ -440,14 +401,14 @@ const ProjectDetails = () => {
                             transition={{ duration: 0.7, ease: "easeOut" }}
                             className="space-y-4"
                         >
-                            <h2 className="text-3xl font-bold text-white border-l-4 border-lime-500 pl-4">THE SOLUTION</h2>
+                            <h2 className="text-3xl font-bold text-white border-l-4 border-[#4f4cfa] pl-4">THE SOLUTION</h2>
                             <p className="text-gray-300 leading-relaxed">{project.solution}</p>
                         </motion.div>
                     </div>
                 </div>
             </div>
 
-            {/* Features Section - Reduced vertical spacing */}
+            {/* Features Section */}
             <div className="relative py-8 px-4">
                 <div className="container mx-auto max-w-6xl">
                     <motion.div
@@ -457,7 +418,7 @@ const ProjectDetails = () => {
                         transition={{ duration: 0.5 }}
                         className="mb-8"
                     >
-                        <h2 className="text-3xl font-bold text-white border-l-4 border-lime-500 pl-4 mb-6">KEY FEATURES</h2>
+                        <h2 className="text-3xl font-bold text-white border-l-4 border-[#bc50ff] pl-4 mb-6">KEY FEATURES</h2>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -474,13 +435,13 @@ const ProjectDetails = () => {
                                 }}
                                 whileHover={{
                                     scale: 1.03,
-                                    boxShadow: "0 0 20px rgba(132, 204, 22, 0.2)"
+                                    boxShadow: "0 0 20px rgba(188, 80, 255, 0.2)"
                                 }}
-                                className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg p-5 hover:border-lime-500/50 transition-all duration-300"
+                                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-5 hover:border-[#bc50ff]/50 transition-all duration-300"
                             >
                                 <div className="flex items-start">
                                     <div className="flex-shrink-0 mr-4">
-                                        <div className="w-9 h-9 rounded-full bg-lime-500 flex items-center justify-center text-black font-bold">
+                                        <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#ff58d8] to-[#4f4cfa] flex items-center justify-center text-white font-bold">
                                             {index + 1}
                                         </div>
                                     </div>
@@ -492,7 +453,7 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* UI Screens Section - Proportional sizing based on width */}
+            {/* UI Screens Section */}
             <div className="relative py-8 px-4">
                 <div className="container mx-auto max-w-7xl">
                     <motion.div
@@ -502,7 +463,7 @@ const ProjectDetails = () => {
                         transition={{ duration: 0.7 }}
                         className="mb-8"
                     >
-                        <h2 className="text-3xl font-bold text-lime-500 mb-6 text-center">
+                        <h2 className="text-3xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent mb-6 text-center">
                             PAGES
                         </h2>
                     </motion.div>
@@ -522,10 +483,9 @@ const ProjectDetails = () => {
                                 className="relative flex flex-col"
                             >
                                 <div
-                                    className="rounded-xl overflow-hidden border border-purple-500/20 hover:border-lime-500/50 transition-all duration-300 shadow-lg shadow-purple-500/5 hover:shadow-lime-500/15 cursor-pointer bg-black/40 backdrop-blur-sm p-1"
+                                    className="rounded-xl overflow-hidden border border-white/10 hover:border-[#bc50ff]/50 transition-all duration-300 shadow-lg shadow-purple-500/5 hover:shadow-[#bc50ff]/15 cursor-pointer bg-black/40 backdrop-blur-sm p-1"
                                     onClick={() => openLightbox(screen.image)}
                                 >
-                                    {/* Maintaining mobile device aspect ratio */}
                                     <div className="w-full" style={{ aspectRatio: '0.5' }}>
                                         <img
                                             src={screen.image}
@@ -543,7 +503,7 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Conclusion Section - Reduced vertical spacing */}
+            {/* Conclusion Section */}
             <div className="relative py-8 px-4">
                 <div className="container mx-auto max-w-6xl">
                     <motion.div
@@ -553,10 +513,10 @@ const ProjectDetails = () => {
                         transition={{ duration: 0.7, ease: "easeOut" }}
                         className="text-center"
                     >
-                        <h2 className="text-3xl font-bold text-lime-500 mb-6 inline-block relative">
+                        <h2 className="text-3xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent mb-6 inline-block relative">
                             PROJECT CONCLUSION
                             <motion.span
-                                className="absolute bottom-0 left-0 h-0.5 bg-lime-500/50"
+                                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#ff58d8] to-[#4f4cfa]"
                                 initial={{ width: "0%" }}
                                 whileInView={{ width: "100%" }}
                                 viewport={{ once: true }}
@@ -570,7 +530,8 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Visit Website Banner - Slight reduction in margin */}
+            {/* Visit Website Banner */}
+            {/* Visit Website Banner */}
             <div className="relative mt-8">
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -582,26 +543,110 @@ const ProjectDetails = () => {
                         href={project.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block py-6 bg-lime-500 text-black font-bold text-center text-xl uppercase tracking-widest hover:bg-lime-400 transition-colors duration-300 relative overflow-hidden group"
+                        className="block py-6 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] text-white font-bold text-center text-xl uppercase tracking-widest hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
                     >
-                        <div className="flex items-center justify-center">
-                            <span className="mx-2">✧</span>
-                            <span>VISIT WEBSITE</span>
-                            <span className="mx-2">✧</span>
-                            <span>VISIT WEBSITE</span>
-                            <span className="mx-2">✧</span>
-                            <span>VISIT WEBSITE</span>
-                            <span className="mx-2">✧</span>
-                            <span>VISIT WEBSITE</span>
-                            <span className="mx-2">✧</span>
+                        {/* Animated background sweep */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                            initial={{ x: "-100%", skewX: -15 }}
+                            whileHover={{
+                                x: "100%",
+                                transition: { duration: 0.6, ease: "easeInOut" }
+                            }}
+                        />
+
+                        {/* Sparkle effects */}
+                        <div className="absolute inset-0 overflow-hidden">
+                            <motion.div
+                                className="absolute top-2 left-10 w-1 h-1 bg-white rounded-full"
+                                animate={{
+                                    scale: [0, 1, 0],
+                                    opacity: [0, 1, 0]
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    delay: 0
+                                }}
+                            />
+                            <motion.div
+                                className="absolute top-4 right-20 w-1 h-1 bg-white rounded-full"
+                                animate={{
+                                    scale: [0, 1, 0],
+                                    opacity: [0, 1, 0]
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    delay: 0.5
+                                }}
+                            />
+                            <motion.div
+                                className="absolute bottom-3 left-1/3 w-1 h-1 bg-white rounded-full"
+                                animate={{
+                                    scale: [0, 1, 0],
+                                    opacity: [0, 1, 0]
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    delay: 1
+                                }}
+                            />
                         </div>
 
-                        {/* Animated hover effect */}
+                        {/* Text content */}
+                        <div className="relative z-10 flex items-center justify-center">
+                            <motion.span
+                                className="mx-2"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            >
+                                ✧
+                            </motion.span>
+                            <span>VISIT WEBSITE</span>
+                            <motion.span
+                                className="mx-2"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                            >
+                                ✧
+                            </motion.span>
+                            <span>VISIT WEBSITE</span>
+                            <motion.span
+                                className="mx-2"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 1 }}
+                            >
+                                ✧
+                            </motion.span>
+                            <span>VISIT WEBSITE</span>
+                            <motion.span
+                                className="mx-2"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 0.5 }}
+                            >
+                                ✧
+                            </motion.span>
+                            <span>VISIT WEBSITE</span>
+                            <motion.span
+                                className="mx-2"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 2 }}
+                            >
+                                ✧
+                            </motion.span>
+                        </div>
+
+                        {/* Pulse effect on hover */}
                         <motion.div
-                            className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            initial={{ x: "-100%" }}
-                            whileHover={{ x: "100%" }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="absolute inset-0 border-2 border-white/50"
+                            initial={{ scale: 1, opacity: 0 }}
+                            whileHover={{
+                                scale: 1.1,
+                                opacity: [0, 0.5, 0],
+                                transition: { duration: 0.6 }
+                            }}
                         />
                     </a>
                 </motion.div>

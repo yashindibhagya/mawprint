@@ -84,7 +84,7 @@ const ServicesSection = () => {
 
     return (
         <section id="services" className="min-h-screen text-white relative overflow-hidden"
-            style={{ marginTop: -80 }}
+            style={{ marginTop: -50 }}
         >
             {/* Background particles/dots */}
             <div className="absolute inset-0 pointer-events-none">
