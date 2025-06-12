@@ -38,7 +38,7 @@ const ServicesSection = () => {
                     <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
                 </svg>
             ),
-            tags: ['Responsive', 'Frontend', 'Backend', 'Performance', 'REACT NATIVE']
+            tags: ['Responsive', 'Frontend', 'Backend', 'Performance']
         },
         {
             id: 3,

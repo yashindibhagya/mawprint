@@ -51,7 +51,7 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: "DOC NET",
+            title: "DOCNET",
             subtitle: "Curate Your Fashion Styles",
             category: "Mobile App",
             type: "uiux",

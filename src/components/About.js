@@ -84,15 +84,19 @@ const About = () => {
                         {/* Text content with responsive padding and sizing */}
                         <div className="max-w-full md:max-w-3xl px-4 sm:px-6 md:px-8">
                             <p className="mb-4 sm:mb-6 text-base sm:text-lg">
-                                Hey, I'm <span className="font-bold">Dasun Lakshan</span>, a passionate UI/UX Designer, Web Developer, Front-End Developer, Graphic Designer, Video Editor, and Visual Storyteller from Sri Lanka.
+                                Hey, I'm <span className="font-bold">Yashindi Bhagya</span>,a final-year BSc (Hons) Computer Science student at NSBM, passionate about building intuitive digital experiences that blend design and functionality.
                             </p>
 
                             <p className="mb-4 sm:mb-6 text-gray-300 leading-relaxed text-sm sm:text-base">
-                                As a full-time freelancer, I thrive on crafting seamless digital experiences that merge creativity with functionality. With a Higher National Diploma in Information Technology (HNDIT) and a strong foundation in design and development, I continuously push my boundaries as a self-learner, exploring the latest trends and technologies to bring ideas to life.
+                                With over a year of hands-on experience in UI/UX design, I specialize in user research, wireframing, and prototyping using tools like Figma, Adobe Photoshop, and Canva.
                             </p>
 
                             <p className="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                                My approach combines technical expertise with aesthetic sensibility, ensuring that every project not only looks beautiful but also functions flawlessly. I believe in creating user-centered designs that engage, inspire, and deliver measurable results.
+                                Beyond design, I develop mobile applications using React Native and create interactive games with Unity and C#. I enjoy turning ideas into real-world solutions whether it's a learning app, a game, or a user-centric platform.
+                            </p>
+
+                            <p className="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
+                                I'm always eager to learn, collaborate, and take on challenges that push my creative and technical skills forward.
                             </p>
 
                             {/* Social Icons with responsive spacing */}

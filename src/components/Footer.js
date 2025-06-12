@@ -1,6 +1,6 @@
 import React from 'react';
 import { socialLinks } from '../config/socialLinks';
-import logo from '../assets/img/logo 3.png';
+import logo from '../assets/img/Remove.png';
 import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
