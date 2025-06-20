@@ -76,20 +76,20 @@ export const plantmock = [
     { id: 1, image: plant1 }
 ];
 export const learnmock = [
-    { id: 1, image: learning1 },
-    { id: 2, image: learning2 },
-    { id: 3, image: learning3 },
-    { id: 4, image: learning4 },
-    { id: 5, image: learning5 },
-    { id: 6, image: learning6 },
-    { id: 7, image: learning7 },
-    { id: 8, image: learning8 },
-    { id: 9, image: learning9 },
-    { id: 10, image: learning10 },
-    { id: 11, image: learning11 },
-    { id: 12, image: learning12 },
-    { id: 13, image: learning13 },
-    { id: 14, image: learning14 },
+    { id: 1, image: '/assets/img/learning/1.png' },
+    { id: 2, image: '/assets/img/learning/2.png' },
+    { id: 3, image: '/assets/img/learning/3.png' },
+    { id: 4, image: '/assets/img/learning/4.png' },
+    { id: 5, image: '/assets/img/learning/5.png' },
+    { id: 6, image: '/assets/img/learning/6.png' },
+    { id: 7, image: '/assets/img/learning/7.png' },
+    { id: 8, image: '/assets/img/learning/8.png' },
+    { id: 9, image: '/assets/img/learning/9.png' },
+    { id: 10, image: '/assets/img/learning/10.png' },
+    { id: 11, image: '/assets/img/learning/11.png' },
+    { id: 12, image: '/assets/img/learning/12.png' },
+    { id: 13, image: '/assets/img/learning/13.png' },
+    { id: 14, image: '/assets/img/learning/14.png' },
 ];
 export const insurancemock = [
     { id: 1, title: 'About Us', image: nikeImage },
@@ -172,7 +172,7 @@ export const projectsData = [
         mockupImage: burgerImage,
         description: "A bold and appetizing landing page for Burger House, built to attract burger lovers with vibrant visuals, interactive product listings, and a call-to-action for fast online orders.",
         overview: "The design features rich imagery, clear product details, and an inviting interface that captures the essence of Burger House—freshness, flavor, and fast service. It s focused on promoting signature burgers and building trust through customer reviews.",
-        brandOverview: "Burger House is a local fast food brand that emphasizes quality ingredients, customizable meals, and quick delivery. This landing page embodies the brand’s energetic and mouth-watering appeal to engage users at first glance.",
+        brandOverview: "Burger House is a local fast food brand that emphasizes quality ingredients, customizable meals, and quick delivery. This landing page embodies the brand's energetic and mouth-watering appeal to engage users at first glance.",
         challenge: "The challenge was to create a visual experience that immediately stimulates hunger while making it easy for users to explore, customize, and order their burgers. The design also needed to convey trust and authenticity through storytelling and social proof.",
         solution: "Implemented a modern, clean design with emphasis on food photography and easy ordering system.",
         features: [
@@ -184,7 +184,7 @@ export const projectsData = [
         ],
         tools: ["Figma", "Adobe Photoshop"],
         uiScreens: burgermock,
-        conclusion: "This landing page delivers a flavorful digital experience that mirrors the taste and energy of Burger House. It’s built to convert hungry visitors into loyal customers with ease.",
+        conclusion: "This landing page delivers a flavorful digital experience that mirrors the taste and energy of Burger House. It's built to convert hungry visitors into loyal customers with ease.",
         websiteUrl: "#"
     },
     {
