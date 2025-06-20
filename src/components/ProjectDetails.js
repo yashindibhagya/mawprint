@@ -530,7 +530,69 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
-            {/* Visit Website Banner */}
+            {/* Related Projects Section */}
+            <div className="relative py-8 px-4">
+                <div className="container mx-auto max-w-6xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="text-center mb-8"
+                    >
+                        <h2 className="text-3xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent mb-6 inline-block relative">
+                            RELATED PROJECTS
+                            <motion.span
+                                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#ff58d8] to-[#4f4cfa]"
+                                initial={{ width: "0%" }}
+                                whileInView={{ width: "100%" }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                            ></motion.span>
+                        </h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">Explore more projects in the same category.</p>
+                    </motion.div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {projectsData
+                            .filter(p => p.type === project.type && p.id !== project.id)
+                            .slice(0, 3)
+                            .map(related => (
+                                <div
+                                    key={related.id}
+                                    className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-white/20 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
+                                    onClick={() => navigate(`/project/${related.id}`)}
+                                >
+                                    {/* Project Image */}
+                                    <div className="relative overflow-hidden">
+                                        <img
+                                            src={related.image}
+                                            alt={related.title}
+                                            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    {/* Project Content */}
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold text-white mb-2">{related.title}</h3>
+                                        <p className="text-gray-400 mb-4 line-clamp-2">{related.description}</p>
+                                        {/* Technologies */}
+                                        <div className="flex flex-wrap gap-2 mb-2">
+                                            {related.tools && related.tools.map((tech, index) => (
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-300 border border-white/10"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                    </div>
+                </div>
+            </div>
+
             {/* Visit Website Banner */}
             <div className="relative mt-8">
                 <motion.div
