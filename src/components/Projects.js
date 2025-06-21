@@ -2,22 +2,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Import your image
-import nikeImage from '../assets/img/nike.png';
-import bakeryImage from '../assets/img/bakery.png';
-import doctorImage from '../assets/img/doctor.png';
-import forestImage from '../assets/img/forest.png';
-import plantImage from '../assets/img/plant.png';
-import dashboardImage from '../assets/img/dashboard.png';
-import learningImage from '../assets/img/e-learning.png';
-import hotelImage from '../assets/img/hotel.png';
-import natureImage from '../assets/img/nature.png';
-import waterImage from '../assets/img/water.png';
-import taskImage from '../assets/img/task.png';
-import burgerImage from '../assets/img/burger.png';
-import gestureImage from '../assets/img/gesture.png';
-
-
 const Projects = () => {
     const [activeTab, setActiveTab] = useState('all');
     const navigate = useNavigate();
@@ -30,7 +14,7 @@ const Projects = () => {
             subtitle: "Future-Forward Software Beyond Limits",
             category: "UI/UX Design",
             type: "uiux",
-            image: nikeImage,
+            image: "/assets/img/nike.png",
             description: "A software company website with modern design and interactive elements.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -43,7 +27,7 @@ const Projects = () => {
             subtitle: "Traditional Dhotis",
             category: "E-Commerce",
             type: "uiux",
-            image: burgerImage,
+            image: "/assets/img/burger.png",
             description: "E-commerce platform for traditional clothing with a contemporary interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -55,7 +39,7 @@ const Projects = () => {
             subtitle: "Curate Your Fashion Styles",
             category: "Mobile App",
             type: "uiux",
-            image: doctorImage,
+            image: "/assets/img/doctor.png",
             description: "Fashion curation mobile application with personalized recommendations.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -67,7 +51,7 @@ const Projects = () => {
             subtitle: "Online Shopping Platform",
             category: "E-Commerce",
             type: "uiux",
-            image: bakeryImage,
+            image: "/assets/img/bakery.png",
             description: "Full-featured e-commerce platform with advanced filtering and search.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -79,7 +63,7 @@ const Projects = () => {
             subtitle: "Designs by Edwinn",
             category: "Portfolio",
             type: "uiux",
-            image: plantImage,
+            image: "/assets/img/plant.png",
             description: "Designer portfolio website showcasing creative work and services.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -91,7 +75,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "mobile",
-            image: learningImage,
+            image: "/assets/img/e-learning.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["React Native", "Firebase"],
             liveLink: "#",
@@ -103,7 +87,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "mobile",
-            image: taskImage,
+            image: "/assets/img/task.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["React Native"],
             liveLink: "#",
@@ -115,7 +99,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "mobile",
-            image: gestureImage,
+            image: "/assets/img/gesture.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["React Native", "Firebase", "Cloudinary"],
             liveLink: "#",
@@ -127,7 +111,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
-            image: natureImage,
+            image: "/assets/img/nature.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -139,7 +123,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
-            image: dashboardImage,
+            image: "/assets/img/dashboard.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -151,7 +135,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
-            image: hotelImage,
+            image: "/assets/img/hotel.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -163,7 +147,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
-            image: waterImage,
+            image: "/assets/img/water.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",
@@ -175,7 +159,7 @@ const Projects = () => {
             subtitle: "Home Enterprises",
             category: "E-Commerce",
             type: "uiux",
-            image: forestImage,
+            image: "/assets/img/forest.png",
             description: "Home appliances e-commerce store with modern user interface.",
             technologies: ["Figma", "Adobe Photoshop"],
             liveLink: "#",

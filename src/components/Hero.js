@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import Image from '../assets/img/pic.png';
 
 const Hero = () => {
     const [windowSize, setWindowSize] = useState({
@@ -191,7 +190,7 @@ const Hero = () => {
                                     {/* Image with overlay */}
                                     <div className="absolute inset-0"></div>
                                     <img
-                                        src={Image}
+                                        src="/assets/img/pic.png"
                                         alt="Yashindi Bhagya"
                                         className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl object-cover"
                                         style={{

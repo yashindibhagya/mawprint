@@ -1,79 +1,21 @@
-import nikeImage from '../assets/img/nike.png';
-import burgerImage from '../assets/img/burger.png';
-import learningImage from '../assets/img/e-learning.png';
-import bakeryImage from '../assets/img/bakery.png';
-import dashboardImage from '../assets/img/dashboard.png';
-import doctorImage from '../assets/img/doctor.png';
-import forestImage from '../assets/img/forest.png';
-import gestureImage from '../assets/img/gesture.png';
-import hotelImage from '../assets/img/hotel.png';
-import natureImage from '../assets/img/nature.png';
-import plantImage from '../assets/img/plant.png';
-import insuranceImage from '../assets/img/task.png';
-import waterImage from '../assets/img/water.png';
-
-import learning1 from '../assets/img/learning/1.png';
-import learning2 from '../assets/img/learning/2.png';
-import learning3 from '../assets/img/learning/3.png';
-import learning4 from '../assets/img/learning/4.png';
-import learning5 from '../assets/img/learning/5.png';
-import learning6 from '../assets/img/learning/6.png';
-import learning7 from '../assets/img/learning/7.png';
-import learning8 from '../assets/img/learning/8.png';
-import learning9 from '../assets/img/learning/9.png';
-import learning10 from '../assets/img/learning/10.png';
-import learning11 from '../assets/img/learning/11.png';
-import learning12 from '../assets/img/learning/12.png';
-import learning13 from '../assets/img/learning/13.png';
-import learning14 from '../assets/img/learning/14.png';
-
-import nike1 from '../assets/img/nike/1.png';
-
-import bakery1 from '../assets/img/bakery/1.png';
-
-import dashboard1 from '../assets/img/dashboard/1.png';
-import dashboard2 from '../assets/img/dashboard/2.png';
-import dashboard3 from '../assets/img/dashboard/3.png';
-
-
-import doctor1 from '../assets/img/dashboard/1.png';
-
-
-
-import hotel1 from '../assets/img/hotel/1.jpg';
-import hotel2 from '../assets/img/hotel/2.jpg';
-
-import nature1 from '../assets/img/nature/2.png';
-import nature2 from '../assets/img/nature/1.png';
-
-import plant1 from '../assets/img/plant/1.jpg';
-
-import water1 from '../assets/img/water/1.png';
-
-import zoo1 from '../assets/img/zoo/1.png';
-
-import burger1 from '../assets/img/burger/1.png';
-import burger2 from '../assets/img/burger/2.png';
-import burger3 from '../assets/img/burger/3.png';
-
 // Mock UI screen images - replace with your actual images
 export const nikemock = [
-    { id: 1, image: nike1 },
+    { id: 1, image: '/assets/img/nike/1.png' },
 ];
 export const burgermock = [
-    { id: 1, image: burger1 },
-    { id: 1, image: burger2 },
-    { id: 1, image: burger3 },
+    { id: 1, image: '/assets/img/burger/1.png' },
+    { id: 1, image: '/assets/img/burger/2.png' },
+    { id: 1, image: '/assets/img/burger/3.png' },
 ];
 export const docmock = [
-    { id: 1, image: doctor1 },
+    { id: 1, image: '/assets/img/dashboard/1.png' },
 
 ];
 export const bakerymock = [
-    { id: 1, image: bakery1 }
+    { id: 1, image: '/assets/img/bakery/1.png' }
 ];
 export const plantmock = [
-    { id: 1, image: plant1 }
+    { id: 1, image: '/assets/img/plant/1.jpg' }
 ];
 export const learnmock = [
     { id: 1, image: '/assets/img/learning/1.png' },
@@ -92,43 +34,43 @@ export const learnmock = [
     { id: 14, image: '/assets/img/learning/14.png' },
 ];
 export const insurancemock = [
-    { id: 1, title: 'About Us', image: nikeImage },
-    { id: 2, title: 'Blog', image: nikeImage },
-    { id: 3, title: 'Projects', image: nikeImage },
-    { id: 4, title: 'Technology', image: nikeImage },
-    { id: 5, title: 'Privacy Policy', image: nikeImage },
-    { id: 6, title: 'Contact Us', image: nikeImage },
-    { id: 7, title: 'AI Marketing', image: nikeImage }
+    { id: 1, title: 'About Us', image: '/assets/img/nike.png' },
+    { id: 2, title: 'Blog', image: '/assets/img/nike.png' },
+    { id: 3, title: 'Projects', image: '/assets/img/nike.png' },
+    { id: 4, title: 'Technology', image: '/assets/img/nike.png' },
+    { id: 5, title: 'Privacy Policy', image: '/assets/img/nike.png' },
+    { id: 6, title: 'Contact Us', image: '/assets/img/nike.png' },
+    { id: 7, title: 'AI Marketing', image: '/assets/img/nike.png' }
 ];
 export const gesturemock = [
-    { id: 1, title: 'About Us', image: nikeImage },
-    { id: 2, title: 'Blog', image: nikeImage },
-    { id: 3, title: 'Projects', image: nikeImage },
-    { id: 4, title: 'Technology', image: nikeImage },
-    { id: 5, title: 'Privacy Policy', image: nikeImage },
-    { id: 6, title: 'Contact Us', image: nikeImage },
-    { id: 7, title: 'AI Marketing', image: nikeImage }
+    { id: 1, title: 'About Us', image: '/assets/img/nike.png' },
+    { id: 2, title: 'Blog', image: '/assets/img/nike.png' },
+    { id: 3, title: 'Projects', image: '/assets/img/nike.png' },
+    { id: 4, title: 'Technology', image: '/assets/img/nike.png' },
+    { id: 5, title: 'Privacy Policy', image: '/assets/img/nike.png' },
+    { id: 6, title: 'Contact Us', image: '/assets/img/nike.png' },
+    { id: 7, title: 'AI Marketing', image: '/assets/img/nike.png' }
 ];
 export const naturemock = [
-    { id: 1, image: nature1 },
-    { id: 2, image: nature2 },
+    { id: 1, image: '/assets/img/nature/2.png' },
+    { id: 2, image: '/assets/img/nature/1.png' },
 ];
 export const dashmock = [
-    { id: 1, image: dashboard1 },
-    { id: 2, image: dashboard2 },
-    { id: 3, image: dashboard3 },
+    { id: 1, image: '/assets/img/dashboard/1.png' },
+    { id: 2, image: '/assets/img/dashboard/2.png' },
+    { id: 3, image: '/assets/img/dashboard/3.png' },
 ];
 export const hotelmock = [
-    { id: 1, image: hotel1 },
-    { id: 2, image: hotel2 },
+    { id: 1, image: '/assets/img/hotel/1.jpg' },
+    { id: 2, image: '/assets/img/hotel/2.jpg' },
 
 ];
 export const watermock = [
-    { id: 1, image: water1 },
+    { id: 1, image: '/assets/img/water/1.png' },
 
 ];
 export const forestmock = [
-    { id: 1, image: zoo1 },
+    { id: 1, image: '/assets/img/zoo/1.png' },
 
 ];
 
@@ -141,8 +83,8 @@ export const projectsData = [
         category: "UI/UX Design",
         duration: "4 WEEKS",
         type: "uiux",
-        image: nikeImage,
-        mockupImage: nikeImage,
+        image: "/assets/img/nike.png",
+        mockupImage: "/assets/img/nike.png",
         description: "A sleek and modern Nike landing page designed to showcase the latest and most popular shoes, promote the Nike app, and deliver a smooth shopping experience.",
         overview: "The landing page is designed to deliver a seamless shopping experience while reinforcing Nike's core brand values—comfort, quality, and style. It includes dynamic product displays, intuitive navigation, and app promotion, appealing to both desktop and mobile users.",
         brandOverview: "Nike is a globally recognized brand known for innovation, performance, and iconic style in sportswear. This landing page upholds Nike's reputation by integrating strong visual identity elements like the Swoosh logo, bold fonts, and athletic product imagery. The tone is confident, energetic, and modern—mirroring Nike's 'Just Do It' philosophy.",
@@ -168,8 +110,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "1 WEEK",
         type: "uiux",
-        image: burgerImage,
-        mockupImage: burgerImage,
+        image: "/assets/img/burger.png",
+        mockupImage: "/assets/img/burger.png",
         description: "A bold and appetizing landing page for Burger House, built to attract burger lovers with vibrant visuals, interactive product listings, and a call-to-action for fast online orders.",
         overview: "The design features rich imagery, clear product details, and an inviting interface that captures the essence of Burger House—freshness, flavor, and fast service. It s focused on promoting signature burgers and building trust through customer reviews.",
         brandOverview: "Burger House is a local fast food brand that emphasizes quality ingredients, customizable meals, and quick delivery. This landing page embodies the brand's energetic and mouth-watering appeal to engage users at first glance.",
@@ -194,8 +136,8 @@ export const projectsData = [
         category: "Mobile App",
         duration: "3 WEEKS",
         type: "uiux",
-        image: doctorImage,
-        mockupImage: doctorImage,
+        image: "/assets/img/doctor.png",
+        mockupImage: "/assets/img/doctor.png",
         description: "Fashion curation mobile application with personalized recommendations.",
         overview: "Doc Net is a healthcare platform designed to connect patients with doctors seamlessly.",
         brandOverview: "A modern healthcare solution focusing on accessibility and user experience.",
@@ -220,8 +162,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "2 WEEKS",
         type: "uiux",
-        image: bakeryImage,
-        mockupImage: bakeryImage,
+        image: "/assets/img/bakery.png",
+        mockupImage: "/assets/img/bakery.png",
         description: "Full-featured e-commerce platform with advanced filtering and search.",
         overview: "A modern e-commerce platform for a premium bakery, focusing on product presentation and easy ordering.",
         brandOverview: "The Bakery Shop brings artisanal baking to the digital space with an elegant online presence.",
@@ -246,8 +188,8 @@ export const projectsData = [
         category: "Portfolio",
         duration: "2 WEEKS",
         type: "uiux",
-        image: plantImage,
-        mockupImage: plantImage,
+        image: "/assets/img/plant.png",
+        mockupImage: "/assets/img/plant.png",
         description: "Designer portfolio website showcasing creative work and services.",
         overview: "A plant care and e-commerce platform with focus on user education and product discovery.",
         brandOverview: "Florona aims to make plant care accessible and enjoyable for everyone.",
@@ -272,8 +214,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "6 WEEKS",
         type: "mobile",
-        image: learningImage,
-        mockupImage: learningImage,
+        image: "/assets/img/e-learning.png",
+        mockupImage: "/assets/img/e-learning.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A comprehensive mobile learning platform designed for interactive education.",
         brandOverview: "Making education accessible through mobile technology.",
@@ -298,8 +240,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "3 WEEKS",
         type: "mobile",
-        image: insuranceImage,
-        mockupImage: insuranceImage,
+        image: "/assets/img/task.png",
+        mockupImage: "/assets/img/task.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A mobile insurance platform focusing on easy policy management and claims.",
         brandOverview: "Simplifying insurance management through mobile technology.",
@@ -324,8 +266,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "4 WEEKS",
         type: "mobile",
-        image: gestureImage,
-        mockupImage: gestureImage,
+        image: "/assets/img/gesture.png",
+        mockupImage: "/assets/img/gesture.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "An innovative mobile app utilizing gesture recognition for enhanced interaction.",
         brandOverview: "Pioneering gesture-based interaction in mobile applications.",
@@ -350,8 +292,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "3 WEEKS",
         type: "uiux",
-        image: natureImage,
-        mockupImage: natureImage,
+        image: "/assets/img/nature.png",
+        mockupImage: "/assets/img/nature.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A nature-focused e-commerce platform showcasing sustainable and eco-friendly products.",
         brandOverview: "Nature Wonders promotes environmental consciousness through carefully curated products.",
@@ -376,8 +318,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "4 WEEKS",
         type: "uiux",
-        image: dashboardImage,
-        mockupImage: dashboardImage,
+        image: "/assets/img/dashboard.png",
+        mockupImage: "/assets/img/dashboard.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A comprehensive event management dashboard for planning and organizing events.",
         brandOverview: "Event Edge streamlines event planning through an intuitive dashboard interface.",
@@ -402,8 +344,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "3 WEEKS",
         type: "uiux",
-        image: hotelImage,
-        mockupImage: hotelImage,
+        image: "/assets/img/hotel.png",
+        mockupImage: "/assets/img/hotel.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A luxury restaurant booking and dining experience platform.",
         brandOverview: "Epicurean Delight elevates the dining experience through digital innovation.",
@@ -428,8 +370,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "2 WEEKS",
         type: "uiux",
-        image: waterImage,
-        mockupImage: waterImage,
+        image: "/assets/img/water.png",
+        mockupImage: "/assets/img/water.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "A premium water delivery service platform with subscription management.",
         brandOverview: "Tropical Water brings convenience to water delivery through digital innovation.",
@@ -454,8 +396,8 @@ export const projectsData = [
         category: "E-Commerce",
         duration: "3 WEEKS",
         type: "uiux",
-        image: forestImage,
-        mockupImage: forestImage,
+        image: "/assets/img/forest.png",
+        mockupImage: "/assets/img/forest.png",
         description: "Home appliances e-commerce store with modern user interface.",
         overview: "An eco-tourism platform showcasing forest retreats and nature experiences.",
         brandOverview: "Forest Haven connects nature enthusiasts with unique forest getaways.",

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/img/logo 3.png';
 
 const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +42,7 @@ const Header = ({ darkMode, toggleDarkMode, activeSection, isProjectPage = false
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                            <img src={logo} alt="Yashindi Bhagya" className="h-12 w-auto" />
+                            <img src="/assets/img/logo 3.png" alt="Yashindi Bhagya" className="h-12 w-auto" />
                         </div>
                     </div>
 

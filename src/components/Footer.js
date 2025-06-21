@@ -1,6 +1,5 @@
 import React from 'react';
 import { socialLinks } from '../config/socialLinks';
-import logo from '../assets/img/Remove.png';
 import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
@@ -34,7 +33,7 @@ const Footer = () => {
                     <div className="md:col-span-5 space-y-8">
                         <div className="space-y-4">
                             <div className="flex items-center space-x-3">
-                                <img src={logo} alt="Yashindi Bhagya" className="h-12 w-auto" />
+                                <img src="/assets/img/Remove.png" alt="Yashindi Bhagya" className="h-12 w-auto" />
                             </div>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
                                 Crafting intuitive digital experiences through innovative UI/UX design and mobile app development.
