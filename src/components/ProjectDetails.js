@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SiFigma, SiAdobephotoshop, SiReact, SiFirebase, SiCloudinary, SiTailwindcss, SiNodedotjs, SiCanva, SiVercel, SiGithub, SiBehance, SiBootstrap, SiJavascript, SiHtml5, SiCss3 } from 'react-icons/si';
 
 // Import data from data file
 import { projectsData, mockScreens } from '../data/projectsData';
@@ -63,6 +64,49 @@ const ImageLightbox = ({ image, title, isOpen, onClose }) => {
                 </motion.div>
             </div>
         </motion.div>
+    );
+};
+
+const toolIcons = {
+    'Figma': { icon: SiFigma, color: '#F24E1E' },
+    'Adobe Photoshop': { icon: SiAdobephotoshop, color: '#31A8FF' },
+    'React Native': { icon: SiReact, color: '#61DAFB' },
+    'React': { icon: SiReact, color: '#61DAFB' },
+    'Firebase': { icon: SiFirebase, color: '#FFCA28' },
+    'Cloudinary': { icon: SiCloudinary, color: '#3448C5' },
+    'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
+    'Node.js': { icon: SiNodedotjs, color: '#339933' },
+    'Canva': { icon: SiCanva, color: '#00C4CC' },
+    'Vercel': { icon: SiVercel, color: '#000000' },
+    'GitHub': { icon: SiGithub, color: '#181717' },
+    'Behance': { icon: SiBehance, color: '#1769FF' },
+    'Bootstrap': { icon: SiBootstrap, color: '#7952B3' },
+    'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
+    'HTML5': { icon: SiHtml5, color: '#E34F26' },
+    'CSS3': { icon: SiCss3, color: '#1572B6' }
+};
+
+const ToolIconWithTooltip = ({ tool, toolData }) => {
+    const [showTooltip, setShowTooltip] = React.useState(false);
+    return (
+        <div
+            className="w-10 h-10 rounded bg-transparent flex items-center justify-center relative group"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            tabIndex={0}
+            aria-label={tool}
+        >
+            {toolData ? (
+                <toolData.icon color={toolData.color} className="w-7 h-7" title={tool} />
+            ) : (
+                <span className="text-xs text-gray-400">{tool}</span>
+            )}
+            {showTooltip && (
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-black text-white text-xs rounded shadow-lg z-50 whitespace-nowrap pointer-events-none animate-fade-in">
+                    {tool}
+                </div>
+            )}
+        </div>
     );
 };
 
@@ -253,7 +297,7 @@ const ProjectDetails = () => {
                         <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent my-4 tracking-wider">
                             {project.title}
                         </h1>
-                        <div className="text-2xl md:text-3xl text-white/80 max-w-3xl mx-auto">
+                        <div className="text-1xl md:text-2xl text-white/80 max-w-3xl mx-auto">
                             {project.description}
                         </div>
                     </motion.div>
@@ -299,33 +343,10 @@ const ProjectDetails = () => {
                         >
                             <div className="uppercase text-gray-400 font-bold mb-3 tracking-wider">SOFTWARES</div>
                             <div className={`flex justify-center gap-4 transition-all duration-300 ${hoverStates.softwares ? 'scale-110' : ''}`}>
-                                {project.tools.includes("Figma") && (
-                                    <div className="w-10 h-10 rounded bg-transparent flex items-center justify-center">
-                                        <svg viewBox="0 0 38 57" className="w-7 h-7">
-                                            <path fill="#1ABCFE" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" />
-                                            <path fill="#0ACF83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" />
-                                            <path fill="#FF7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" />
-                                            <path fill="#F24E1E" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" />
-                                            <path fill="#A259FF" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" />
-                                        </svg>
-                                    </div>
-                                )}
-                                {project.tools.includes("Adobe Photoshop") && (
-                                    <div className="w-10 h-10 rounded bg-transparent flex items-center justify-center">
-                                        <svg viewBox="0 0 240 234" className="w-7 h-7">
-                                            <path fill="#001E36" d="M42.5 0h155C221 0 240 19 240 42.5v149c0 23.5-19 42.5-42.5 42.5h-155C19 234 0 215 0 191.5v-149C0 19 19 0 42.5 0z" />
-                                            <path fill="#31A8FF" d="M54 164.1V61.8c0-.7.3-1.1 1-1.1 1.7 0 3.3 0 5.6-.1 2.4-.1 4.9-.1 7.6-.1 2.7 0 5.6 0 8.7.1 3.1.1 6 .3 8.5.6 2.5.3 4.8.8 6.8 1.5 2 .7 3.7 1.7 5.1 2.9 1.4 1.2 2.6 2.7 3.5 4.6.9 1.9 1.3 4 1.3 6.5 0 2.8-.5 5.1-1.6 7-.1.3-.3.5-.4.7-.1.2-.3.4-.4.6-.1.2-.3.4-.5.6-.2.2-.3.5-.5.7-1.9 2.2-4.2 3.8-6.7 4.7-2.6.9-5.5 1.4-8.6 1.4-1.6 0-3 0-4.2-.1-1.2-.1-2.3-.1-3.2-.2-.9-.1-1.7-.1-2.4-.2-.7 0-1.4-.1-2.1-.1v33.9c0 .8-.3 1.2-1 1.2h-15c-.8 0-1.2-.4-1.2-1.2zm16.4-84.3v24.3c.6.1 1.2.1 1.7.1.5 0 1.1.1 1.8.1 2.1 0 4.1-.2 6.1-.7 2-.5 3.8-1.3 5.3-2.5 1.5-1.1 2.7-2.6 3.6-4.4.9-1.8 1.4-4.1 1.4-6.8 0-2-.3-3.8-1-5.4-.7-1.6-1.6-2.9-2.8-3.9-1.2-1.1-2.7-1.8-4.3-2.4-1.7-.5-3.5-.8-5.5-.8-1.8 0-3.4.1-4.9.2-1.5.1-2.7.3-3.7.5-1 .3-1.8.5-2.4.8-.5.3-.9.5-1.1.7-.3.2-.5.5-.7.9-.2.4-.3.9-.3 1.6-.2-.1-.2.4-.2.9zm77.7 48.8c-3.7 5.2-8.4 9.1-14.1 11.7-5.7 2.6-12.1 3.9-19.1 3.9-3.3 0-6.6-.3-9.9-.8-3.3-.5-6.5-1.5-9.7-2.9-3.2-1.4-6.2-3.2-9-5.5-2.8-2.3-5.3-5.3-7.5-8.8-2.2-3.6-3.9-7.6-5.2-12.2-1.3-4.6-1.9-9.8-1.9-15.5 0-5.6.6-10.8 1.8-15.5 1.2-4.8 2.9-8.9 5-12.5 2.2-3.6 4.7-6.7 7.6-9.2 2.9-2.5 6-4.6 9.3-6.1 3.4-1.5 6.9-2.6 10.6-3.2 3.7-.6 7.2-.9 10.6-.9 5.6 0 10.6.7 15.1 2 4.5 1.4 8.3 3.3 11.5 5.9 3.2 2.6 5.7 5.8 7.6 9.5 1.8 3.7 2.7 7.9 2.7 12.5 0 2.5-.2 4.7-.7 6.6-.5 1.9-1.2 3.5-2.2 4.8-1 1.3-2.1 2.3-3.4 3-1.3.7-2.8 1-4.4 1h-38.8c-.1 5.9 1.2 10.2 3.9 13 2.7 2.7 6.8 4.1 12.1 4.1 3.1 0 5.8-.5 8.2-1.6 2.4-1.1 4.4-2.4 6.1-4.1.6-.7 1.2-1 1.8-1 .8 0 1.6.4 2.4 1.2l7.5 7.4c.6.5.9 1.1.9 1.7.1.7-.3 1.4-1 2.1zm-12.1-34.3c.9-1.4 1.4-3.3 1.4-5.8 0-3.3-.9-6-2.8-8.1-1.9-2.1-4.7-3.1-8.4-3.1-4.9 0-8.4 1.4-10.6 4.3-2.2 2.9-3.5 6.5-3.8 10.8h23c.4-.1.8-.5 1.2-1.3z" />
-                                        </svg>
-                                    </div>
-                                )}
-                                {project.tools.includes("Illustrator") && (
-                                    <div className="w-10 h-10 rounded bg-transparent flex items-center justify-center">
-                                        <svg viewBox="0 0 240 234" className="w-7 h-7">
-                                            <path fill="#330000" d="M42.5 0h155C221 0 240 19 240 42.5v149c0 23.5-19 42.5-42.5 42.5h-155C19 234 0 215 0 191.5v-149C0 19 19 0 42.5 0z" />
-                                            <path fill="#FF9A00" d="M116 140H78.8V58H116v82zm36.3 0l-20.2-33.8L112 140h40.3zm-21.6-47c0-11.2 5.6-17.8 15.6-17.8 9.1 0 13.5 6.9 13.5 17.8 0 12.1-5.3 18-14.2 18-8.9 0-15-6.8-15-18zM155 58h34.3v82H155V58z" />
-                                        </svg>
-                                    </div>
-                                )}
+                                {project.tools.map(tool => {
+                                    const toolData = toolIcons[tool];
+                                    return <ToolIconWithTooltip key={tool} tool={tool} toolData={toolData} />;
+                                })}
                             </div>
                         </div>
                     </div>
