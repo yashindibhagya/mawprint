@@ -1,212 +1,164 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
+import { TrendingUp, MessageSquare, Mail, Users, Target, Zap } from 'lucide-react';
 
-const ServicesSection = () => {
-    // State to track which service is currently being hovered
-    const [hoveredService, setHoveredService] = useState(null);
-
-    // State to store random positions for tags
-    const [tagPositions, setTagPositions] = useState({});
-
-    // Memoize the services data so it doesn't change on every render
-    const services = useMemo(() => [
+const ProductGrid = () => {
+    const services = [
         {
-            id: 1,
-            number: '01.',
-            title: 'UI/UX DESIGN',
-            description: 'Creating intuitive and visually stunning interfaces that enhance user experience and drive engagement.',
-            icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                    <line x1="9" y1="9" x2="9.01" y2="9" />
-                    <line x1="15" y1="9" x2="15.01" y2="9" />
-                </svg>
-            ),
-            tags: ['Wireframing', 'Prototyping', 'Empathy', 'Interfaces']
+            title: "Social Media Marketing",
+            description: "Amplify your brand presence across all social platforms with strategic content and engagement campaigns that drive real results.",
+            icon: <Users className="w-8 h-8" />,
+            gradient: "from-blue-500 to-purple-600",
+            bgGradient: "from-blue-500/10 to-purple-600/10",
+            borderGradient: "from-blue-500/20 to-purple-600/20",
+            iconBg: "from-blue-500 to-purple-600",
+            highlight: false,
+            features: ["Instagram & Facebook Ads", "Content Strategy", "Community Management"]
         },
         {
-            id: 2,
-            number: '02.',
-            title: 'MOBILE APP DEVELOPMENT',
-            description: 'Building responsive and high-performance websites tailored to meet your business goals.',
-            icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="12" r="4" />
-                    <line x1="21.17" y1="8" x2="12" y2="8" />
-                    <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
-                    <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
-                </svg>
-            ),
-            tags: ['Responsive', 'Frontend', 'Backend', 'Performance']
+            title: "Content Marketing",
+            description: "Create compelling, value-driven content that resonates with your audience and establishes your brand as an industry authority.",
+            icon: <MessageSquare className="w-8 h-8" />,
+            gradient: "from-red-500 to-orange-600",
+            bgGradient: "from-red-500/10 to-orange-600/10",
+            borderGradient: "from-red-500/20 to-orange-600/20",
+            iconBg: "from-red-500 to-orange-600",
+            highlight: true,
+            features: ["Blog Writing", "Video Content", "SEO Optimization"]
         },
         {
-            id: 3,
-            number: '03.',
-            title: 'WEB DEVELOPMENT',
-            description: 'Helping your business stand out with unique and memorable branding solutions.',
-            icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                </svg>
-            ),
-            tags: ['Responsive', 'Frontend', 'Backend', 'Performance']
+            title: "Email Marketing",
+            description: "Build meaningful relationships with personalized email campaigns that convert subscribers into loyal customers and brand advocates.",
+            icon: <Mail className="w-8 h-8" />,
+            gradient: "from-green-500 to-teal-600",
+            bgGradient: "from-green-500/10 to-teal-600/10",
+            borderGradient: "from-green-500/20 to-teal-600/20",
+            iconBg: "from-green-500 to-teal-600",
+            highlight: false,
+            features: ["Automated Sequences", "A/B Testing", "Analytics & Reporting"]
         }
-    ], []);
-
-    // Generate random positi, 'REACT', 'HTML', 'CSS'ons for tags when a service is hovered
-    useEffect(() => {
-        if (hoveredService !== null) {
-            const service = services.find(s => s.id === hoveredService);
-            if (service) {
-                const newPositions = {};
-
-                service.tags.forEach((tag, index) => {
-                    // Generate semi-random positions within tighter constraints
-                    // These values will place tags closer around the service title
-                    const positions = [
-                        { top: '-40px', left: `${20 + (index * 15) % 60}%` }, // Top row
-                        { top: '-40px', right: `${1 + (index * 20) % 40}%` }, // Top row right side
-                        { bottom: '-40px', left: `${-20 + (index * 15) % 50}%` }, // Bottom row
-                        { bottom: '-40px', right: `${5 + (index * 15) % 20}%` }, // Bottom row right side
-                    ];
-
-                    // Assign a position from our set of predefined positions
-                    newPositions[tag] = positions[index % positions.length];
-                });
-
-                setTagPositions(newPositions);
-            }
-        }
-    }, [hoveredService, services]);
+    ];
 
     return (
-        <section id="services" className="min-h-screen text-white relative overflow-hidden"
-            style={{ marginTop: -50 }}
-        >
-            {/* Background particles/dots */}
-            <div className="absolute inset-0 pointer-events-none">
-                {[...Array(50)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-gray-400 rounded-full"
-                        style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            opacity: Math.random() * 0.5 + 0.2
-                        }}
-                    />
-                ))}
-            </div>
+        <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+            {/* Background Elements */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-50 via-transparent to-transparent"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-red-100 to-transparent rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-100 to-transparent rounded-full blur-3xl opacity-30"></div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Reduced spacing between services: changed from space-y-40 md:space-y-48 to space-y-24 md:space-y-32 */}
-                <div className="space-y-24 md:space-y-32">
-                    {services.map((service) => (
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Header Section */}
+                <div className="text-center mb-16">
+                    <div >
+                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                        <span className="text-sm text-red-600 font-semibold tracking-wide uppercase">
+                            Our Services
+                        </span>
+                    </div>
+
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
+                        Boost Your{" "}
+                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+                            Brand
+                        </span>
+                        <br />
+                        with Our Expertise
+                    </h2>
+
+                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Transform your business with our comprehensive digital marketing solutions designed
+                        to drive growth, engagement, and measurable results.
+                    </p>
+                </div>
+
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map((service, index) => (
                         <div
-                            key={service.id}
-                            className="relative cursor-pointer group"
-                            onMouseEnter={() => setHoveredService(service.id)}
-                            onMouseLeave={() => setHoveredService(null)}
+                            key={index}
+                            className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-transparent hover:border-red-400/30 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 ${service.highlight ? 'ring-2 ring-red-500/20 shadow-red-500/10' : ''
+                                }`}
+                            style={{
+                                background: service.highlight
+                                    ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(185, 28, 28, 0.05) 100%)'
+                                    : 'rgba(255, 255, 255, 0.8)'
+                            }}
                         >
-                            <div className="flex flex-col items-center text-center">
-                                {/* Service Number */}
-                                <div className="text-1xl font-bold text-gray-500 mb-2 group-hover:text-gray-400 transition-colors duration-300">
-                                    {service.number}
+                            {/* Gradient Background Overlay */}
+                            <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500`}></div>
+
+                            {/* Highlight Badge */}
+                            {service.highlight && (
+                                <div className="absolute -top-3 -right-3 z-10">
+                                    <div className="bg-gradient-to-r from-red-500 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                                        Popular
+                                    </div>
                                 </div>
+                            )}
 
-                                {/* Service Content */}
-                                <div className="relative">
-                                    {/* Title */}
-                                    <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-300 mb-6 transition-all duration-300 group-hover:text-white">
-                                        {service.title}
-                                    </h2>
-
-                                    {/* Tags that appear on hover with random positions */}
-                                    {hoveredService === service.id && service.tags.map((tag, index) => (
-                                        <span
-                                            key={index}
-                                            className="absolute px-3 py-1 p-[2px] rounded-lg bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] text-white text-sm rounded-full font-medium flex items-center z-20 transition-all duration-300 animate-fadeIn whitespace-nowrap"
-                                            style={{
-                                                ...tagPositions[tag],
-                                                opacity: 0, // Start with 0 opacity
-                                                animation: `fadeInTag 0.3s ease ${index * 0.1}s forwards` // Custom animation with staggered delay
-                                            }}
-                                        >
-                                            {tag === 'Empathy' && (
-                                                <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor" />
-                                                </svg>
-                                            )}
-                                            {tag === 'Wireframing' && (
-                                                <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                                                    <line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" strokeWidth="2" />
-                                                    <line x1="15" y1="3" x2="15" y2="21" stroke="currentColor" strokeWidth="2" />
-                                                    <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" strokeWidth="2" />
-                                                    <line x1="3" y1="15" x2="21" y2="15" stroke="currentColor" strokeWidth="2" />
-                                                </svg>
-                                            )}
-                                            {tag === 'Prototyping' && (
-                                                <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            )}
-                                            {tag === 'Interfaces' && (
-                                                <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                                                    <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-                                                    <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
-                                                    <path d="M8.5 15.5C10 17 14 17 15.5 15.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                                </svg>
-                                            )}
-                                            {tag}
-                                        </span>
-                                    ))}
-
-                                    {/* Description */}
-                                    <p className="text-gray-400 max-w-2xl mx-auto transition-colors duration-300 group-hover:text-[#bc50ff]">
-                                        {service.description}
-                                    </p>
-                                </div>
-
-                                {/* Icon */}
-                                <div className="w-16 h-16 rounded-full border border-gray-700 flex items-center justify-center text-gray-300 transition-all duration-300 group-hover:border-[#ff58d8] group-hover:text-[#ff58d8] mt-6">
-                                    {service.icon}
-                                </div>
+                            {/* Icon */}
+                            <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.iconBg} rounded-2xl mb-6 text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                                {service.icon}
                             </div>
+
+                            {/* Content */}
+                            <div className="relative z-10">
+                                <h3 className="text-xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors duration-300">
+                                    {service.title}
+                                </h3>
+                                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors duration-300">
+                                    {service.description}
+                                </p>
+
+                                {/* Features List */}
+                                <ul className="space-y-2 mb-6">
+                                    {service.features.map((feature, featureIndex) => (
+                                        <li key={featureIndex} className="flex items-center text-sm text-gray-500">
+                                            <div className={`w-1.5 h-1.5 bg-gradient-to-r ${service.gradient} rounded-full mr-3`}></div>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* CTA Button */}
+                                <button className="group/btn relative overflow-hidden w-full bg-gradient-to-r from-gray-900 to-black text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:from-red-600 hover:to-black hover:shadow-lg">
+                                    <span className="relative z-10 flex items-center justify-center gap-2">
+                                        Learn More
+                                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                            </div>
+
+                            {/* Decorative Elements */}
+                            <div className="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-6 left-6 w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+
+                            {/* Bottom Border Accent */}
+                            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl`}></div>
+
+                            {/* Floating Accent */}
+                            <div className={`absolute -top-1 -left-1 w-8 h-8 bg-gradient-to-br ${service.gradient} rounded-full opacity-0 group-hover:opacity-20 transition-all duration-500 blur-sm`}></div>
                         </div>
                     ))}
                 </div>
 
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="relative h-1 w-full bg-gray-800 rounded-full overflow-hidden my-6 sm:my-8 lg:my-10">
-                        <div className="w-full h-full bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] p-4 text-white rounded-lg rounded-full relative">
-                        </div>
+                {/* Call to Action */}
+                <div className="text-center mt-16">
+                    <div className="inline-flex flex-col sm:flex-row gap-4">
+                        <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-black text-white font-semibold rounded-full hover:from-red-500 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-red-500/30">
+                            <span>Get Started Today</span>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </button>
+
                     </div>
                 </div>
-
             </div>
-
-            {/* Add the animation for tags */}
-            <style jsx>{`
-                @keyframes fadeInTag {
-                    0% {
-                        opacity: 0;
-                        transform: scale(0.8) translateY(10px);
-                    }
-                    100% {
-                        opacity: 1;
-                        transform: scale(1) translateY(0);
-                    }
-                }
-            `}</style>
         </section>
     );
 };
 
-export default ServicesSection;
+export default ProductGrid;

@@ -57,27 +57,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-black text-white relative">
+      <div className="min-h-screen bg-white text-black relative">
         {/* Background gradients */}
         <div className="fixed inset-0 z-0 overflow-hidden">
           {/* Primary gradients */}
-          <div className="absolute -top-[40%] -right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 blur-3xl"></div>
-          <div className="absolute -bottom-[40%] -left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-500/20 to-sky-500/10 blur-3xl"></div>
-
-          {/* Additional color spots for more depth */}
-          <div className="absolute top-[30%] left-[15%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-pink-500/10 to-rose-500/5 blur-3xl"></div>
-          <div className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-indigo-500/10 to-blue-500/5 blur-3xl"></div>
-
-          {/* Small accent gradients */}
-          <div className="absolute top-[60%] right-[30%] w-[200px] h-[200px] rounded-full bg-gradient-to-r from-cyan-500/15 to-teal-500/10 blur-2xl"></div>
-          <div className="absolute top-[10%] left-[20%] w-[300px] h-[300px] rounded-full bg-gradient-to-l from-violet-500/15 to-purple-500/10 blur-2xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-50 via-transparent to-transparent"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-red-100 to-transparent rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-100 to-transparent rounded-full blur-3xl opacity-30"></div>
         </div>
 
         {/* Main content wrapper with consistent max-width */}
         <div className="relative z-10">
           <Routes>
             <Route path="/project/:id" element={
-              <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+              <div>
                 <Header
                   activeSection={activeSection}
                   isProjectPage={true}
@@ -87,7 +80,7 @@ function App() {
               </div>
             } />
             <Route path="/" element={
-              <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+              <div>
                 <Header
                   activeSection={activeSection}
                 />
@@ -95,7 +88,6 @@ function App() {
                 <About />
                 <Services />
                 <Education />
-                <Projects />
                 <Skills />
                 <Contact />
                 <Footer />

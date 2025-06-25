@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 const Hero = () => {
     const [windowSize, setWindowSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+        height: typeof window !== 'undefined' ? window.innerHeight : 800,
     });
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef(null);
@@ -11,9 +11,8 @@ const Hero = () => {
 
     // Move texts array inside useMemo to fix the hooks dependency warning
     const texts = useMemo(() => [
-        "UI/UX Designer",
-        "Mobile App Developer",
-        "Front-End Developer"
+        "Submlimation Banners",
+        "Submlimation Flags"
     ], []);
 
     // Handle scroll to sections
@@ -29,15 +28,17 @@ const Hero = () => {
 
     // Track window resize for better responsiveness
     useEffect(() => {
-        const handleResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
+        if (typeof window !== 'undefined') {
+            const handleResize = () => {
+                setWindowSize({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                });
+            };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
     }, []);
 
     // Set visibility after component mounts for animations
@@ -105,150 +106,140 @@ const Hero = () => {
         <section
             id="home"
             ref={heroRef}
-            className="min-h-screen flex flex-col justify-center relative overflow-hidden py-6 sm:py-8 md:py-12 lg:py-16"
+            className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-white pt-24 md:pt-32 pb-32 md:pb-20"
         >
-            {/* Full screen particles background */}
-            <div className="fixed inset-0 w-screen h-screen overflow-hidden pointer-events-none z-0">
-                <div className="absolute w-full h-full opacity-20">
-                    {Array(50).fill().map((_, i) => (
-                        <div
-                            key={i}
-                            className="absolute rounded-full animate-float"
-                            style={{
-                                width: `${Math.random() * 15 + 8}px`,
-                                height: `${Math.random() * 15 + 8}px`,
-                                background: `rgba(${Math.random() * 155 + 100}, ${Math.random() * 155 + 100}, 255, ${Math.random() * 0.4 + 0.3})`,
-                                top: `${Math.random() * 100}%`,
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 8}s`,
-                                animationDuration: `${Math.random() * 15 + 15}s`
-                            }}
-                        />
-                    ))}
-                </div>
-            </div>
 
-            <div className="hero-container container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow flex flex-col justify-center">
-                <div className="hero-content flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12">
+            <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-12 relative z-10 flex-grow flex items-center">
+                <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                     {/* Left Content */}
                     <div
-                        className={`w-full lg:w-1/2 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                        className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                         style={{ transitionDelay: '0.2s' }}
                     >
-                        {/* Status pill */}
-                        <div className="inline-flex items-center px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md mb-3 sm:mb-4 md:mb-6 transition-all duration-300 hover:bg-white/15">
-                            <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-green-400 mr-1.5 sm:mr-2 animate-pulse"></span>
-                            <span className="text-gray-200 text-xs sm:text-sm">Available for new projects</span>
+                        {/* Large WHO text */}
+                        <div className="relative mb-8">
+                            <h1 className="text-[3rem] xs:text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[15rem] font-black text-gray-100 leading-none select-none">
+                                WHO
+                            </h1>
+                            <div className="absolute top-2 left-2 sm:top-4 sm:left-4 md:top-6 md:left-6 lg:top-8 lg:left-8">
+                                <div className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+                                    <span ref={typedTextRef} className="inline-block min-w-[120px] xs:min-w-[150px] sm:min-w-[200px]"></span>
+                                    <span className="cursor inline-block w-1 h-[1em] bg-red-600 ml-1 animate-[blink_1s_infinite]"></span>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Heading with modern typography */}
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
-                            <span className="text-white">I'm </span>
-                            <span className="hero-name animate-gradient bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-                                Yashindi Bhagya
-                            </span>
-                        </h1>
-
-                        {/* Typewriter Effect for roles */}
-                        <div className="text-xl sm:text-2xl md:text-2xl text-gray-400 mb-4 sm:mb-6 md:mb-8 h-[1.5em]">
-                            <span ref={typedTextRef}></span>
-                            <span className="cursor inline-block w-[2px] h-[1em] bg-gray-400 ml-[2px] animate-[blink_1s_infinite]"></span>
+                        {/* Red accent block */}
+                        <div className="bg-red-600 text-white p-4 sm:p-6 md:p-8 max-w-md mb-6 sm:mb-8 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-4">Bringing Your Brand to Life Through High-Quality Prints</h2>
+                            <p className="text-red-100 leading-relaxed text-sm sm:text-base">
+                                From vibrant sublimation banners to custom fabric prints we make your visuals stand out.
+                            </p>
                         </div>
 
-                        {/* Description with gradient text highlights */}
-                        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-2xl leading-relaxed">
-                            Transforming ideas into <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">exceptional digital experiences</span> through creative design and innovative development.
-                        </p>
+                        {/* Call to action */}
+                        <div className="flex flex-wrap gap-3 sm:gap-4">
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-4">
-                            <button
-                                onClick={() => scrollToSection('contact')}
-                                className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] text-white font-semibold text-sm sm:text-base hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:-translate-y-1"
-                            >
-                                Let's Talk
-                            </button>
                             <button
                                 onClick={() => scrollToSection('work')}
-                                className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-white/10 hover:border-white/20 text-white font-semibold text-sm sm:text-base backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-black text-black font-bold text-base sm:text-lg hover:bg-black hover:text-white transition-all duration-300"
                             >
-                                View Projects
+                                EXPLORE WORK
                             </button>
                         </div>
                     </div>
 
                     {/* Right Content - Image */}
                     <div
-                        className={`w-full lg:w-1/2 flex justify-center ${isPortrait ? 'mt-6 lg:mt-0' : ''} transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                        className={`flex justify-center lg:justify-end transition-all`}
                         style={{ transitionDelay: '0.4s' }}
                     >
-                        <div className="hero-image-container relative">
-                            {/* Professional frame for image */}
-                            <div className="relative overflow-hidden">
-                                {/* Main image with elegant dark border */}
-                                <div>
-                                    {/* Image with overlay */}
-                                    <div className="absolute inset-0"></div>
-                                    <img
-                                        src="/assets/img/pic.png"
-                                        alt="Yashindi Bhagya"
-                                        className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl object-cover"
-                                        style={{
-                                            height: 'auto',
-                                            maxHeight: isPortrait ? '50vh' : '70vh'
-                                        }}
-                                    />
-                                </div>
+                        <div className="relative">
+                            {/* Main image container */}
+                            <div className="relative overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                                <img
+                                    src="/assets/img/printer.jpg"
+                                    alt="Artist Community"
+                                    className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-cover transition-all duration-500 h-48 sm:h-64 md:h-80 lg:h-[50vh]"
+                                    style={{
+                                        objectPosition: 'center'
+                                    }}
+                                />
                             </div>
 
-                            {/* Floating skill badges with glassmorphism */}
-                            <div className="hero-badge left absolute -bottom-4 -left-4 px-4 py-2 rounded-full bg-[#0c0c20]/80 backdrop-blur-md border border-white/10 text-white text-sm shadow-lg shadow-purple-500/10">
-                                Product Designer
+                            {/* Floating text elements - hide on xs screens for better mobile UX */}
+                            <div className="absolute -top-6 -left-8 bg-white px-4 py-2 shadow-lg transform -rotate-12 hover:rotate-0 transition-transform duration-300 hidden sm:block">
+                                <span className="text-black font-bold text-sm">ART</span>
                             </div>
-                            <div className="hero-badge right absolute -top-4 -right-4 px-4 py-2 rounded-full bg-[#0c0c20]/80 backdrop-blur-md border border-white/10 text-white text-sm shadow-lg shadow-purple-500/10">
-                                UI/UX Designer
+                            <div className="absolute -bottom-4 -right-6 bg-red-600 text-white px-4 py-2 shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300 hidden sm:block">
+                                <span className="font-bold text-sm">COMMUNITY</span>
+                            </div>
+                            <div className="absolute top-1/2 -left-12 bg-black text-white px-3 py-1 shadow-lg transform -rotate-90 hover:rotate-0 transition-transform duration-300 hidden sm:block">
+                                <span className="font-bold text-xs">CREATIVE</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Modern Marquee with dual animations for seamless looping */}
+            {/* Bottom text marquee */}
             <div
                 className={`w-full absolute bottom-0 left-0 overflow-hidden transition-all duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ transitionDelay: '0.6s' }}
             >
-                <div className="relative py-2 sm:py-3 md:py-4 bg-gradient-to-r from-pink-500/80 via-purple-500/80 to-indigo-500/80 backdrop-blur-sm border-t border-white/10">
+                <div className="relative py-4 bg-black text-white">
                     <div className="flex whitespace-nowrap overflow-hidden">
-                        {/* First line of text */}
                         <div className="animate-marquee whitespace-nowrap flex items-center">
-                            {Array(10).fill().map((_, i) => (
-                                <span key={i} className="inline-flex items-center mx-4">
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">PIXEL-PERFECT PRECISION</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">CREATIVE PROBLEM-SOLVING</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">RESPONSIVE DESIGN</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
+                            {Array(8).fill().map((_, i) => (
+                                <span key={i} className="inline-flex items-center mx-8">
+                                    <span className="text-white font-bold text-lg">CREATIVE EXPRESSION</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
+                                    <span className="text-white font-bold text-lg">ARTISTIC INNOVATION</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
+                                    <span className="text-white font-bold text-lg">COMMUNITY DRIVEN</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
                                 </span>
                             ))}
                         </div>
-                        {/* Duplicate for seamless loop */}
                         <div className="animate-marquee whitespace-nowrap flex items-center">
-                            {Array(10).fill().map((_, i) => (
-                                <span key={`dup-${i}`} className="inline-flex items-center mx-4">
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">PIXEL-PERFECT PRECISION</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">CREATIVE PROBLEM-SOLVING</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
-                                    <span className="text-white/90 text-xs sm:text-sm font-medium">RESPONSIVE DESIGN</span>
-                                    <span className="mx-2 sm:mx-4 text-white/70">•</span>
+                            {Array(8).fill().map((_, i) => (
+                                <span key={`dup-${i}`} className="inline-flex items-center mx-8">
+                                    <span className="text-white font-bold text-lg">CREATIVE EXPRESSION</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
+                                    <span className="text-white font-bold text-lg">ARTISTIC INNOVATION</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
+                                    <span className="text-white font-bold text-lg">COMMUNITY DRIVEN</span>
+                                    <span className="mx-4 text-red-600 text-2xl">●</span>
                                 </span>
                             ))}
                         </div>
                     </div>
                 </div>
             </div>
+
+            <style jsx>{`
+                @keyframes marquee {
+                    0% {
+                        transform: translateX(0%);
+                    }
+                    100% {
+                        transform: translateX(-100%);
+                    }
+                }
+                
+                .animate-marquee {
+                    animation: marquee 30s linear infinite;
+                }
+                
+                @keyframes blink {
+                    0%, 50% {
+                        opacity: 1;
+                    }
+                    51%, 100% {
+                        opacity: 0;
+                    }
+                }
+            `}</style>
         </section>
     );
 };

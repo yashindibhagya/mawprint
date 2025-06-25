@@ -1,135 +1,195 @@
 import React, { useState, useEffect } from 'react';
-import { socialLinks, contactInfo } from '../config/socialLinks';
 
 const About = () => {
-    // Small decorative dots that appear in the background
-    const renderDecorationDots = () => {
-        return (
-            <>
-                {/* Responsive dot positioning with smaller sizes on mobile */}
-                <div className="absolute top-20 left-10 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full opacity-30"></div>
-                <div className="absolute bottom-40 right-20 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full opacity-20"></div>
-                <div className="absolute top-1/3 right-1/4 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full opacity-40"></div>
-                <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full opacity-30"></div>
-                <div className="absolute top-2/3 right-10 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full opacity-25"></div>
-            </>
-        );
-    };
+    const [isVisible, setIsVisible] = useState(false);
+    const [animatedStats, setAnimatedStats] = useState({
+        projects: 0,
+        team: 0,
+        customers: 0,
+        experience: 0
+    });
 
-    // State for the slow animated dots
-    const [dots, setDots] = useState(() =>
-        Array(60).fill().map(() => ({
-            top: Math.random() * 100,
-            left: Math.random() * 100,
-            opacity: Math.random() * 0.5 + 0.2,
-            size: 1 // keep all dots the same size of 1px
-        }))
-    );
-
-    // Effect for slow animated dots
     useEffect(() => {
-        // Function to update random dots
-        const updateRandomDots = () => {
-            setDots(prevDots => {
-                return prevDots.map(dot => {
-                    // Randomly decide which dots to update (only 10% chance to make it slower)
-                    if (Math.random() < 0.1) {
-                        return {
-                            ...dot,
-                            top: Math.random() * 100,
-                            left: Math.random() * 100,
-                            opacity: Math.random() * 0.5 + 0.2
-                        };
-                    }
-                    return dot;
-                });
+        setIsVisible(true);
+        const targets = { projects: 3000, team: 200, customers: 350, experience: 16 };
+        const duration = 2000;
+        const steps = 60;
+        const stepDuration = duration / steps;
+
+        let currentStep = 0;
+        const timer = setInterval(() => {
+            currentStep++;
+            const progress = currentStep / steps;
+
+            setAnimatedStats({
+                projects: Math.floor(targets.projects * progress),
+                team: Math.floor(targets.team * progress),
+                customers: Math.floor(targets.customers * progress),
+                experience: Math.floor(targets.experience * progress)
             });
-        };
 
-        // Set interval to update dots every 5 seconds (slower update interval)
-        const intervalId = setInterval(updateRandomDots, 50000);
+            if (currentStep >= steps) {
+                clearInterval(timer);
+                setAnimatedStats(targets);
+            }
+        }, stepDuration);
 
-        // Clean up interval on component unmount
-        return () => clearInterval(intervalId);
+        return () => clearInterval(timer);
     }, []);
 
+    const skills = [
+        { name: "Marketing & Business Growth", percentage: 85, color: "from-red-500 to-red-700" },
+        { name: "Creativity & Innovation", percentage: 90, color: "from-red-600 to-black" },
+        { name: "Business & Financial Management", percentage: 95, color: "from-black to-red-700" }
+    ];
+
+    const stats = [
+        {
+            number: `${animatedStats.projects}`,
+            label: "Successful Projects",
+            suffix: "k",
+            color: "from-red-500 to-red-700"
+        },
+        {
+            number: `${animatedStats.team}`,
+            label: "Expert Team",
+            suffix: "",
+            color: "from-gray-800 to-black"
+        },
+        {
+            number: `${animatedStats.customers}`,
+            label: "Happy Customers",
+            suffix: "",
+        },
+        {
+            number: `${animatedStats.experience}`,
+            label: "Years of Experience",
+            suffix: "",
+        }
+    ];
+
     return (
-        <section id="about" className="min-h-screen text-white relative py-12 md:py-16 lg:py-20 ">
-            {renderDecorationDots()}
+        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ">
+            <div className="max-w-7xl mx-auto relative z-10">
 
-            <div className="absolute inset-0 pointer-events-none">
-                {dots.map((dot, i) => (
-                    <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-gray-400 rounded-full"
-                        style={{
-                            top: `${dot.top}%`,
-                            left: `${dot.left}%`,
-                            opacity: dot.opacity,
-                            // Add a very slow transition effect (8 seconds)
-                            transition: 'all 1s ease-in-out'
-                        }}
-                    />
-                ))}
-            </div>
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-black rounded-full mb-6 border border-red-500/20">
+                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                        <span className="text-sm text-white font-semibold tracking-wide uppercase">
+                            About Our Company
+                        </span>
+                    </div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col items-center text-center">
-                    {/* Responsive title with adjusted sizing */}
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent">
-                        Who Am I
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
+                        Empowering Your{" "}
+                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+                            Success
+                        </span><br />
+                        with Digital Expertise
                     </h2>
 
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
-                        {/* Text content with responsive padding and sizing */}
-                        <div className="max-w-full md:max-w-3xl px-4 sm:px-6 md:px-8">
-                            <p className="mb-4 sm:mb-6 text-base sm:text-lg">
-                                Hey, I'm <span className="font-bold">Yashindi Bhagya</span>,a final-year BSc (Hons) Computer Science student at NSBM, passionate about building intuitive digital experiences that blend design and functionality.
-                            </p>
+                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Our dedicated team makes it easy for you to achieve outstanding results with
+                        innovative solutions that will impress your clients and make you stand out from the crowd.
+                    </p>
+                </div>
 
-                            <p className="mb-4 sm:mb-6 text-gray-300 leading-relaxed text-sm sm:text-base">
-                                With over a year of hands-on experience in UI/UX design, I specialize in user research, wireframing, and prototyping using tools like Figma, Adobe Photoshop, and Canva.
-                            </p>
-
-                            <p className="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                                Beyond design, I develop mobile applications using React Native and create interactive games with Unity and C#. I enjoy turning ideas into real-world solutions whether it's a learning app, a game, or a user-centric platform.
-                            </p>
-
-                            <p className="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                                I'm always eager to learn, collaborate, and take on challenges that push my creative and technical skills forward.
-                            </p>
-
-                            {/* Social Icons with responsive spacing */}
-                            <div className="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
-                                <div className="flex flex-wrap gap-4">
-                                    {socialLinks.map((social) => (
-                                        <a
-                                            key={social.name}
-                                            href={social.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="group"
-                                        >
-                                            <div className={`p-3 rounded-xl bg-white/[0.03] backdrop-blur-sm border border-white/10 transition-all duration-300 
-                                            hover:bg-gradient-to-br ${social.gradient} hover:border-white/0 hover:scale-105 hover:shadow-lg`}>
-                                                <div className="text-white/70 group-hover:text-white transition-colors">
-                                                    {social.icon}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    ))}
+                {/* Image & Skills */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    {/* Left Images */}
+                    <div className="relative">
+                        <div className="grid grid-cols-1 gap-6">
+                            {/* Image Card 1 */}
+                            <div className="group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                                <div className="bg-gray-200 h-64 w-full">
+                                    <img src="/api/placeholder/400/250" alt="Team collaboration"
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                                 </div>
                             </div>
 
+                            {/* Image Card 2 */}
+                            <div className="group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                                <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-700 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                                <div className="bg-gray-200 h-64 w-full">
+                                    <img src="/api/placeholder/400/250" alt="Business meeting"
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                                </div>
+                            </div>
                         </div>
+
+                        {/* Decorative Badge */}
+                        <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
+                            <div className="w-24 h-24 bg-gradient-to-r from-red-600 to-black rounded-full flex items-center justify-center shadow-xl border-4 border-white group hover:scale-110 transition-transform duration-300">
+                                <div className="w-14 h-14 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center">
+                                    <div className="w-7 h-7 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Skills */}
+                    <div className="space-y-8">
+                        {skills.map((skill, index) => (
+                            <div key={index} className="group relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300">
+                                <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
+
+                                <div className="flex justify-between items-center mb-4">
+                                    <span className="text-lg font-bold text-black group-hover:text-red-600 transition-colors duration-300">{skill.name}</span>
+                                    <span className="text-red-600 font-bold text-lg">{skill.percentage}%</span>
+                                </div>
+
+                                <div className="relative">
+                                    <div className="w-full bg-gray-200 rounded-full h-3">
+                                        <div className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 ease-out relative shadow-lg`}
+                                            style={{
+                                                width: isVisible ? `${skill.percentage}%` : '0%',
+                                                transitionDelay: `${0.6 + index * 0.2}s`
+                                            }}>
+                                            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-red-500 to-red-700 rounded-full border-2 border-white shadow-lg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                {/* Progress Bar with responsive width */}
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="relative h-1 w-full bg-gray-800 rounded-full overflow-hidden my-6 sm:my-8 lg:my-10">
-                        <div className="w-full h-full bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] p-4 text-white rounded-lg rounded-full relative">
-                        </div>
+                {/* Achievements */}
+                <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '0.8s' }}>
+                    <div className="text-center mb-12">
+                        <h3 className="text-3xl sm:text-4xl font-bold text-black mb-4">
+                            Our{" "}
+                            <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+                                Achievements
+                            </span>
+                        </h3>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                            Numbers that speak for our dedication and excellence in delivering outstanding results.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                        {stats.map((stat, index) => (
+                            <div key={index} className="group relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                                <div className={`absolute inset-0 bg-gradient-to-r ${stat.color || ''} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
+
+                                <div className="mb-4"></div> {/* Removed square */}
+
+                                <div className="flex flex-col items-center justify-center mb-2">
+                                    <div className="text-3xl sm:text-4xl font-bold text-black flex items-end group-hover:text-red-600 transition-colors duration-300">
+                                        {stat.number}
+                                        {stat.suffix && <span className="text-red-500">{stat.suffix}</span>}
+                                        <span className="text-red-500">+</span>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600 font-medium text-sm sm:text-base group-hover:text-gray-700 transition-colors duration-300">{stat.label}</p>
+
+                                <div className="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"></div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
