@@ -1,103 +1,103 @@
 import React from "react";
-import { Search, Printer, Truck, RotateCcw, Headphones } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const steps = [
     {
-        icon: <Search className="w-8 h-8" />,
+        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
         title: "Fast Ordering Now",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-        color: "from-red-500 to-red-700"
+        description: "Order your prints quickly and easily with our streamlined process."
     },
     {
-        icon: <Printer className="w-8 h-8" />,
+        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
         title: "Online Designing",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-        color: "from-gray-800 to-black"
+        description: "Design online with our intuitive tools and get instant previews."
     },
     {
-        icon: <Truck className="w-8 h-8" />,
+        image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
         title: "Express Shipping",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-        color: "from-red-600 to-red-800"
+        description: "Get your prints delivered fast with our express shipping options."
     },
     {
-        icon: <RotateCcw className="w-8 h-8" />,
-        title: "Satisfaction is 100% Guaranteed",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-        color: "from-black to-gray-700"
+        image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
+        title: "Satisfaction Guaranteed",
+        description: "We guarantee your satisfaction with every order, every time."
     },
     {
-        icon: <Headphones className="w-8 h-8" />,
+        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
         title: "Free Delivery",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-        color: "from-red-700 to-black"
+        description: "Enjoy free delivery on qualifying orders."
     }
 ];
 
-const WhyChooseUs = () => {
+const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: (i = 1) => ({
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut",
+            delay: i * 0.12
+        }
+    }),
+    hover: { scale: 1.05, transition: { duration: 0.3 } }
+};
+
+const EducationGrid = () => {
     return (
         <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header Section */}
                 <div className="text-center mb-16">
-                    <div>
-                        <span className="text-sm text-red-600 font-semibold tracking-wide uppercase">
-                            Let's Get Printing
-                        </span>
-                    </div>
-
+                    <span className="text-sm text-red-600 font-semibold tracking-wide uppercase">
+                        Let's Get Printing
+                    </span>
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
-                        Reasons to get{" "}
+                        Reasons to get {" "}
                         <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
                             printing started
                         </span>
                         <br />
                         with us
                     </h2>
-
                     <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Our dedicated staff makes it easy for you to create a unique design that will
                         impress your clients and make you stand out from the crowd.
                     </p>
                 </div>
-
-                {/* Services Grid - Column Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-                    {steps.map((step, index) => (
-                        <div
-                            key={index}
-                            className="group relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                {/* Animated Card Grid */}
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                    {steps.map((step, i) => (
+                        <motion.div
+                            key={i}
+                            className="bg-white rounded-2xl shadow-lg p-6 w-full flex flex-col items-center group cursor-pointer transition-all duration-300"
+                            custom={i}
+                            variants={cardVariants}
+                            whileHover="hover"
                         >
-                            {/* Gradient Background Overlay */}
-                            <div className={`absolute inset-0 bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-
-                            {/* Icon */}
-                            <div className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r ${step.color} rounded-xl mb-6 text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                {step.icon}
-                            </div>
-
-                            {/* Content */}
-                            <h3 className="text-lg font-bold text-black mb-4 group-hover:text-red-600 transition-colors duration-300">
+                            <img
+                                src={step.image}
+                                alt={step.title}
+                                className="rounded-xl mb-4 w-full h-40 object-cover"
+                            />
+                            <h3 className="text-lg font-bold text-black mb-2 group-hover:text-red-600 transition-colors duration-300 text-center">
                                 {step.title}
                             </h3>
-                            <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300 text-center">
                                 {step.description}
                             </p>
-
-                            {/* Decorative Elements */}
-                            <div className="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute bottom-4 left-4 w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-
-                            {/* Bottom Border Accent */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"></div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
-
+                </motion.div>
             </div>
         </section>
     );
 };
 
-export default WhyChooseUs;
+export default EducationGrid;

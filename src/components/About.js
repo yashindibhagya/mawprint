@@ -2,12 +2,32 @@ import React, { useState, useEffect } from 'react';
 
 const About = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
     const [animatedStats, setAnimatedStats] = useState({
         projects: 0,
         team: 0,
         customers: 0,
         experience: 0
     });
+
+    // Slideshow images for About section
+    const slideshowImages = [
+        '/assets/img/flag.png',
+        '/assets/img/maw full.png',
+        '/assets/img/Portfolio.png',
+        '/assets/img/pic.png'
+    ];
+
+    // Auto-advance slideshow
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prevSlide) =>
+                prevSlide === slideshowImages.length - 1 ? 0 : prevSlide + 1
+            );
+        }, 4000); // Change slide every 4 seconds
+
+        return () => clearInterval(interval);
+    }, [slideshowImages.length]);
 
     useEffect(() => {
         setIsVisible(true);
@@ -36,6 +56,11 @@ const About = () => {
 
         return () => clearInterval(timer);
     }, []);
+
+    // Manual slide navigation
+    const goToSlide = (index) => {
+        setCurrentSlide(index);
+    };
 
     const skills = [
         { name: "Marketing & Business Growth", percentage: 85, color: "from-red-500 to-red-700" },
@@ -69,7 +94,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ">
+        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto relative z-10">
 
                 {/* Header */}
@@ -89,86 +114,18 @@ const About = () => {
                         with Digital Expertise
                     </h2>
 
-                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-16">
                         Our dedicated team makes it easy for you to achieve outstanding results with
                         innovative solutions that will impress your clients and make you stand out from the crowd.
                     </p>
+
+
                 </div>
 
-                {/* Image & Skills */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-                    {/* Left Images */}
-                    <div className="relative">
-                        <div className="grid grid-cols-1 gap-6">
-                            {/* Image Card 1 */}
-                            <div className="group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                                <div className="bg-gray-200 h-64 w-full">
-                                    <img src="/api/placeholder/400/250" alt="Team collaboration"
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                                </div>
-                            </div>
 
-                            {/* Image Card 2 */}
-                            <div className="group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-700 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                                <div className="bg-gray-200 h-64 w-full">
-                                    <img src="/api/placeholder/400/250" alt="Business meeting"
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Decorative Badge */}
-                        <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
-                            <div className="w-24 h-24 bg-gradient-to-r from-red-600 to-black rounded-full flex items-center justify-center shadow-xl border-4 border-white group hover:scale-110 transition-transform duration-300">
-                                <div className="w-14 h-14 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center">
-                                    <div className="w-7 h-7 bg-white rounded-full"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Skills */}
-                    <div className="space-y-8">
-                        {skills.map((skill, index) => (
-                            <div key={index} className="group relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-red-400/60 shadow-lg hover:shadow-xl transition-all duration-300">
-                                <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-
-                                <div className="flex justify-between items-center mb-4">
-                                    <span className="text-lg font-bold text-black group-hover:text-red-600 transition-colors duration-300">{skill.name}</span>
-                                    <span className="text-red-600 font-bold text-lg">{skill.percentage}%</span>
-                                </div>
-
-                                <div className="relative">
-                                    <div className="w-full bg-gray-200 rounded-full h-3">
-                                        <div className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 ease-out relative shadow-lg`}
-                                            style={{
-                                                width: isVisible ? `${skill.percentage}%` : '0%',
-                                                transitionDelay: `${0.6 + index * 0.2}s`
-                                            }}>
-                                            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-red-500 to-red-700 rounded-full border-2 border-white shadow-lg"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
 
                 {/* Achievements */}
                 <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '0.8s' }}>
-                    <div className="text-center mb-12">
-                        <h3 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-                            Our{" "}
-                            <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
-                                Achievements
-                            </span>
-                        </h3>
-                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                            Numbers that speak for our dedication and excellence in delivering outstanding results.
-                        </p>
-                    </div>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                         {stats.map((stat, index) => (

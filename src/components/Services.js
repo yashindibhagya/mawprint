@@ -1,164 +1,108 @@
 import React from 'react';
-import { TrendingUp, MessageSquare, Mail, Users, Target, Zap } from 'lucide-react';
 
-const ProductGrid = () => {
+const cardImages = [
+    // SVG placeholders for each card
+    (
+        <svg viewBox="0 0 1200 300" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="300" rx="32" fill="#a7f3d0" />
+            <circle cx="200" cy="150" r="80" fill="#38bdf8" opacity="0.5" />
+            <rect x="900" y="60" width="180" height="180" rx="40" fill="#facc15" opacity="0.4" />
+            <ellipse cx="600" cy="220" rx="180" ry="60" fill="#f472b6" opacity="0.3" />
+        </svg>
+    ),
+    (
+        <svg viewBox="0 0 1200 300" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="300" rx="32" fill="#dbeafe" />
+            <circle cx="1000" cy="100" r="90" fill="#818cf8" opacity="0.4" />
+            <rect x="100" y="120" width="200" height="120" rx="40" fill="#f472b6" opacity="0.3" />
+            <ellipse cx="600" cy="80" rx="160" ry="50" fill="#38bdf8" opacity="0.3" />
+        </svg>
+    ),
+    (
+        <svg viewBox="0 0 1200 300" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="300" rx="32" fill="#ede9fe" />
+            <circle cx="600" cy="150" r="120" fill="#a78bfa" opacity="0.4" />
+            <rect x="900" y="40" width="120" height="220" rx="40" fill="#facc15" opacity="0.2" />
+            <ellipse cx="300" cy="220" rx="120" ry="40" fill="#f472b6" opacity="0.2" />
+        </svg>
+    ),
+];
+
+const DigitalTransformationSection = () => {
+    // Only 3 services for the sticky stacker effect
     const services = [
         {
-            title: "Social Media Marketing",
-            description: "Amplify your brand presence across all social platforms with strategic content and engagement campaigns that drive real results.",
-            icon: <Users className="w-8 h-8" />,
-            gradient: "from-blue-500 to-purple-600",
-            bgGradient: "from-blue-500/10 to-purple-600/10",
-            borderGradient: "from-blue-500/20 to-purple-600/20",
-            iconBg: "from-blue-500 to-purple-600",
-            highlight: false,
-            features: ["Instagram & Facebook Ads", "Content Strategy", "Community Management"]
+            title: "Machine vision system development",
+            description: "Newnop provide data annotation, image/video processing and custom AI solutions to identify, recognize and categories defects and objects for various industrial applications.",
+            color: "bg-green-50",
+            borderColor: "border-green-200"
         },
         {
-            title: "Content Marketing",
-            description: "Create compelling, value-driven content that resonates with your audience and establishes your brand as an industry authority.",
-            icon: <MessageSquare className="w-8 h-8" />,
-            gradient: "from-red-500 to-orange-600",
-            bgGradient: "from-red-500/10 to-orange-600/10",
-            borderGradient: "from-red-500/20 to-orange-600/20",
-            iconBg: "from-red-500 to-orange-600",
-            highlight: true,
-            features: ["Blog Writing", "Video Content", "SEO Optimization"]
+            title: "Automated Quality Control",
+            description: "Advanced computer vision systems for real-time quality inspection and defect detection in manufacturing processes with high accuracy and speed.",
+            color: "bg-blue-50",
+            borderColor: "border-blue-200"
         },
         {
-            title: "Email Marketing",
-            description: "Build meaningful relationships with personalized email campaigns that convert subscribers into loyal customers and brand advocates.",
-            icon: <Mail className="w-8 h-8" />,
-            gradient: "from-green-500 to-teal-600",
-            bgGradient: "from-green-500/10 to-teal-600/10",
-            borderGradient: "from-green-500/20 to-teal-600/20",
-            iconBg: "from-green-500 to-teal-600",
-            highlight: false,
-            features: ["Automated Sequences", "A/B Testing", "Analytics & Reporting"]
+            title: "Predictive Maintenance",
+            description: "AI-powered monitoring systems that predict equipment failures before they occur, reducing downtime and maintenance costs significantly.",
+            color: "bg-purple-50",
+            borderColor: "border-purple-200"
         }
     ];
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-50 via-transparent to-transparent"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-red-100 to-transparent rounded-full blur-3xl opacity-30"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-100 to-transparent rounded-full blur-3xl opacity-30"></div>
-
-            <div className="max-w-7xl mx-auto relative z-10">
-                {/* Header Section */}
-                <div className="text-center mb-16">
-                    <div >
-                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-                        <span className="text-sm text-red-600 font-semibold tracking-wide uppercase">
-                            Our Services
-                        </span>
+        <div className="relative bg-gray-50">
+            {/* Header Section */}
+            <div className="py-20 px-4">
+                <div className="max-w-7xl mx-auto text-center">
+                    <div className="inline-block px-6 py-2 bg-green-400 text-white rounded-full text-sm font-medium mb-8">
+                        Our Solutions
                     </div>
-
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
-                        Boost Your{" "}
-                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
-                            Brand
-                        </span>
-                        <br />
-                        with Our Expertise
-                    </h2>
-
-                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Transform your business with our comprehensive digital marketing solutions designed
-                        to drive growth, engagement, and measurable results.
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                        Digital Transformation Solutions
+                    </h1>
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        We develop factory and industry automation solutions with state-of-the-art machine vision
+                        systems and AI and AI-agentic workflows.
                     </p>
                 </div>
-
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                        <div
-                            key={index}
-                            className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-transparent hover:border-red-400/30 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 ${service.highlight ? 'ring-2 ring-red-500/20 shadow-red-500/10' : ''
-                                }`}
-                            style={{
-                                background: service.highlight
-                                    ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(185, 28, 28, 0.05) 100%)'
-                                    : 'rgba(255, 255, 255, 0.8)'
-                            }}
-                        >
-                            {/* Gradient Background Overlay */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500`}></div>
-
-                            {/* Highlight Badge */}
-                            {service.highlight && (
-                                <div className="absolute -top-3 -right-3 z-10">
-                                    <div className="bg-gradient-to-r from-red-500 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                                        Popular
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Icon */}
-                            <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.iconBg} rounded-2xl mb-6 text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                                {service.icon}
-                            </div>
-
-                            {/* Content */}
-                            <div className="relative z-10">
-                                <h3 className="text-xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors duration-300">
-                                    {service.title}
-                                </h3>
-                                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors duration-300">
-                                    {service.description}
-                                </p>
-
-                                {/* Features List */}
-                                <ul className="space-y-2 mb-6">
-                                    {service.features.map((feature, featureIndex) => (
-                                        <li key={featureIndex} className="flex items-center text-sm text-gray-500">
-                                            <div className={`w-1.5 h-1.5 bg-gradient-to-r ${service.gradient} rounded-full mr-3`}></div>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* CTA Button */}
-                                <button className="group/btn relative overflow-hidden w-full bg-gradient-to-r from-gray-900 to-black text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:from-red-600 hover:to-black hover:shadow-lg">
-                                    <span className="relative z-10 flex items-center justify-center gap-2">
-                                        Learn More
-                                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                                </button>
-                            </div>
-
-                            {/* Decorative Elements */}
-                            <div className="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute bottom-6 left-6 w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-
-                            {/* Bottom Border Accent */}
-                            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl`}></div>
-
-                            {/* Floating Accent */}
-                            <div className={`absolute -top-1 -left-1 w-8 h-8 bg-gradient-to-br ${service.gradient} rounded-full opacity-0 group-hover:opacity-20 transition-all duration-500 blur-sm`}></div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Call to Action */}
-                <div className="text-center mt-16">
-                    <div className="inline-flex flex-col sm:flex-row gap-4">
-                        <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-black text-white font-semibold rounded-full hover:from-red-500 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-red-500/30">
-                            <span>Get Started Today</span>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </button>
-
-                    </div>
-                </div>
             </div>
-        </section>
+
+            {/* Sticky Stacker Service Cards - Full Width with Image */}
+            <div className="relative min-h-[180vh]">
+                {services.map((service, index) => (
+                    <div
+                        key={index}
+                        className={`sticky top-32 mb-16 w-full flex justify-center`}
+                        style={{ zIndex: 10 + index }}
+                    >
+                        <div className={`w-full max-w-7xl px-4 ${service.color} ${service.borderColor} border-2 rounded-3xl shadow-2xl backdrop-blur-sm flex flex-col items-center justify-center transition-all duration-500`}>
+                            {/* Full-width image */}
+                            <div className="w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-8">
+                                {cardImages[index]}
+                            </div>
+                            <div className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
+                                Service {index + 1} of 3
+                            </div>
+                            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 text-center">
+                                {service.title}
+                            </h3>
+                            <p className="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                                {service.description}
+                            </p>
+                            <button className="inline-flex items-center px-8 py-3 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors duration-200">
+                                Learn More
+                                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
-export default ProductGrid;
+export default DigitalTransformationSection;

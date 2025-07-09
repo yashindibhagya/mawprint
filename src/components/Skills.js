@@ -1,228 +1,118 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+const galleryImages = [
+    {
+        src: '/assets/img/maw.png',
+        title: 'Business Logo'
+    },
+    {
+        src: '/assets/img/maw full.png',
+        title: 'Full Logo'
+    },
+    {
+        src: '/assets/img/printer.jpg',
+        title: 'Printer in Action'
+    },
+    {
+        src: '/assets/img/Portfolio.png',
+        title: 'Portfolio Showcase'
+    },
+    {
+        src: '/assets/img/pic.png',
+        title: 'Team Photo'
+    },
+    {
+        src: '/assets/img/Remove.png',
+        title: 'Creative Work'
+    },
+    {
+        src: '/assets/img/_1___1_-r.png',
+        title: 'Business Event'
+    },
+];
+
+const SCROLL_AMOUNT = 320;
 
 const Skills = () => {
-    // Frontend skills with icon references
-    const frontendSkills = [
-        {
-            name: 'HTML',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-            proficiency: 95
-        },
-        {
-            name: 'CSS',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-            proficiency: 90
-        },
-        {
-            name: 'JavaScript',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-            proficiency: 92
-        },
-        {
-            name: 'React Native',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-            proficiency: 88
-        },
-        {
-            name: 'Tailwind CSS',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
-            proficiency: 60
-        }
-    ];
+    const scrollRef = useRef(null);
 
-    // Backend skills (just Node.js)
-    const backendSkills = [
-        {
-            name: 'Node.js',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-            proficiency: 75
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
         }
-    ];
-
-    // Database skills (Supabase, Firebase, Cloudinary)
-    const databaseSkills = [
-        {
-            name: 'Supabase',
-            iconUrl: 'https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg',
-            proficiency: 85
-        },
-        {
-            name: 'Firebase',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
-            proficiency: 88
-        },
-        {
-            name: 'Cloudinary',
-            iconUrl: 'https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_folder/logo-blue-PDF.png',
-            proficiency: 90
+    };
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
         }
-    ];
-
-    // Design & Developer tools
-    const designTools = [
-        {
-            name: 'Figma',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-            proficiency: 95
-        },
-        {
-            name: 'Canva',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg',
-            proficiency: 95
-        },
-        {
-            name: 'Adobe Photoshop',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg',
-            proficiency: 90
-        },
-        {
-            name: 'Wix Studio',
-            iconUrl: 'https://static.wixstatic.com/media/9aea63_de2dedcd4ee245fdbdcbe3d9f93d49d0~mv2.png',
-            proficiency: 90
-        },
-        {
-            name: 'VS Code',
-            iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-            proficiency: 95
-        }
-    ];
-
-    // Function to determine the color based on proficiency level
-    const getProficiencyColor = (proficiency) => {
-        if (proficiency >= 90) return 'from-emerald-400 to-teal-500';
-        if (proficiency >= 80) return 'from-blue-400 to-indigo-500';
-        if (proficiency >= 70) return 'from-violet-400 to-purple-500';
-        return 'from-rose-400 to-pink-500';
     };
 
-    // Skill item component to avoid repetition
-    const SkillItem = ({ skill }) => (
-        <div className="group/skill">
-            <div className="flex justify-between items-center mb-2">
-                <div className="flex items-center">
-                    <div className="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center mr-3 overflow-hidden">
-                        <img
-                            src={skill.iconUrl}
-                            alt={`${skill.name} icon`}
-                            className="w-5 h-5 object-contain group-hover/skill:scale-110 transition-transform"
-                        />
-                    </div>
-                    <span className="text-gray-300 text-sm font-medium group-hover/skill:text-white transition-colors">
-                        {skill.name}
-                    </span>
-                </div>
-                <span className="text-xs font-semibold text-gray-400 group-hover/skill:text-white transition-colors">
-                    {skill.proficiency}%
-                </span>
-            </div>
-
-            {/* Progress bar with gradient */}
-            <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
-                <div
-                    className={`h-full bg-gradient-to-r ${getProficiencyColor(skill.proficiency)} rounded-full transition-all duration-500 ease-out group-hover/skill:scale-x-100`}
-                    style={{
-                        width: `${skill.proficiency}%`,
-                        transform: 'scaleX(0.9)',
-                        transformOrigin: 'left'
-                    }}
-                ></div>
-            </div>
-        </div>
-    );
-
     return (
-        <section id="skills" className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
-
-
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Heading with animated underline */}
-                <div className="relative text-center mb-16">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent inline-block">
-                        Technical Skills
+        <section id="gallery" className="py-12 sm:py-16 md:py-20 transition-colors duration-300">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
+                <div className="mb-12 sm:mb-16 md:mb-20 text-center">
+                    <h2 className="text-2xl sm:text-3xl md:text-6xl font-bold mb-4 bg-gradient-to-l from-[#ff58d8] via-[#bc50ff] to-[#4f4cfa] bg-clip-text text-transparent">
+                        Business Photo Gallery
                     </h2>
-                    <div className="h-1 w-24 bg-gradient-to-r from-[#ff58d8] to-[#4f4cfa] rounded-full mx-auto mt-4 animate-pulse"></div>
-                    <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-sm sm:text-base">
-                        My toolkit of technologies and programming languages that I've mastered through years of practice and real-world application.
+                    <p className="mt-2 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-white opacity-80">
+                        Explore moments from our business journey, creative work, and team culture.
                     </p>
                 </div>
-
-                {/* Three sections in one row */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Section 1: Frontend */}
-                    <div className="group h-full">
-                        <div className="h-full backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-500/5">
-                            <div className="flex items-center mb-6">
-                                <span className="text-3xl mr-3">💻</span>
-                                <h3 className="text-xl font-bold text-white">Frontend</h3>
-                            </div>
-
-                            <p className="text-gray-400 mb-8 text-sm">
-                                Creating responsive, user-friendly interfaces with modern web technologies.
-                            </p>
-
-                            <div className="space-y-5">
-                                {frontendSkills.map(skill => (
-                                    <SkillItem key={skill.name} skill={skill} />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Section 2: Combined Backend & Database */}
-                    <div className="group h-full">
-                        <div className="h-full backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-500/5">
-                            <div className="flex items-center mb-6">
-                                <span className="text-3xl mr-3">⚙️</span>
-                                <h3 className="text-xl font-bold text-white">Backend & Database</h3>
-                            </div>
-
-                            <p className="text-gray-400 mb-8 text-sm">
-                                Server-side development and data management solutions.
-                            </p>
-
-                            <div className="space-y-4">
-                                {/* Backend section */}
-                                <div className="mb-8">
-                                    <h4 className="text-base font-semibold text-white mb-4 pb-2 border-b border-white/10">Backend</h4>
-                                    <div className="space-y-5">
-                                        {backendSkills.map(skill => (
-                                            <SkillItem key={skill.name} skill={skill} />
-                                        ))}
-                                    </div>
+                {/* Horizontal Scroll Gallery with Arrows */}
+                <div className="relative">
+                    {/* Left Arrow */}
+                    <button
+                        aria-label="Scroll left"
+                        onClick={scrollLeft}
+                        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 text-white transition-all duration-200 shadow-lg focus:outline-none"
+                        style={{ backdropFilter: 'blur(4px)' }}
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    {/* Right Arrow */}
+                    <button
+                        aria-label="Scroll right"
+                        onClick={scrollRight}
+                        className="hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 text-white transition-all duration-200 shadow-lg focus:outline-none"
+                        style={{ backdropFilter: 'blur(4px)' }}
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <div
+                        ref={scrollRef}
+                        className="flex gap-8 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+                        style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
+                    >
+                        {galleryImages.map((img, idx) => (
+                            <div
+                                key={img.src}
+                                className="group min-w-[280px] max-w-xs flex-shrink-0 snap-center bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-white/20 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer flex flex-col items-center"
+                            >
+                                {/* Image */}
+                                <div className="w-full h-64 bg-gray-100 flex items-center justify-center overflow-hidden">
+                                    <img
+                                        src={img.src}
+                                        alt={img.title}
+                                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+                                    />
                                 </div>
-
-                                {/* Database section */}
-                                <div>
-                                    <h4 className="text-base font-semibold text-white mb-4 pb-2 border-b border-white/10">Database & Storage</h4>
-                                    <div className="space-y-5">
-                                        {databaseSkills.map(skill => (
-                                            <SkillItem key={skill.name} skill={skill} />
-                                        ))}
-                                    </div>
+                                {/* Caption */}
+                                <div className="p-4 w-full text-center">
+                                    <h3 className="text-lg font-semibold text-white mb-1">{img.title}</h3>
                                 </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
-
-                    {/* Section 3: Design & Development Tools */}
-                    <div className="group h-full">
-                        <div className="h-full backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-500/5">
-                            <div className="flex items-center mb-6">
-                                <span className="text-3xl mr-3">🎨</span>
-                                <h3 className="text-xl font-bold text-white">Design & Dev Tools</h3>
-                            </div>
-
-                            <p className="text-gray-400 mb-8 text-sm">
-                                Software and platforms I use for design and development workflows.
-                            </p>
-
-                            <div className="space-y-5">
-                                {designTools.map(skill => (
-                                    <SkillItem key={skill.name} skill={skill} />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    {/* Hide scrollbar for all browsers */}
+                    <style>{`
+                        .scrollbar-hide::-webkit-scrollbar { display: none; }
+                        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+                    `}</style>
                 </div>
             </div>
         </section>

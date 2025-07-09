@@ -1,5 +1,5 @@
 {
-  "name": "personal-portfolio",
+  "name": "mawprint",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +12,8 @@
     "bootstrap": "^5.3.3",
     "emailjs-com": "^3.2.0",
     "firebase": "^11.6.0",
-    "framer-motion": "^12.5.0",
-    "lucide-react": "^0.522.0",
+    "framer-motion": "^12.23.0",
+    "lucide-react": "^0.525.0",
     "postcss": "^8.4.23",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
