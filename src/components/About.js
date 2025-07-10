@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const About = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
     const [animatedStats, setAnimatedStats] = useState({
         projects: 0,
         team: 0,
@@ -56,17 +55,6 @@ const About = () => {
 
         return () => clearInterval(timer);
     }, []);
-
-    // Manual slide navigation
-    const goToSlide = (index) => {
-        setCurrentSlide(index);
-    };
-
-    const skills = [
-        { name: "Marketing & Business Growth", percentage: 85, color: "from-red-500 to-red-700" },
-        { name: "Creativity & Innovation", percentage: 90, color: "from-red-600 to-black" },
-        { name: "Business & Financial Management", percentage: 95, color: "from-black to-red-700" }
-    ];
 
     const stats = [
         {

@@ -256,11 +256,11 @@ export const initializeAnalytics = () => {
     window.addEventListener('scroll', throttledTrackScroll);
 };
 
-// Export default configuration
-export default {
+const analyticsConfig = {
     googleAnalytics: googleAnalyticsConfig,
     searchConsole: searchConsoleConfig,
     plausible: plausibleConfig,
     ahrefs: ahrefsConfig,
     semrush: semrushConfig
-}; 
+};
+export default analyticsConfig; 

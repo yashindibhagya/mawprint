@@ -123,7 +123,6 @@ function App() {
                       description: "Premium sublimation printing solutions",
                       url: "https://mawprint.vercel.app",
                       telephone: "+1-XXX-XXX-XXXX",
-                      telephone: "+94-772-223-230",
                       address: {
                         "@type": "PostalAddress",
                         "addressCountry": "SL"

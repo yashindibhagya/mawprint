@@ -20,10 +20,10 @@ const Footer = () => {
                 <div className="space-y-4">
                     <h4 className="text-lg font-semibold text-gray-900">Company</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="#" className="hover:text-red-600 transition">About Us</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Services</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Portfolio</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Contact</a></li>
+                        <li><button type="button" className="hover:text-red-600 transition">About Us</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Services</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Portfolio</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Contact</button></li>
                     </ul>
                 </div>
 
@@ -31,10 +31,10 @@ const Footer = () => {
                 <div className="space-y-4">
                     <h4 className="text-lg font-semibold text-gray-900">Services</h4>
                     <ul className="text-sm space-y-2">
-                        <li><a href="#" className="hover:text-red-600 transition">Banner Printing</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Flag Printing</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">T-Shirt Transfers</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Marketing</a></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Banner Printing</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Flag Printing</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">T-Shirt Transfers</button></li>
+                        <li><button type="button" className="hover:text-red-600 transition">Marketing</button></li>
                     </ul>
                 </div>
             </div>
