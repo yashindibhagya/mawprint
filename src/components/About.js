@@ -6,7 +6,6 @@ const About = () => {
     const [statsVisible, setStatsVisible] = useState(false);
     const [animatedStats, setAnimatedStats] = useState({
         projects: 0,
-        team: 0,
         customers: 0,
         experience: 0
     });
@@ -49,9 +48,8 @@ const About = () => {
         if (!statsVisible) return;
         const targetStats = {
             projects: 3000,
-            team: 200,
             customers: 350,
-            experience: 16
+            experience: 30
         };
         const duration = 2000;
         const steps = 60;
@@ -62,7 +60,6 @@ const About = () => {
             const progress = currentStep / steps;
             setAnimatedStats({
                 projects: Math.floor(targetStats.projects * progress),
-                team: Math.floor(targetStats.team * progress),
                 customers: Math.floor(targetStats.customers * progress),
                 experience: Math.floor(targetStats.experience * progress)
             });
@@ -76,13 +73,12 @@ const About = () => {
 
     const stats = [
         { number: animatedStats.projects, label: "Successful Projects", suffix: "k", color: "from-red-500 to-red-700" },
-        { number: animatedStats.team, label: "Expert Team", color: "from-gray-800 to-black" },
         { number: animatedStats.customers, label: "Happy Customers" },
         { number: animatedStats.experience, label: "Years of Experience" }
     ];
 
     const parallaxStyle = {
-        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/img/parallax-bg.jpg)`,
+        backgroundImage: `url(/assets/img/parallax-bg.jpg)`,
         transform: `translateY(${scrollY * 0.2}px)`
     };
 
@@ -103,14 +99,13 @@ const About = () => {
 
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                         Empowering Your{" "}
-                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">Success</span>
+                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">Brand</span>
                         <br />
-                        with Digital Expertise
+                        with Vibrant Print Solutions
                     </h2>
 
                     <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-                        Our dedicated team makes it easy for you to achieve outstanding results with
-                        innovative solutions that will impress your clients and make you stand out from the crowd.
+                        Our dedicated team brings your ideas to life through high-quality sublimation printing — delivering eye-catching banners, custom apparel, and promotional flags that make your brand stand out from the crowd.
                     </p>
                 </div>
 

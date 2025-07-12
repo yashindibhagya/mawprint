@@ -2,31 +2,31 @@ import React, { useRef } from 'react';
 
 const galleryImages = [
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/maw.png`,
+        src: "/assets/img/maw.png",
         title: 'Business Logo'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
+        src: "/assets/img/maw full.png",
         title: 'Full Logo'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/printer.jpg`,
+        src: "/assets/img/printer.jpg",
         title: 'Printer in Action'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/Portfolio.png`,
+        src: "/assets/img/Portfolio.png",
         title: 'Portfolio Showcase'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/pic.png`,
+        src: "/assets/img/pic.png",
         title: 'Team Photo'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/Remove.png`,
+        src: "/assets/img/Remove.png",
         title: 'Creative Work'
     },
     {
-        src: `${process.env.PUBLIC_URL}/assets/img/_1___1_-r.png`,
+        src: "/assets/img/_1___1_-r.png",
         title: 'Business Event'
     },
 ];

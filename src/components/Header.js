@@ -42,7 +42,7 @@ const Header = () => {
                 <div className="flex items-center flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-105"
                     onClick={() => window.location.href = '/'}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/assets/img/maw.png`}
+                        src="/assets/img/maw.png"
                         alt="MawPrint Logo"
                         className="h-12 w-12 rounded-2xl shadow-lg p-1 object-contain"
                     />
