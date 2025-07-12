@@ -1,47 +1,90 @@
 import React from 'react';
 
+const socialLinks = [
+    {
+        name: 'Facebook', url: '#', icon: (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z" /></svg>
+        )
+    },
+    {
+        name: 'Twitter', url: '#', icon: (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.77c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62-.72-.02-1.4-.22-1.99-.55v.06c0 2.11 1.5 3.87 3.5 4.27-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.68 2.11 2.9 3.97 2.93A8.6 8.6 0 0 1 2 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 0 0 8.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z" /></svg>
+        )
+    },
+    {
+        name: 'Instagram', url: '#', icon: (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm6 1.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" /></svg>
+        )
+    },
+];
+
 const Footer = () => {
     return (
-        <footer className="bg-gray-100 border-t border-gray-200">
-            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-700">
-                {/* Brand Column */}
-                <div className="space-y-4">
-                    <img
-                        src={`${process.env.PUBLIC_URL}/assets/img/maw.png`}
-                        alt="Printify Logo"
-                        className="h-12 w-auto"
-                    />
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                        High-quality sublimation & fabric printing solutions to bring your brand to life.
-                    </p>
-                </div>
-
-                {/* Company Links */}
-                <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Company</h4>
-                    <ul className="text-sm space-y-2">
-                        <li><button type="button" className="hover:text-red-600 transition">About Us</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">Services</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">Portfolio</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">Contact</button></li>
-                    </ul>
-                </div>
-
-                {/* Services Links */}
-                <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Services</h4>
-                    <ul className="text-sm space-y-2">
-                        <li><button type="button" className="hover:text-red-600 transition">Banner Printing</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">Flag Printing</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">T-Shirt Transfers</button></li>
-                        <li><button type="button" className="hover:text-red-600 transition">Marketing</button></li>
-                    </ul>
-                </div>
+        <footer className="text-white relative overflow-hidden">
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent"></div>
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,0,0.1),transparent_70%)]"></div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className="border-t border-gray-200 py-4 text-center text-sm text-gray-500">
-                © {new Date().getFullYear()} Printify. All rights reserved.
+            <div className="relative max-w-6xl mx-auto px-6 py-8">
+                {/* Main content */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    {/* Brand */}
+                    <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center shadow-lg">
+                            <span className="text-white font-bold text-lg">M</span>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                                MawPrint
+                            </h3>
+                            <p className="text-xs text-gray-400">Quality Print Solutions</p>
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="flex flex-wrap gap-6 justify-center text-sm">
+                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Services</button>
+                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Portfolio</button>
+                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">About</button>
+                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Contact</button>
+                    </div>
+
+                    {/* Contact & Social */}
+                    <div className="flex flex-col md:items-end space-y-3">
+                        <div className="flex space-x-4">
+                            {socialLinks.map(link => (
+                                <a
+                                    key={link.name}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-8 h-8 bg-white/5 hover:bg-red-500/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 text-gray-400 hover:text-red-400"
+                                >
+                                    {link.icon}
+                                </a>
+                            ))}
+                        </div>
+                        <div className="text-xs text-gray-400 space-y-1 md:text-right">
+                            <div>
+                                <a href="mailto:info@mawprint.com" className="hover:text-red-400 transition-colors">
+                                    info@mawprint.com
+                                </a>
+                            </div>
+                            <div>Colombo, Sri Lanka</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom line */}
+                <div className="mt-6 pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-2 md:space-y-0">
+                    <div>© {new Date().getFullYear()} MawPrint. All rights reserved.</div>
+                    <div className="flex space-x-4">
+                        <button className="hover:text-red-400 transition-colors">Privacy</button>
+                        <button className="hover:text-red-400 transition-colors">Terms</button>
+                    </div>
+                </div>
             </div>
         </footer>
     );

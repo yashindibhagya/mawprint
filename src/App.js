@@ -112,7 +112,7 @@ function App() {
             <Route path="/" element={
               <>
                 <SEO
-                  title="MawPrint - Premium Sublimation Printing Solutions | Banners, Flags & More"
+                  title="MawPrint"
                   description="Transform your ideas into stunning visual experiences with MawPrint's cutting-edge sublimation printing technology. Specializing in banners, flags, and custom printing solutions with 500+ projects completed and 98% client satisfaction."
                   keywords="sublimation printing, sublimation banner, sublimation flag, flags printing, banner printing, dtf t shirt, fabric banner, flags, custom banners, printing services, digital printing, custom flags, promotional materials, printing company, sublimation technology, visual branding"
                   pageName="Homepage"

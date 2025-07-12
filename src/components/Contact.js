@@ -493,7 +493,7 @@ const Contact = () => {
                                                     <option value="Sublimation Banner">Sublimation Banner</option>
                                                     <option value="Flag">Sublimation Flag</option>
                                                     <option value="T-shirt Printing">T-shirt Printing</option>
-                                                    <option value="Fabric Banners">Fabric Banners</option>
+                                                    <option value="Fabric Banners">Screen Banners</option>
                                                 </select>
                                             </div>
                                             <div>
