@@ -11,12 +11,12 @@ const About = () => {
         experience: 0
     });
 
-    const slideshowImages = [
+    { /*   const slideshowImages = [
         "/assets/img/flag.png",
         "/assets/img/maw full.png",
         "/assets/img/Portfolio.png",
         "/assets/img/pic.png"
-    ];
+    ]; */}
 
     // Parallax scroll
     useEffect(() => {
