@@ -491,7 +491,7 @@ const Contact = () => {
                                                 >
                                                     <option value="" disabled>Select a service</option>
                                                     <option value="Sublimation Banner">Sublimation Banner</option>
-                                                    <option value="Flag">Flag</option>
+                                                    <option value="Flag">Sublimation Flag</option>
                                                     <option value="T-shirt Printing">T-shirt Printing</option>
                                                     <option value="Fabric Banners">Fabric Banners</option>
                                                 </select>

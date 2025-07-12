@@ -12,10 +12,10 @@ const About = () => {
 
     // Slideshow images for About section
     const slideshowImages = [
-        '/assets/img/flag.png',
-        '/assets/img/maw full.png',
-        '/assets/img/Portfolio.png',
-        '/assets/img/pic.png'
+        `${process.env.PUBLIC_URL}/assets/img/flag.png`,
+        `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
+        `${process.env.PUBLIC_URL}/assets/img/Portfolio.png`,
+        `${process.env.PUBLIC_URL}/assets/img/pic.png`
     ];
 
     // Auto-advance slideshow

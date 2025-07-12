@@ -50,7 +50,7 @@ const DigitalTransformationSection = () => {
     ];
 
     return (
-        <section id="services" className="relative bg-gray-50">
+        <section id="services" className="relative">
             <div className="py-20 px-4">
                 <div className="max-w-7xl mx-auto text-center">
                     <div className="inline-block px-6 py-2 bg-green-400 text-white rounded-full text-sm font-medium mb-8">

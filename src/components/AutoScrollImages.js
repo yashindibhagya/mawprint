@@ -1,14 +1,14 @@
 import React from 'react';
 
 const images = [
-    '/assets/img/flag.png',
-    '/assets/img/maw full.png',
-    '/assets/img/maw.png',
-    '/assets/img/printer.jpg',
-    '/assets/img/Remove.png',
-    '/assets/img/Portfolio.png',
-    '/assets/img/pic.png',
-    '/assets/img/_1___1_-r.png',
+    `${process.env.PUBLIC_URL}/assets/img/flag.png`,
+    `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
+    `${process.env.PUBLIC_URL}/assets/img/maw.png`,
+    `${process.env.PUBLIC_URL}/assets/img/printer.jpg`,
+    `${process.env.PUBLIC_URL}/assets/img/Remove.png`,
+    `${process.env.PUBLIC_URL}/assets/img/Portfolio.png`,
+    `${process.env.PUBLIC_URL}/assets/img/pic.png`,
+    `${process.env.PUBLIC_URL}/assets/img/_1___1_-r.png`,
 ];
 
 // Duplicate images for seamless looping

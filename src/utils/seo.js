@@ -194,8 +194,8 @@ export const initializeSEO = () => {
 
     // Preload critical resources
     preloadResources([
-        { url: '/assets/img/flag.png', as: 'image' },
-        { url: '/assets/img/maw full.png', as: 'image' }
+        { url: `${process.env.PUBLIC_URL}/assets/img/flag.png`, as: 'image' },
+        { url: `${process.env.PUBLIC_URL}/assets/img/maw full.png`, as: 'image' }
     ]);
 };
 
@@ -204,6 +204,6 @@ export const defaultSEO = {
     title: 'MawPrint - Premium Sublimation Printing Solutions',
     description: 'Transform your ideas into stunning visual experiences with our cutting-edge sublimation printing technology.',
     keywords: 'sublimation printing, sublimation banner, sublimation flag, flags printing, banner printing, dtf t shirt, fabric banner, flags, custom banners, printing services',
-    image: '/assets/img/maw full.png',
+    image: `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
     url: 'https://mawprint.vercel.app'
 }; 

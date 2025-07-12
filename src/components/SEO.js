@@ -17,7 +17,7 @@ const SEO = ({
     title,
     description,
     keywords = '',
-    image = '/assets/img/maw full.png',
+    image = `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
     type = 'website',
     structuredData = null,
     pageName = 'Page'

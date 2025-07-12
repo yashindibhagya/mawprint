@@ -234,8 +234,8 @@ export const initializePerformance = () => {
 
     // Preload critical images
     preloadImages([
-        '/assets/img/flag.png',
-        '/assets/img/maw full.png'
+        `${process.env.PUBLIC_URL}/assets/img/flag.png`,
+        `${process.env.PUBLIC_URL}/assets/img/maw full.png`
     ]);
 
     // Optimize font loading

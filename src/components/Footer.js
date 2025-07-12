@@ -7,7 +7,7 @@ const Footer = () => {
                 {/* Brand Column */}
                 <div className="space-y-4">
                     <img
-                        src="/assets/img/maw.png"
+                        src={`${process.env.PUBLIC_URL}/assets/img/maw.png`}
                         alt="Printify Logo"
                         className="h-12 w-auto"
                     />
