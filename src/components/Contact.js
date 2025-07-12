@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser'; // Install with: npm install @emailjs/browser
-import { socialLinks, contactInfo } from '../config/socialLinks';
+import { contactInfo } from '../config/socialLinks';
 
 const Contact = () => {
     const form = useRef();

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const About = () => {
     const [scrollY, setScrollY] = useState(0);
-    const [currentSlide, setCurrentSlide] = useState(0); // reserved for future slide logic
     const [headerVisible, setHeaderVisible] = useState(false);
     const [statsVisible, setStatsVisible] = useState(false);
     const [animatedStats, setAnimatedStats] = useState({
@@ -19,27 +18,20 @@ const About = () => {
         "/assets/img/pic.png"
     ];
 
-    const targetStats = {
-        projects: 3000,
-        team: 200,
-        customers: 350,
-        experience: 16
-    };
-
-    // Scroll handler for parallax
+    // Parallax scroll
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Slideshow auto advance
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide(prev => (prev + 1) % slideshowImages.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [slideshowImages.length]);
+    // Slideshow auto advance (if you want to use it in the future, uncomment the code below)
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentSlide(prev => (prev + 1) % slideshowImages.length);
+    //     }, 4000);
+    //     return () => clearInterval(interval);
+    // }, [slideshowImages.length]);
 
     // Intersection Observer for animating on view
     useEffect(() => {
@@ -70,29 +62,30 @@ const About = () => {
     // Animate stats when visible
     useEffect(() => {
         if (!statsVisible) return;
-
+        const targetStats = {
+            projects: 3000,
+            team: 200,
+            customers: 350,
+            experience: 16
+        };
         const duration = 2000;
         const steps = 60;
         const intervalTime = duration / steps;
         let currentStep = 0;
-
         const timer = setInterval(() => {
             currentStep++;
             const progress = currentStep / steps;
-
             setAnimatedStats({
                 projects: Math.floor(targetStats.projects * progress),
                 team: Math.floor(targetStats.team * progress),
                 customers: Math.floor(targetStats.customers * progress),
                 experience: Math.floor(targetStats.experience * progress)
             });
-
             if (currentStep >= steps) {
                 clearInterval(timer);
                 setAnimatedStats(targetStats);
             }
         }, intervalTime);
-
         return () => clearInterval(timer);
     }, [statsVisible]);
 
