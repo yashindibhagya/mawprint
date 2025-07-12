@@ -7,7 +7,7 @@ export default function impactdrivenhero() {
                 <style jsx>{`
         @keyframes floatUp {
           0% {
-            transform: translateY(100px);
+            transform: translateY(300px);
             opacity: 0;
           }
           10% {
@@ -17,7 +17,7 @@ export default function impactdrivenhero() {
             opacity: 0.6;
           }
           100% {
-            transform: translateY(-100px);
+            transform: translateY(-300px);
             opacity: 0;
           }
         }
@@ -44,10 +44,10 @@ export default function impactdrivenhero() {
 
                         {/* Animated Dots */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                            {[...Array(15)].map((_, i) => (
+                            {[...Array(80)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className="floating-dot absolute w-1 h-1 md:w-2 md:h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-60"
+                                    className="floating-dot absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-gradient-to-r from-red-600 to-black rounded-full opacity-60"
                                     style={{
                                         left: `${Math.random() * 100}%`,
                                         animationDelay: `${Math.random() * 4}s`,
@@ -61,30 +61,29 @@ export default function impactdrivenhero() {
                     {/* Main Heading */}
                     <div className="mb-8 md:mb-12">
                         <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
-                            We are an Impact Driven
+                            We are a Creative-Driven
                         </h1>
 
                         {/* Highlighted tags */}
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
                             <span className="bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl lg:text-1xl font-semibold">
-                                Digital Transformation
+                                Sublimation Printing
                             </span>
                             <span className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900">&</span>
                             <span className="border-2 border-gray-300 text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl lg:text-2xl font-semibold">
-                                Software
+                                Branding
                             </span>
                         </div>
 
                         <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                            Development Agency
+                            Solutions Company
                         </h2>
                     </div>
 
                     {/* Description */}
-                    <div className="mb-8 md:mb-12">
+                    <div className="mb-8 md:mb-8">
                         <p className="text-gray-600 text-lg md:text-xl lg:text-1xl max-w-2xl mx-auto leading-relaxed px-1">
-                            Newnop excels in developing innovative artificial intelligence (AI) and software solutions
-                            that solve unique business requirements of SMEs and start-ups.
+                            Mawprint turns your ideas into eye-catching prints. Whether it's a flag, banner, or apparel, we deliver bold, custom designs with quality that speaks for itself.
                         </p>
                     </div>
 
@@ -93,7 +92,7 @@ export default function impactdrivenhero() {
                         <button
                             className="group bg-gradient-to-r from-red-600 to-black hover:from-black hover:to-red-600 text-white font-semibold px-8 py-4 md:px-10 md:py-5 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-3"
                             onClick={() => {
-                                const el = document.getElementById('projects') || document.getElementById('skills');
+                                const el = document.getElementById('contact');
                                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             }}
                         >
