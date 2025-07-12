@@ -78,7 +78,7 @@ const About = () => {
     ];
 
     const parallaxStyle = {
-        backgroundImage: `url(/assets/img/parallax-bg.jpg)`,
+        backgroundImage: `url(assets/img/parallax-bg.jpg)`,
         transform: `translateY(${scrollY * 0.2}px)`
     };
 
