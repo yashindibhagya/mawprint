@@ -11,27 +11,12 @@ const About = () => {
         experience: 0
     });
 
-    { /*   const slideshowImages = [
-        "/assets/img/flag.png",
-        "/assets/img/maw full.png",
-        "/assets/img/Portfolio.png",
-        "/assets/img/pic.png"
-    ]; */}
-
     // Parallax scroll
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    // Slideshow auto advance (if you want to use it in the future, uncomment the code below)
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCurrentSlide(prev => (prev + 1) % slideshowImages.length);
-    //     }, 4000);
-    //     return () => clearInterval(interval);
-    // }, [slideshowImages.length]);
 
     // Intersection Observer for animating on view
     useEffect(() => {
