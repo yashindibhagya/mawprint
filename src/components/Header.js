@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
-    { name: 'HOME', section: 'home' },
-    { name: 'PORTFOLIO', section: 'projects' },
-    { name: 'BLOG', section: 'blog' },
-    { name: 'CAREERS', section: 'careers' },
+    { name: 'HOME', section: 'hero' },
+    { name: 'ABOUT US', section: 'about' },
+    { name: 'SERVICES', section: 'services' },
 ];
 
 const Header = () => {
@@ -30,7 +29,7 @@ const Header = () => {
             <div className="mt-2 w-[96%] max-w-7xl rounded-2xl bg-[#fff]/60 shadow-lg flex items-center px-6 py-2 md:py-3 backdrop-blur-md border border-black/10">
                 {/* Logo and Brand */}
                 <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
-                    <img src="/assets/img/maw.png" alt="Logo" className="h-8 w-8 mr-2" />
+                    <img src="/assets/img/maw.png" alt="Logo" className="mr-2" style={{ width: 'auto', height: '40px' }} />
                 </div>
                 {/* Center Nav */}
                 <nav className="hidden md:flex flex-1 justify-center items-center space-x-8">

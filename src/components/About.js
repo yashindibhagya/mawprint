@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const About = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0); // eslint-disable-line no-unused-vars
     const [animatedStats, setAnimatedStats] = useState({
         projects: 0,
         team: 0,

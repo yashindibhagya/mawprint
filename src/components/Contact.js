@@ -10,6 +10,7 @@ const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        service: '',
         subject: '',
         message: ''
     });
@@ -174,9 +175,9 @@ const Contact = () => {
             from_name: 'name',
             from_email: 'email',
             subject: 'subject',
-            message: 'message'
+            message: 'message',
+            service: 'service'
         };
-
         setFormData({
             ...formData,
             [fieldMap[name] || name]: value
@@ -219,6 +220,7 @@ const Contact = () => {
                 to_email: 'yashindibhagya@gmail.com',
                 from_name: formData.name,
                 reply_to: formData.email,
+                service: formData.service,
                 subject: formData.subject,
                 message: formData.message,
                 attachments_info: uploadedFiles.length > 0 ?
@@ -263,6 +265,7 @@ const Contact = () => {
                 setFormData({
                     name: '',
                     email: '',
+                    service: '',
                     subject: '',
                     message: ''
                 });
@@ -473,6 +476,25 @@ const Contact = () => {
                                                         required
                                                     />
                                                 </div>
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs text-red-600 mb-2 font-medium">
+                                                    <span className="font-mono">SERVICE</span>
+                                                </label>
+                                                <select
+                                                    name="service"
+                                                    value={formData.service}
+                                                    onChange={handleChange}
+                                                    className="w-full bg-white/5 border border-gray-200 rounded-lg px-4 py-3 text-black \
+                                                    placeholder-gray-400 focus:outline-none focus:border-red-500/50 focus:bg-white/[0.06] transition-all"
+                                                    required
+                                                >
+                                                    <option value="" disabled>Select a service</option>
+                                                    <option value="Sublimation Banner">Sublimation Banner</option>
+                                                    <option value="Flag">Flag</option>
+                                                    <option value="T-shirt Printing">T-shirt Printing</option>
+                                                    <option value="Fabric Banners">Fabric Banners</option>
+                                                </select>
                                             </div>
                                             <div>
                                                 <label className="block text-xs text-red-600 mb-2 font-medium">

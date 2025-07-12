@@ -3,7 +3,7 @@
 // Google Analytics Configuration
 export const googleAnalyticsConfig = {
     // Replace with your actual GA4 Measurement ID
-    measurementId: 'GA_MEASUREMENT_ID',
+    measurementId: process.env.REACT_APP_GA_MEASUREMENT_ID || 'GA_MEASUREMENT_ID',
 
     // Custom dimensions and metrics
     customDimensions: {
@@ -32,19 +32,19 @@ export const googleAnalyticsConfig = {
 // Google Search Console Configuration
 export const searchConsoleConfig = {
     // Replace with your actual verification code
-    verificationCode: 'your-verification-code',
+    verificationCode: process.env.REACT_APP_SEARCH_CONSOLE_VERIFICATION || 'your-verification-code',
 
     // Site verification methods
     verificationMethods: {
-        meta: 'your-meta-verification-code',
-        html: 'your-html-verification-code'
+        meta: process.env.REACT_APP_SEARCH_CONSOLE_META || 'your-meta-verification-code',
+        html: process.env.REACT_APP_SEARCH_CONSOLE_HTML || 'your-html-verification-code'
     }
 };
 
 // Plausible Analytics Configuration
 export const plausibleConfig = {
     // Replace with your actual Plausible domain
-    domain: 'mawprint.vercel.app',
+    domain: process.env.REACT_APP_PLAUSIBLE_DOMAIN || 'mawprint.vercel.app',
 
     // Custom events
     events: {
@@ -59,7 +59,7 @@ export const ahrefsConfig = {
     // Ahrefs Site Audit tracking
     siteAudit: {
         enabled: true,
-        projectId: 'your-project-id'
+        projectId: process.env.REACT_APP_AHREFS_PROJECT_ID || 'your-project-id'
     }
 };
 
@@ -68,7 +68,7 @@ export const semrushConfig = {
     // SEMrush Position Tracking
     positionTracking: {
         enabled: true,
-        projectId: 'your-project-id'
+        projectId: process.env.REACT_APP_SEMRUSH_PROJECT_ID || 'your-project-id'
     }
 };
 
@@ -77,27 +77,31 @@ export const semrushConfig = {
  * @param {string} measurementId - GA4 Measurement ID
  */
 export const initializeGoogleAnalytics = (measurementId = googleAnalyticsConfig.measurementId) => {
-    if (typeof window !== 'undefined' && measurementId !== 'GA_MEASUREMENT_ID') {
-        // Load Google Analytics script
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-        document.head.appendChild(script);
+    if (typeof window !== 'undefined' && measurementId && measurementId !== 'GA_MEASUREMENT_ID') {
+        try {
+            // Load Google Analytics script
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+            document.head.appendChild(script);
 
-        // Initialize gtag
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            window.dataLayer.push(arguments);
+            // Initialize gtag
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                window.dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', measurementId, {
+                page_title: document.title,
+                page_location: window.location.href,
+                custom_map: googleAnalyticsConfig.customDimensions
+            });
+
+            // Make gtag globally available
+            window.gtag = gtag;
+        } catch (error) {
+            console.warn('Failed to initialize Google Analytics:', error);
         }
-        gtag('js', new Date());
-        gtag('config', measurementId, {
-            page_title: document.title,
-            page_location: window.location.href,
-            custom_map: googleAnalyticsConfig.customDimensions
-        });
-
-        // Make gtag globally available
-        window.gtag = gtag;
     }
 };
 
@@ -106,12 +110,16 @@ export const initializeGoogleAnalytics = (measurementId = googleAnalyticsConfig.
  * @param {string} domain - Plausible domain
  */
 export const initializePlausible = (domain = plausibleConfig.domain) => {
-    if (typeof window !== 'undefined') {
-        const script = document.createElement('script');
-        script.defer = true;
-        script.setAttribute('data-domain', domain);
-        script.src = 'https://plausible.io/js/script.js';
-        document.head.appendChild(script);
+    if (typeof window !== 'undefined' && domain) {
+        try {
+            const script = document.createElement('script');
+            script.defer = true;
+            script.setAttribute('data-domain', domain);
+            script.src = 'https://plausible.io/js/script.js';
+            document.head.appendChild(script);
+        } catch (error) {
+            console.warn('Failed to initialize Plausible Analytics:', error);
+        }
     }
 };
 
