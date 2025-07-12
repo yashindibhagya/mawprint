@@ -217,7 +217,7 @@ const Contact = () => {
 
             // Prepare email parameters
             const templateParams = {
-                to_email: 'yashindibhagya@gmail.com',
+                to_email: 'mawprint@gmail.com',
                 from_name: formData.name,
                 reply_to: formData.email,
                 service: formData.service,
@@ -397,25 +397,7 @@ const Contact = () => {
                                     accent="from-red-600 to-black"
                                 />
                             </div>
-                            {/* Social links */}
-                            <div className="flex gap-4">
-                                {socialLinks.map(social => (
-                                    <a
-                                        key={social.name}
-                                        href={social.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="group relative"
-                                    >
-                                        <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-black to-red-700 rounded-lg blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-                                        <div className="relative w-10 h-10 rounded-lg bg-white border border-gray-300 group-hover:border-red-400/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                                            <span className="text-black group-hover:text-red-600 transition-colors duration-300">
-                                                {social.icon}
-                                            </span>
-                                        </div>
-                                    </a>
-                                ))}
-                            </div>
+
                         </div>
                         {/* Contact form */}
                         <div className="lg:col-span-7">

@@ -44,7 +44,7 @@ export const socialLinks = [
 
 // Contact information
 export const contactInfo = {
-    email: "yashindibhagya@gmail.com",
-    phone: "+94 71 429 4531",
+    email: "mawprint@gmail.com",
+    phone: "+94 77 222 3230",
     location: "Colombo, Sri Lanka"
 }; 

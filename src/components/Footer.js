@@ -20,12 +20,7 @@ const socialLinks = [
 
 const Footer = () => {
     return (
-        <footer className="text-white relative overflow-hidden">
-            {/* Subtle pattern overlay */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent"></div>
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,0,0.1),transparent_70%)]"></div>
-            </div>
+        <footer className="bg-white text-gray-800 relative border-t border-gray-200">
 
             <div className="relative max-w-6xl mx-auto px-6 py-8">
                 {/* Main content */}
@@ -45,10 +40,10 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="flex flex-wrap gap-6 justify-center text-sm">
-                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Services</button>
-                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Portfolio</button>
-                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">About</button>
-                        <button className="hover:text-red-400 transition-colors duration-200 text-gray-300">Contact</button>
+                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Services</button>
+                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Portfolio</button>
+                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">About</button>
+                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Contact</button>
                     </div>
 
                     {/* Contact & Social */}
@@ -60,15 +55,15 @@ const Footer = () => {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-8 h-8 bg-white/5 hover:bg-red-500/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 text-gray-400 hover:text-red-400"
+                                    className="w-8 h-8 bg-gray-100 hover:bg-red-50 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 text-gray-600 hover:text-red-500"
                                 >
                                     {link.icon}
                                 </a>
                             ))}
                         </div>
-                        <div className="text-xs text-gray-400 space-y-1 md:text-right">
+                        <div className="text-xs text-gray-500 space-y-1 md:text-right">
                             <div>
-                                <a href="mailto:info@mawprint.com" className="hover:text-red-400 transition-colors">
+                                <a href="mailto:info@mawprint.com" className="hover:text-red-500 transition-colors">
                                     info@mawprint.com
                                 </a>
                             </div>
@@ -78,11 +73,11 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom line */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-2 md:space-y-0">
+                <div className="mt-6 pt-4 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-2 md:space-y-0">
                     <div>© {new Date().getFullYear()} MawPrint. All rights reserved.</div>
                     <div className="flex space-x-4">
-                        <button className="hover:text-red-400 transition-colors">Privacy</button>
-                        <button className="hover:text-red-400 transition-colors">Terms</button>
+                        <button className="hover:text-red-500 transition-colors">Privacy</button>
+                        <button className="hover:text-red-500 transition-colors">Terms</button>
                     </div>
                 </div>
             </div>
