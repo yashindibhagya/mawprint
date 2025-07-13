@@ -53,15 +53,16 @@ const DigitalTransformationSection = () => {
         <section id="services" className="relative">
             <div className="py-20 px-4">
                 <div className="max-w-7xl mx-auto text-center">
-                    <div className="inline-block px-6 py-2 bg-green-400 text-white rounded-full text-sm font-medium mb-8">
-                        Our Solutions
+                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-black rounded-full mb-6 border border-red-500/20">
+                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+                        <span className="text-sm text-white font-semibold uppercase tracking-wide">Our Solutions</span>
                     </div>
+
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                        Digital Transformation Solutions
+                        Sublimation Printing, Redefined
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        We develop factory and industry automation solutions with state-of-the-art machine vision
-                        systems and AI and AI-agentic workflows.
+                        We deliver industrial-grade sublimation printing solutions with unmatched color depth, durability, and design flexibility — for every business, event, or brand.
                     </p>
                 </div>
             </div>

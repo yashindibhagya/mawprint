@@ -78,16 +78,14 @@ const About = () => {
     ];
 
     const parallaxStyle = {
-        backgroundImage: `url(assets/img/parallax-bg.jpg)`,
+        backgroundColor: '#fff',
         transform: `translateY(${scrollY * 0.2}px)`
     };
 
     return (
         <section id="about" className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-            {/* Parallax Background */}
-            <div className="absolute inset-0 z-0" style={{ ...parallaxStyle, backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
-                <div className="absolute inset-0 bg-black bg-opacity-40" />
-            </div>
+            {/* White Background */}
+            <div className="absolute inset-0 z-0" style={{ ...parallaxStyle }} />
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Header */}
@@ -97,39 +95,39 @@ const About = () => {
                         <span className="text-sm text-white font-semibold uppercase tracking-wide">About Our Company</span>
                     </div>
 
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
                         Empowering Your{" "}
                         <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">Brand</span>
                         <br />
                         with Vibrant Print Solutions
                     </h2>
 
-                    <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg sm:text-xl text-black max-w-3xl mx-auto leading-relaxed">
                         Our dedicated team brings your ideas to life through high-quality sublimation printing — delivering eye-catching banners, custom apparel, and promotional flags that make your brand stand out from the crowd.
                     </p>
                 </div>
 
-                {/* Stats Section */}
-                <div className={`stats-section grid grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-[1200ms] ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+                {/* Stats Section - Better Alignment */}
+                <div className={`stats-section flex flex-wrap justify-center gap-8 transition-all duration-[1200ms] ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
                     {stats.map((stat, i) => (
                         <div
                             key={i}
-                            className={`group relative text-center p-6 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300`}
+                            className={`group relative text-center p-8 rounded-2xl border border-gray-200 bg-black shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 min-w-[250px] flex-1 max-w-[300px]`}
                             style={{
                                 transitionDelay: `${0.5 + i * 0.15}s`
                             }}
                         >
                             <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-15 bg-gradient-to-r ${stat.color || ''} transition-opacity duration-300`} />
 
-                            <div className="text-3xl sm:text-4xl font-bold text-white flex items-end justify-center mb-2 group-hover:text-red-400 transition-colors">
+                            <div className="text-4xl sm:text-5xl font-bold text-white flex items-end justify-center mb-4 group-hover:text-red-400 transition-colors">
                                 {stat.number}
                                 {stat.suffix && <span className="text-red-500">{stat.suffix}</span>}
                                 <span className="text-red-500">+</span>
                             </div>
 
-                            <p className="text-gray-200 font-medium text-sm sm:text-base group-hover:text-white transition-colors">{stat.label}</p>
+                            <p className="text-gray-200 font-medium text-base group-hover:text-white transition-colors">{stat.label}</p>
 
-                            {/* Decorative dots */}
+                            {/* Decorative elements */}
                             <div className="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
                         </div>
