@@ -1,8 +1,8 @@
 import React from 'react';
 
 const images = [
-    "assets/img/flag.png",
-    "assets/img/maw full.png",
+    "/assets/img/flag.png",
+    "/assets/img/maw full.png",
     "assets/img/maw.png",
     "assets/img/printer.jpg",
     "assets/img/Remove.png",
