@@ -50,9 +50,10 @@ const EducationGrid = () => {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header Section */}
                 <div className="text-center mb-16">
-                    <span className="text-sm text-red-600 font-semibold tracking-wide uppercase">
-                        Let's Get Printing
-                    </span>
+                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-black rounded-full mb-6 border border-red-500/20">
+                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+                        <span className="text-sm text-white font-semibold uppercase tracking-wide">Let's Get Printing</span>
+                    </div>
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
                         Reasons to get {" "}
                         <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">

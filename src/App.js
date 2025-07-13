@@ -6,7 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Services from './components/Services';
-import Education from './components/Education';
+import Education from './components/whychoose';
 import SEO from './components/SEO';
 import { initializeSEO } from './utils/seo';
 import { initializePerformance } from './utils/performance';
