@@ -31,6 +31,10 @@
             "dest": "/logo512.png"
         },
         {
+            "src": "/maw.png",
+            "dest": "/maw.png"
+        },
+        {
             "src": "/(.*)",
             "dest": "/index.html"
         }
