@@ -1,14 +1,17 @@
 import React from 'react';
 
 const images = [
-    "/assets/img/flag.png",
-    "/assets/img/maw full.png",
-    "/assets/img/maw.png",
-    "/assets/img/printer.jpg",
-    "/assets/img/Remove.png",
-    "/assets/img/Portfolio.png",
-    "/assets/img/pic.png",
-    "/assets/img/_1___1_-r.png",
+    "/assets/img/1.jpg",
+    "/assets/img/2.jpg",
+    "/assets/img/4.jpg",
+    "/assets/img/5.png",
+    "/assets/img/6.png",
+    "/assets/img/7.jpg",
+    "/assets/img/8.png",
+    "/assets/img/9.png",
+    "/assets/img/10.png",
+    "/assets/img/11.webp",
+    "/assets/img/12.png",
 ];
 
 // Duplicate images for seamless looping
@@ -34,7 +37,7 @@ function AutoScrollImages() {
                             <img
                                 src={src}
                                 alt="Showcase"
-                                className="object-contain w-full h-full rounded-2xl select-none pointer-events-none"
+                                className="object-cover w-full h-full rounded-2xl select-none pointer-events-none"
                                 draggable="false"
                                 loading="lazy"
                             />

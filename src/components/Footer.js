@@ -27,48 +27,25 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                     {/* Brand */}
                     <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center shadow-lg">
-                            <span className="text-white font-bold text-lg">M</span>
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                                MawPrint
-                            </h3>
-                            <p className="text-xs text-gray-400">Quality Print Solutions</p>
-                        </div>
+                        <img src="/assets/img/maw full.png" alt="MawPrint Logo" className="h-10 w-auto" />
                     </div>
 
                     {/* Quick Links */}
                     <div className="flex flex-wrap gap-6 justify-center text-sm">
-                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Services</button>
-                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Portfolio</button>
-                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">About</button>
-                        <button className="hover:text-red-500 transition-colors duration-200 text-gray-600">Contact</button>
+                        <a href="#services" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Services</a>
+                        <a href="#autoscrollimages" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Portfolio</a>
+                        <a href="#about" className="hover:text-red-500 transition-colors duration-200 text-gray-600">About</a>
+                        <a href="#contact" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Contact</a>
                     </div>
 
                     {/* Contact & Social */}
-                    <div className="flex flex-col md:items-end space-y-3">
-                        <div className="flex space-x-4">
-                            {socialLinks.map(link => (
-                                <a
-                                    key={link.name}
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-8 h-8 bg-gray-100 hover:bg-red-50 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 text-gray-600 hover:text-red-500"
-                                >
-                                    {link.icon}
-                                </a>
-                            ))}
+                    <div className="text-xs text-gray-500 space-y-1 md:text-right">
+                        <div>
+                            <a href="mailto:mawprint@gmail.com" className="hover:text-red-500 transition-colors">
+                                mawprint@gmail.com
+                            </a>
                         </div>
-                        <div className="text-xs text-gray-500 space-y-1 md:text-right">
-                            <div>
-                                <a href="mailto:info@mawprint.com" className="hover:text-red-500 transition-colors">
-                                    info@mawprint.com
-                                </a>
-                            </div>
-                            <div>Colombo, Sri Lanka</div>
-                        </div>
+                        <div>Colombo, Sri Lanka</div>
                     </div>
                 </div>
 

@@ -3,29 +3,24 @@ import { motion } from "framer-motion";
 
 const steps = [
     {
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-        title: "Fast Ordering Now",
-        description: "Order your prints quickly and easily with our streamlined process."
+        image: "/assets/img/1.jpg",
+        title: "Lower Prices, Higher Value",
+        description: "We offer competitive rates without compromising on print quality — perfect for bulk or custom orders."
     },
     {
-        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
-        title: "Online Designing",
-        description: "Design online with our intuitive tools and get instant previews."
+        image: "/assets/img/2.jpg",
+        title: "Fast & Reliable Delivery",
+        description: "Your orders are processed quickly and delivered on time, every time — no delays, no hassle."
     },
     {
-        image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-        title: "Express Shipping",
-        description: "Get your prints delivered fast with our express shipping options."
-    },
-    {
-        image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
+        image: "/assets/img/3.jpg",
         title: "Satisfaction Guaranteed",
-        description: "We guarantee your satisfaction with every order, every time."
+        description: "We stand by our work. If you're not happy, we'll make it right — your satisfaction is our priority."
     },
     {
-        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
-        title: "Free Delivery",
-        description: "Enjoy free delivery on qualifying orders."
+        image: "/assets/img/4.jpg",
+        title: "Vivid, Long-Lasting Prints",
+        description: "We use high-grade sublimation techniques that ensure your prints stay vibrant and durable over time."
     }
 ];
 
@@ -69,7 +64,7 @@ const EducationGrid = () => {
                 </div>
                 {/* Animated Card Grid */}
                 <motion.div
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
