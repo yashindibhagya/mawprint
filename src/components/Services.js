@@ -6,7 +6,7 @@ const DigitalTransformationSection = () => {
         {
             title: "Machine Vision System Development",
             description: "Advanced data annotation, image/video processing, and custom AI solutions for industrial object recognition, defect detection, and automated categorization.",
-            image: "/assets/img/1.jpg",
+            image: "/assets/img/2.jpg",
             accent: "from-cyan-500 to-blue-600"
         },
         {
@@ -80,7 +80,7 @@ const DigitalTransformationSection = () => {
                                         <img
                                             src={service.image}
                                             alt={service.title}
-                                            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         {/* Image overlay */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
