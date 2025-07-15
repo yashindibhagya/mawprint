@@ -246,10 +246,10 @@ const Contact = () => {
 
             // Send email using EmailJS
             const result = await emailjs.send(
-                'service_lx3foyj',
-                'template_4qyx2dj',
+                'service_4ozoind',
+                'template_hgfjmom',
                 templateParams,
-                'VqmLO9PXzRgCoE7z1'
+                '9DJE0hcQWe_YGU103'
             );
 
             console.log('EmailJS response:', result);
