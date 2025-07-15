@@ -223,9 +223,10 @@ const Contact = () => {
                 service: formData.service,
                 subject: formData.subject,
                 message: formData.message,
-                attachments_info: uploadedFiles.length > 0 ?
-                    `\n\nAttached Files (${uploadedFiles.length}):\n${uploadedFiles.map(f => `- ${f.name} (${formatFileSize(f.size)})`).join('\n')}`
-                    : ''
+                attachments_info: uploadedFiles.length > 0
+                    ? `<ul style="margin:0;padding-left:18px;">${uploadedFiles.map(f => `<li>${f.name} (${formatFileSize(f.size)})</li>`).join('')}</ul>`
+                    : 'No attachments included',
+                time: new Date().toLocaleString()
             };
 
             // Convert files to base64 and add to template params
