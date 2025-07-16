@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const navLinks = [
     { name: 'HOME', section: 'hero' },
@@ -8,15 +8,6 @@ const navLinks = [
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
