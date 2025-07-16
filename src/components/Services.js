@@ -4,21 +4,21 @@ const DigitalTransformationSection = () => {
     // Updated services with modern content
     const services = [
         {
-            title: "Machine Vision System Development",
-            description: "Advanced data annotation, image/video processing, and custom AI solutions for industrial object recognition, defect detection, and automated categorization.",
+            title: "Sublimation Printing Solutions",
+            description: "Specialized in banner and flag printing, our sublimation process delivers vivid, high-resolution results on fabric and other materials — perfect for indoor and outdoor branding, events, and promotions.",
             image: "/assets/img/2.jpg",
             accent: "from-cyan-500 to-blue-600"
         },
         {
-            title: "Automated Quality Control",
-            description: "Real-time computer vision systems delivering precision quality inspection with ML-powered defect detection for manufacturing excellence.",
-            image: "/assets/img/6.png",
+            title: "DTF Print Production",
+            description: "We provide only the printed transfer films, ready for heat pressing. Ideal for those who want high-quality, full-color prints to apply on their own garments and products.",
+            image: "/assets/img/5.png",
             accent: "from-violet-500 to-purple-600"
         },
         {
-            title: "Predictive Maintenance",
-            description: "AI-driven monitoring ecosystems that anticipate equipment failures, optimize maintenance schedules, and minimize operational downtime.",
-            image: "/assets/img/5.png",
+            title: "Screen Printing Services",
+            description: "Durable and cost-effective for bulk orders — screen printing is perfect for t-shirts, uniforms, and promotional wear that demand long-lasting impact and clean design execution.",
+            image: "/assets/img/6.png",
             accent: "from-emerald-500 to-teal-600"
         }
     ];
@@ -34,26 +34,21 @@ const DigitalTransformationSection = () => {
             <div className="relative py-24 px-4">
                 <div className="max-w-7xl mx-auto text-center">
                     {/* Modern badge */}
-                    <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full mb-8 border border-gray-200/50 shadow-lg">
-                        <div className="relative">
-                            <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-pulse" />
-                            <div className="absolute inset-0 w-2 h-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-ping opacity-75" />
-                        </div>
-                        <span className="text-sm font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent uppercase tracking-wide">
-                            Our Solutions
-                        </span>
+
+                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-black rounded-full mb-6 border border-red-500/20">
+                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+                        <span className="text-sm text-white font-semibold uppercase tracking-wide">OUR SOLUTIONS</span>
                     </div>
 
                     {/* Modern typography */}
                     <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-8 leading-tight">
-                        Industrial AI,
+                        Sublimation Printing,
                         <span className="block bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                             Redefined
                         </span>
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-                        We deliver cutting-edge AI solutions with unmatched precision, reliability, and scalability —
-                        transforming industries through intelligent automation.
+                        We deliver high-quality, full-color printing with unmatched vibrancy, durability, and customization,  empowering your brand to stand out through premium banners, flags, apparel, and more.
                     </p>
                 </div>
             </div>
