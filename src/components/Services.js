@@ -17,7 +17,7 @@ const DigitalTransformationSection = () => {
         },
         {
             title: "Screen Printing Services",
-            description: "Durable and cost-effective for bulk orders — screen printing is perfect for t-shirts, uniforms, and promotional wear that demand long-lasting impact and clean design execution.",
+            description: "Durable andcost-effective for bulk orders — screen printing is perfect for t-shirts, uniforms, and promotional wear that demand long-lasting impact and clean design execution.",
             image: "/assets/img/6.png",
             accent: "from-emerald-500 to-teal-600"
         }
