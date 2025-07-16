@@ -33,10 +33,7 @@ const Header = () => {
 
     return (
         <header className="fixed w-full z-50 flex justify-center items-start transition-all duration-300">
-            <div className={`mt-4 w-[95%] max-w-6xl rounded-3xl transition-all duration-500 ease-out ${scrolled
-                ? 'bg-white/80 backdrop-blur-xl shadow-2xl border border-gray-200/50'
-                : 'bg-white/20 backdrop-blur-md shadow-lg border border-white/30'
-                } flex items-center px-6 py-3 md:py-4 hover:shadow-xl hover:scale-[1.02] transform`}>
+            <div className="mt-4 w-full max-w-7xl mx-auto rounded-3xl bg-white/80 backdrop-blur-xl shadow-2xl border border-gray-200/50 flex items-center px-6 py-3 md:py-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 ease-out">
 
                 {/* Logo and Brand */}
                 <div className="flex items-center flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-105"

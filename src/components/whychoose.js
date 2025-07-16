@@ -3,22 +3,45 @@ import { motion } from "framer-motion";
 
 const steps = [
     {
-        image: "/assets/img/1.jpg",
+        icon: (
+            <svg className="w-12 h-12 text-cyan-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 7l10 10M7 17L17 7" />
+                <circle cx="7.5" cy="7.5" r="1.5" />
+                <circle cx="16.5" cy="16.5" r="1.5" />
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+            </svg>
+        ),
         title: "Lower Prices, Higher Value",
         description: "We offer competitive rates without compromising on print quality — perfect for bulk or custom orders."
     },
     {
-        image: "/assets/img/2.jpg",
+        icon: (
+            <svg className="w-12 h-12 text-green-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 17V7a2 2 0 012-2h11a2 2 0 012 2v10M17 17h2a2 2 0 002-2v-5.586a1 1 0 00-.293-.707l-2.414-2.414A1 1 0 0017.586 7H17" />
+                <circle cx="7.5" cy="17.5" r="1.5" />
+                <circle cx="17.5" cy="17.5" r="1.5" />
+            </svg>
+        ),
         title: "Fast & Reliable Delivery",
         description: "Your orders are processed quickly and delivered on time, every time — no delays, no hassle."
     },
     {
-        image: "/assets/img/3.jpg",
+        icon: (
+            <svg className="w-12 h-12 text-yellow-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2l4-4" />
+                <circle cx="12" cy="12" r="10" />
+            </svg>
+        ),
         title: "Satisfaction Guaranteed",
         description: "We stand by our work. If you're not happy, we'll make it right — your satisfaction is our priority."
     },
     {
-        image: "/assets/img/4.jpg",
+        icon: (
+            <svg className="w-12 h-12 text-red-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C12 2 7 7.5 7 12a5 5 0 0010 0c0-4.5-5-10-5-10z" />
+                <circle cx="12" cy="12" r="3" />
+            </svg>
+        ),
         title: "Vivid, Long-Lasting Prints",
         description: "We use high-grade sublimation techniques that ensure your prints stay vibrant and durable over time."
     }
@@ -77,11 +100,7 @@ const EducationGrid = () => {
                             variants={cardVariants}
                             whileHover="hover"
                         >
-                            <img
-                                src={step.image}
-                                alt={step.title}
-                                className="rounded-xl mb-4 w-full h-40 object-cover"
-                            />
+                            {step.icon}
                             <h3 className="text-lg font-bold text-black mb-2 group-hover:text-red-600 transition-colors duration-300 text-center">
                                 {step.title}
                             </h3>
