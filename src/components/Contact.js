@@ -656,7 +656,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <style jsx>{`
+            <style>{`
                 @keyframes blink {
                     0%, 50% { opacity: 1; }
                     51%, 100% { opacity: 0; }

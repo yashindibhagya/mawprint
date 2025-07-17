@@ -4,7 +4,7 @@ export default function impactdrivenhero() {
     return (
         <section id="hero">
             <div className="min-h-screen bg-white flex items-center justify-center px-4 py-8 pt-32 md:pt-40">
-                <style jsx>{`
+                <style>{`
         @keyframes floatUp {
           0% {
             transform: translateY(300px);

@@ -77,16 +77,12 @@ const About = () => {
         { number: animatedStats.experience, label: "Years of Experience" }
     ];
 
-    const parallaxStyle = {
-        backgroundColor: '#fff',
-        transform: `translateY(${scrollY * 0.2}px)`
-    };
-
     return (
         <section id="about" className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-            {/* White Background */}
-            <div className="absolute inset-0 z-0" style={{ ...parallaxStyle }} />
+            {/* White Background Parallax - only background moves */}
+            <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundColor: '#fff', transform: `translateY(${scrollY * 0.2}px)` }} />
 
+            {/* Main content stays static */}
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Header */}
                 <div className={`header-section text-center mb-16 transition-all duration-[1200ms] ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>

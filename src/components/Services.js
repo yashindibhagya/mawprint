@@ -70,8 +70,8 @@ const DigitalTransformationSection = () => {
                                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                 <div className="relative flex flex-col md:flex-row items-stretch h-full">
-                                    {/* Enhanced Image Section */}
-                                    <div className="md:w-1/2 w-full h-1/2 md:h-full relative overflow-hidden">
+                                    {/* Enhanced Image Section - mobile: full image on top */}
+                                    <div className="w-full md:w-1/2 aspect-[16/9] md:aspect-auto relative overflow-hidden">
                                         <img
                                             src={service.image}
                                             alt={service.title}
@@ -81,28 +81,28 @@ const DigitalTransformationSection = () => {
                                         <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
 
                                         {/* Floating number badge */}
-                                        <div className="absolute top-6 left-6 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                                            <span className={`text-lg font-bold bg-gradient-to-r ${service.accent} bg-clip-text text-transparent`}>
+                                        <div className="absolute top-4 left-4 md:top-6 md:left-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                                            <span className={`text-base md:text-lg font-bold bg-gradient-to-r ${service.accent} bg-clip-text text-transparent`}>
                                                 {index + 1}
                                             </span>
                                         </div>
                                     </div>
 
-                                    {/* Enhanced Text Section */}
-                                    <div className="md:w-1/2 w-full flex flex-col justify-center p-8 md:p-12 relative">
+                                    {/* Enhanced Text Section - below image on mobile, right on desktop */}
+                                    <div className="w-full md:w-1/2 flex flex-col justify-center p-6 md:p-12 relative">
                                         {/* Service indicator */}
-                                        <div className="inline-flex items-center gap-2 mb-4">
-                                            <div className={`w-8 h-0.5 bg-gradient-to-r ${service.accent} rounded-full`} />
-                                            <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">
+                                        <div className="inline-flex items-center gap-2 mb-3 md:mb-4">
+                                            <div className={`w-6 md:w-8 h-0.5 bg-gradient-to-r ${service.accent} rounded-full`} />
+                                            <span className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-widest">
                                                 Service {index + 1} of 3
                                             </span>
                                         </div>
 
-                                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                                        <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
                                             {service.title}
                                         </h3>
 
-                                        <p className="text-lg text-gray-600 mb-8 leading-relaxed font-light">
+                                        <p className="text-base md:text-lg text-gray-600 mb-4 md:mb-8 leading-relaxed font-light">
                                             {service.description}
                                         </p>
 
