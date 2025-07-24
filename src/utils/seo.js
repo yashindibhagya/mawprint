@@ -205,5 +205,5 @@ export const defaultSEO = {
     description: 'Transform your ideas into stunning visual experiences with our cutting-edge sublimation printing technology.',
     keywords: 'sublimation printing, sublimation banner, sublimation flag, flags printing, banner printing, dtf t shirt, fabric banner, flags, custom banners, printing services',
     image: `${process.env.PUBLIC_URL}/assets/img/maw full.png`,
-    url: 'https://mawprint.vercel.app'
+    url: 'https://mawprint.com'
 }; 

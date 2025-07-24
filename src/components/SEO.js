@@ -29,7 +29,7 @@ const SEO = ({
         updateSEO(title, description, keywords);
 
         // Update canonical URL
-        const canonicalUrl = `https://mawprint.vercel.app${location.pathname}`;
+        const canonicalUrl = `https://mawprint.com${location.pathname}`;
         updateCanonical(canonicalUrl);
 
         // Generate structured data if provided
@@ -47,7 +47,7 @@ const SEO = ({
         const socialData = {
             title,
             description,
-            image: `https://mawprint.vercel.app${image}`,
+            image: `https://mawprint.com${image}`,
             url: canonicalUrl,
             type
         };

@@ -44,7 +44,7 @@ export const searchConsoleConfig = {
 // Plausible Analytics Configuration
 export const plausibleConfig = {
     // Replace with your actual Plausible domain
-    domain: process.env.REACT_APP_PLAUSIBLE_DOMAIN || 'mawprint.vercel.app',
+    domain: process.env.REACT_APP_PLAUSIBLE_DOMAIN || 'mawprint.com',
 
     // Custom events
     events: {

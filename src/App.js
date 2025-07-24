@@ -121,7 +121,7 @@ function App() {
                     data: {
                       name: "MawPrint",
                       description: "Premium sublimation printing solutions",
-                      url: "https://mawprint.vercel.app",
+                      url: "https://mawprint.com",
                       telephone: "+1-XXX-XXX-XXXX",
                       address: {
                         "@type": "PostalAddress",
