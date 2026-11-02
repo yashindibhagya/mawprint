@@ -1,52 +1,56 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        "./src/**/*.{js,jsx,ts,tsx}",
-    ],
+    content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Inter', 'sans-serif'],
+            screens: {
+                xs: '480px',
             },
             colors: {
-                blue: {
-                    50: '#eff6ff',
-                    100: '#dbeafe',
-                    200: '#bfdbfe',
-                    300: '#93c5fd',
-                    400: '#60a5fa',
-                    500: '#3b82f6',
-                    600: '#2563eb',
-                    700: '#1d4ed8',
-                    800: '#1e40af',
-                    900: '#1e3a8a',
+                paper: {
+                    DEFAULT: '#F6F4EF',
+                    2: '#EDE9E1',
+                    3: '#E3DED3',
+                },
+                ink: {
+                    DEFAULT: '#141311',
+                    soft: '#3E3A35',
+                    muted: '#6F6962',
+                },
+                line: '#D9D3C8',
+                red: {
+                    DEFAULT: '#D7262B',
+                    deep: '#B01E22',
+                    tint: '#FBE9E9',
+                },
+            },
+            fontFamily: {
+                display: ['Fraunces', 'Georgia', 'serif'],
+                sans: ['Manrope', 'system-ui', 'sans-serif'],
+                mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            },
+            fontSize: {
+                'display-xl': ['clamp(2.75rem, 7.2vw, 6.5rem)', { lineHeight: '0.98', letterSpacing: '-0.02em' }],
+                'display-lg': ['clamp(2.25rem, 4.6vw, 4rem)', { lineHeight: '1.02', letterSpacing: '-0.02em' }],
+                'display-md': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
+            },
+            maxWidth: {
+                shell: '82rem',
+            },
+            keyframes: {
+                marquee: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-50%)' },
                 },
             },
             animation: {
-                'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                'marquee': 'marquee 25s linear infinite',
-                'float': 'float 6s ease-in-out infinite',
-                'social-hover': 'socialHover 0.3s ease-out forwards',
+                marquee: 'marquee 40s linear infinite',
             },
-            keyframes: {
-                pulse: {
-                    '0%, 100%': { opacity: 1 },
-                    '50%': { opacity: 0.5 },
-                },
-                marquee: {
-                    '0%': { transform: 'translateX(0)' },
-                    '100%': { transform: 'translateX(-100%)' },
-                },
-                float: {
-                    '0%, 100%': { transform: 'translateY(0)' },
-                    '50%': { transform: 'translateY(-10px)' },
-                },
-                socialHover: {
-                    '0%': { transform: 'scale(1)' },
-                    '100%': { transform: 'scale(1.1)' },
-                },
+            boxShadow: {
+                lift: '0 20px 50px -24px rgba(20, 19, 17, 0.35)',
+                card: '0 1px 0 rgba(20,19,17,0.04), 0 12px 32px -20px rgba(20,19,17,0.25)',
             },
         },
     },
     plugins: [],
-}
+};

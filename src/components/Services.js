@@ -1,127 +1,151 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Check, ArrowUpRight } from 'lucide-react';
+import SectionHeading from './ui/SectionHeading';
+import Reveal from './ui/Reveal';
+import CropMarks from './ui/CropMarks';
+import { services } from '../content/site';
 
-const DigitalTransformationSection = () => {
-    // Updated services with modern content
-    const services = [
-        {
-            title: "Sublimation Printing Solutions",
-            description: "Specialized in banner and flag printing, our sublimation process delivers vivid, high-resolution results on fabric and other materials — perfect for indoor and outdoor branding, events, and promotions.",
-            image: "/assets/img/2.jpg",
-            accent: "from-cyan-500 to-blue-600"
-        },
-        {
-            title: "DTF Print Production",
-            description: "We provide only the printed transfer films, ready for heat pressing. Ideal for those who want high-quality, full-color prints to apply on their own garments and products.",
-            image: "/assets/img/5.png",
-            accent: "from-violet-500 to-purple-600"
-        },
-        {
-            title: "Screen Printing Services",
-            description: "Durable andcost-effective for bulk orders — screen printing is perfect for t-shirts, uniforms, and promotional wear that demand long-lasting impact and clean design execution.",
-            image: "/assets/img/6.png",
-            accent: "from-emerald-500 to-teal-600"
-        }
-    ];
+/**
+ * Services as a "spec sheet": a vertical index on the left, the active
+ * service's image + details on the right. Collapses to stacked cards on mobile.
+ */
+export default function Services() {
+    const [active, setActive] = useState(0);
+    const reduce = useReducedMotion();
+    const item = services.items[active];
 
     return (
-        <section id="services" className="relative bg-gradient-to-br from-slate-50 via-white to-gray-50">
-            {/* Background decoration */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full blur-3xl opacity-30"></div>
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full blur-3xl opacity-30"></div>
-            </div>
+        <section id="services" className="bg-ink text-paper">
+            <div className="mx-auto max-w-shell px-5 py-20 md:px-8 md:py-28">
+                <SectionHeading
+                    index="02"
+                    eyebrow={services.eyebrow}
+                    heading={services.heading}
+                    intro={services.intro}
+                    light
+                />
 
-            <div className="relative py-24 px-4">
-                <div className="max-w-7xl mx-auto text-center">
-                    {/* Modern badge */}
-
-                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-black rounded-full mb-6 border border-red-500/20">
-                        <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
-                        <span className="text-sm text-white font-semibold uppercase tracking-wide">OUR SOLUTIONS</span>
-                    </div>
-
-                    {/* Modern typography */}
-                    <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-8 leading-tight">
-                        Sublimation Printing,
-                        <span className="block bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                            Redefined
-                        </span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-                        We deliver high-quality, full-color printing with unmatched vibrancy, durability, and customization,  empowering your brand to stand out through premium banners, flags, apparel, and more.
-                    </p>
-                </div>
-            </div>
-
-            {/* Enhanced Sticky Stacker Service Cards */}
-            <div className="relative min-h-[200vh]">
-                {services.map((service, index) => (
-                    <div
-                        key={index}
-                        className={`sticky top-24 mb-20 w-full flex justify-center`}
-                        style={{ zIndex: 10 + index }}
-                    >
-                        <div className="w-full max-w-7xl px-4 group">
-                            <div className="relative rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 h-[28rem] overflow-hidden bg-white border border-gray-200/50 backdrop-blur-sm">
-                                {/* Animated background gradient */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-
-                                {/* Glass morphism overlay */}
-                                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                <div className="relative flex flex-col md:flex-row items-stretch h-full">
-                                    {/* Enhanced Image Section - mobile: full image on top */}
-                                    <div className="w-full md:w-1/2 aspect-[16/9] md:aspect-auto relative overflow-hidden">
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                {/* Desktop: index + detail */}
+                <div className="mt-14 hidden gap-10 lg:grid lg:grid-cols-12">
+                    <ul className="lg:col-span-5" role="tablist" aria-label="Services">
+                        {services.items.map((s, i) => {
+                            const on = i === active;
+                            return (
+                                <li key={s.n} className="border-t border-paper/15 last:border-b">
+                                    <button
+                                        role="tab"
+                                        aria-selected={on}
+                                        aria-controls={`service-panel-${i}`}
+                                        id={`service-tab-${i}`}
+                                        onClick={() => setActive(i)}
+                                        onMouseEnter={() => setActive(i)}
+                                        className="group flex w-full items-start gap-5 py-6 text-left transition-colors"
+                                    >
+                                        <span className={`font-mono text-xs pt-1.5 ${on ? 'text-red' : 'text-paper/40'}`}>{s.n}</span>
+                                        <span className="flex-1">
+                                            <span className={`block font-display text-2xl transition-colors xl:text-3xl ${on ? 'text-paper' : 'text-paper/55 group-hover:text-paper/85'}`}>
+                                                {s.title}
+                                            </span>
+                                            <AnimatePresence initial={false}>
+                                                {on && (
+                                                    <motion.span
+                                                        key="blurb"
+                                                        initial={reduce ? false : { opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                                                        className="block overflow-hidden"
+                                                    >
+                                                        <span className="mt-3 block max-w-md text-[15px] leading-relaxed text-paper-3">{s.blurb}</span>
+                                                    </motion.span>
+                                                )}
+                                            </AnimatePresence>
+                                        </span>
+                                        <ArrowUpRight
+                                            size={18}
+                                            className={`mt-2 shrink-0 transition-all ${on ? 'text-red opacity-100' : 'opacity-0 group-hover:opacity-60'}`}
+                                            aria-hidden="true"
                                         />
-                                        {/* Image overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    </ul>
 
-                                        {/* Floating number badge */}
-                                        <div className="absolute top-4 left-4 md:top-6 md:left-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                                            <span className={`text-base md:text-lg font-bold bg-gradient-to-r ${service.accent} bg-clip-text text-transparent`}>
-                                                {index + 1}
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    {/* Enhanced Text Section - below image on mobile, right on desktop */}
-                                    <div className="w-full md:w-1/2 flex flex-col justify-center p-6 md:p-12 relative">
-                                        {/* Service indicator */}
-                                        <div className="inline-flex items-center gap-2 mb-3 md:mb-4">
-                                            <div className={`w-6 md:w-8 h-0.5 bg-gradient-to-r ${service.accent} rounded-full`} />
-                                            <span className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-widest">
-                                                Service {index + 1} of 3
-                                            </span>
-                                        </div>
-
-                                        <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-                                            {service.title}
-                                        </h3>
-
-                                        <p className="text-base md:text-lg text-gray-600 mb-4 md:mb-8 leading-relaxed font-light">
-                                            {service.description}
-                                        </p>
-
-                                    </div>
+                    <div className="lg:col-span-7" id={`service-panel-${active}`} role="tabpanel" aria-labelledby={`service-tab-${active}`}>
+                        <div className="grid grid-cols-7 gap-6">
+                            <div className="relative col-span-4">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={item.image}
+                                        initial={reduce ? false : { opacity: 0, scale: 0.98 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.35 }}
+                                        className="relative aspect-[4/5] overflow-hidden rounded-[6px] bg-paper/5"
+                                    >
+                                        <img src={item.image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                                        <CropMarks className="text-paper/60" inset={-8} />
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+                            <div className="col-span-3 flex flex-col justify-between">
+                                <div>
+                                    <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-paper/50">Includes</p>
+                                    <ul className="mt-3 space-y-2.5">
+                                        {item.points.map((p) => (
+                                            <li key={p} className="flex items-start gap-2.5 text-[15px] text-paper">
+                                                <Check size={15} className="mt-[3px] shrink-0 text-red" aria-hidden="true" />
+                                                {p}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-
-                                {/* Decorative elements */}
-                                <div className="absolute -top-px left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-                                <div className="absolute -bottom-px left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+                                <div className="mt-8 border-t border-paper/15 pt-5">
+                                    <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-paper/50">Spec</p>
+                                    <ul className="mt-3 space-y-1.5 font-mono text-[12px] text-paper-3">
+                                        {item.spec.map((s) => (
+                                            <li key={s}>— {s}</li>
+                                        ))}
+                                    </ul>
+                                    <a href="#contact" className="mt-6 inline-flex min-h-[44px] items-center gap-2 text-[14px] font-medium text-paper underline decoration-red decoration-2 underline-offset-[6px] hover:decoration-paper">
+                                        Get a quote for this
+                                        <ArrowUpRight size={16} aria-hidden="true" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                </div>
 
-            {/* Bottom fade effect */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                {/* Mobile / tablet: stacked cards */}
+                <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:hidden">
+                    {services.items.map((s, i) => (
+                        <Reveal as="li" key={s.n} delay={i * 0.05} className="overflow-hidden rounded-[6px] border border-paper/15">
+                            <div className="relative aspect-[16/10] bg-paper/5">
+                                <img src={s.image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                            </div>
+                            <div className="p-5">
+                                <p className="font-mono text-xs text-red">{s.n}</p>
+                                <h3 className="mt-2 font-display text-2xl">{s.title}</h3>
+                                <p className="mt-3 text-[15px] leading-relaxed text-paper-3">{s.blurb}</p>
+                                <ul className="mt-4 space-y-2">
+                                    {s.points.map((p) => (
+                                        <li key={p} className="flex items-start gap-2.5 text-[14.5px]">
+                                            <Check size={15} className="mt-[3px] shrink-0 text-red" aria-hidden="true" />
+                                            {p}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <ul className="mt-4 border-t border-paper/15 pt-4 font-mono text-[11.5px] text-paper/60">
+                                    {s.spec.map((x) => <li key={x}>— {x}</li>)}
+                                </ul>
+                            </div>
+                        </Reveal>
+                    ))}
+                </ul>
+            </div>
         </section>
     );
-};
-
-export default DigitalTransformationSection;
+}

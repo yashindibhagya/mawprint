@@ -1,120 +1,158 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Menu, X, MessageCircle } from 'lucide-react';
+import Wordmark from './ui/Wordmark';
+import Button from './ui/Button';
+import { brand, nav } from '../content/site';
 
-const navLinks = [
-    { name: 'HOME', section: 'hero' },
-    { name: 'ABOUT US', section: 'about' },
-    { name: 'SERVICES', section: 'services' },
-];
+export default function Header({ activeSection }) {
+    const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const reduce = useReducedMotion();
 
-const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 12);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    // Lock body scroll while the mobile sheet is open
+    useEffect(() => {
+        document.body.style.overflow = open ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [open]);
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            window.scrollTo({
-                top: element.offsetTop - 60,
-                behavior: 'smooth',
-            });
-            setIsMenuOpen(false);
-        }
-    };
+    useEffect(() => {
+        const onKey = (e) => e.key === 'Escape' && setOpen(false);
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, []);
 
     return (
-        <header className="fixed w-full z-50 flex justify-center items-start transition-all duration-300">
-            <div className="mt-4 w-full max-w-7xl mx-auto rounded-3xl bg-white/80 backdrop-blur-xl shadow-2xl border border-gray-200/50 flex items-center px-6 py-3 md:py-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 ease-out">
+        <header className="fixed inset-x-0 top-0 z-40">
+            <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper">
+                Skip to content
+            </a>
+            <div
+                className={`transition-[background-color,box-shadow,border-color] duration-300 border-b ${
+                    scrolled ? 'bg-paper/85 backdrop-blur-md border-line' : 'bg-transparent border-transparent'
+                }`}
+            >
+                <div className="mx-auto flex h-[72px] max-w-shell items-center justify-between px-5 md:px-8">
+                    <Wordmark />
 
-                {/* Logo and Brand */}
-                <div className="flex items-center flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-105"
-                    onClick={() => window.location.href = '/'}>
-                    <img
-                        src="/assets/img/maw.png"
-                        alt="MawPrint Logo"
-                        className="h-12 w-12 rounded-2xl shadow-lg p-1 object-contain"
-                    />
-                </div>
+                    <nav className="hidden lg:block" aria-label="Primary">
+                        <ul className="flex items-center gap-1">
+                            {nav.map((item) => {
+                                const active = activeSection === item.href.slice(1);
+                                return (
+                                    <li key={item.href}>
+                                        <a
+                                            href={item.href}
+                                            aria-current={active ? 'true' : undefined}
+                                            className={`relative inline-flex min-h-[44px] items-center px-3.5 text-[14.5px] font-medium transition-colors ${
+                                                active ? 'text-ink' : 'text-ink-muted hover:text-ink'
+                                            }`}
+                                        >
+                                            {item.label}
+                                            <span
+                                                className={`absolute inset-x-3.5 bottom-2 h-[1.5px] origin-left bg-red transition-transform duration-300 ${
+                                                    active ? 'scale-x-100' : 'scale-x-0'
+                                                }`}
+                                                aria-hidden="true"
+                                            />
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
 
-                {/* Center Nav */}
-                <nav className="hidden md:flex flex-1 justify-center items-center space-x-1">
-                    {navLinks.map((item, index) => (
-                        <button
-                            key={item.name}
-                            onClick={() => scrollToSection(item.section)}
-                            className="group relative text-sm font-medium text-gray-700 hover:text-red-600 transition-all duration-300 px-5 py-2.5 rounded-2xl hover:bg-red-50/80 overflow-hidden backdrop-blur-sm"
+                    <div className="hidden items-center gap-2 lg:flex">
+                        <a
+                            href={brand.whatsappHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex min-h-[44px] items-center gap-2 px-3 text-[14.5px] font-medium text-ink-muted transition-colors hover:text-ink"
                         >
-                            <span className="relative z-10 tracking-wide">{item.name}</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-red-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-2xl"></div>
-                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-600 group-hover:w-full transition-all duration-300"></div>
-                        </button>
-                    ))}
-                </nav>
+                            <MessageCircle size={17} aria-hidden="true" />
+                            WhatsApp
+                        </a>
+                        <Button href="#contact" variant="primary" className="!min-h-[44px] !px-5 text-[14px]">
+                            Request a quote
+                        </Button>
+                    </div>
 
-                {/* Right: Contact Buttons */}
-                <div className="hidden md:flex items-center space-x-3 ml-4">
                     <button
-                        className="relative bg-gradient-to-r from-red-500 to-black hover:from-red-600 hover:to-red-800 text-white font-semibold px-6 py-2.5 rounded-2xl text-sm shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden group"
-                        onClick={() => scrollToSection('contact')}
+                        type="button"
+                        onClick={() => setOpen(true)}
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink lg:hidden"
+                        aria-label="Open menu"
+                        aria-expanded={open}
+                        aria-controls="mobile-menu"
                     >
-                        <span className="relative z-10 tracking-wide">CONTACT US</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-red-400/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                        <div className="absolute inset-0 bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-                </div>
-
-                {/* Mobile menu button */}
-                <div className="md:hidden flex-1 flex justify-end">
-                    <button
-                        onClick={toggleMenu}
-                        className="inline-flex items-center justify-center p-2 rounded-2xl text-gray-700 hover:text-red-600 hover:bg-red-50/50 focus:outline-none transition-all duration-300 transform hover:scale-105"
-                    >
-                        <div className="relative w-6 h-6">
-                            <span className={`absolute block w-full h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'
-                                }`}></span>
-                            <span className={`absolute block w-full h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
-                                }`}></span>
-                            <span className={`absolute block w-full h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'
-                                }`}></span>
-                        </div>
+                        <Menu size={20} />
                     </button>
                 </div>
             </div>
 
-            {/* Mobile menu overlay */}
-            <div className={`fixed inset-0 z-40 transition-all duration-300 md:hidden ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`}>
-                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={toggleMenu}></div>
-                <div className={`absolute top-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-sm transition-all duration-500 ${isMenuOpen ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-8 opacity-0 scale-95'
-                    }`}>
-                    <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-gray-200/50">
-                        <div className="flex flex-col space-y-2 mb-6">
-                            {navLinks.map((item, index) => (
-                                <button
-                                    key={item.name}
-                                    onClick={() => scrollToSection(item.section)}
-                                    className={`w-full text-left text-base font-medium text-gray-700 hover:text-red-600 py-3 px-4 rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100/50 transform hover:scale-[1.02] ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
-                                        }`}
-                                    style={{ transitionDelay: `${index * 100}ms` }}
-                                >
-                                    <span className="tracking-wide">{item.name}</span>
-                                </button>
-                            ))}
-                        </div>
-                        <div className="flex space-x-3">
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        id="mobile-menu"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Menu"
+                        className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden"
+                        initial={reduce ? false : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <div className="flex h-[72px] items-center justify-between px-5">
+                            <Wordmark />
                             <button
-                                className="flex-1 bg-gradient-to-r from-red-500 to-black hover:from-red-600 hover:to-red-800 text-white font-semibold px-6 py-3 rounded-2xl text-sm shadow-lg transition-all duration-300 transform hover:scale-105 group overflow-hidden relative"
-                                onClick={() => scrollToSection('contact')}
+                                type="button"
+                                onClick={() => setOpen(false)}
+                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15"
+                                aria-label="Close menu"
                             >
-                                <span className="relative z-10 tracking-wide">CONTACT US</span>
-                                <div className="absolute inset-0 bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <X size={20} />
                             </button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        <nav className="flex flex-1 flex-col justify-center px-6" aria-label="Mobile">
+                            <ul className="space-y-1">
+                                {nav.map((item, i) => (
+                                    <motion.li
+                                        key={item.href}
+                                        initial={reduce ? false : { opacity: 0, x: -12 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.05 + i * 0.05, duration: 0.35 }}
+                                    >
+                                        <a
+                                            href={item.href}
+                                            onClick={() => setOpen(false)}
+                                            className="flex items-baseline gap-4 py-3 font-display text-4xl text-ink"
+                                        >
+                                            <span className="font-mono text-xs text-red">0{i + 1}</span>
+                                            {item.label}
+                                        </a>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </nav>
+                        <div className="space-y-3 border-t border-line px-6 py-6">
+                            <Button href="#contact" onClick={() => setOpen(false)} variant="primary" className="w-full">
+                                Request a quote
+                            </Button>
+                            <Button href={brand.whatsappHref} target="_blank" rel="noreferrer" variant="ghost" className="w-full">
+                                Chat on WhatsApp
+                            </Button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
-};
-
-export default Header;
+}

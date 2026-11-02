@@ -1,47 +1,67 @@
 import React from 'react';
+import Wordmark from './ui/Wordmark';
+import { RegMark } from './ui/CropMarks';
+import { brand, footer } from '../content/site';
+import { socialLinks } from '../config/socialLinks';
 
-const Footer = () => {
+export default function Footer() {
     return (
-        <footer className="bg-white text-gray-800 relative border-t border-gray-200">
-
-            <div className="relative max-w-6xl mx-auto px-6 py-8">
-                {/* Main content */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    {/* Brand */}
-                    <div className="flex items-center space-x-3">
-                        <img src="/assets/img/maw full.png" alt="MawPrint Logo" className="h-10 w-auto" />
+        <footer className="bg-ink text-paper">
+            <div className="mx-auto max-w-shell px-5 pb-10 pt-16 md:px-8">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+                    <div className="md:col-span-5">
+                        <Wordmark variant="full" invert />
+                        <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-paper-3">{footer.blurb}</p>
+                        <ul className="mt-6 flex gap-2">
+                            {socialLinks.map((s) => (
+                                <li key={s.name}>
+                                    <a
+                                        href={s.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        aria-label={s.name}
+                                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-paper-3 transition-colors hover:border-paper hover:text-paper"
+                                    >
+                                        {s.icon}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="flex flex-wrap gap-6 justify-center text-sm">
-                        <a href="#services" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Services</a>
-                        <a href="#autoscrollimages" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Portfolio</a>
-                        <a href="#about" className="hover:text-red-500 transition-colors duration-200 text-gray-600">About</a>
-                        <a href="#contact" className="hover:text-red-500 transition-colors duration-200 text-gray-600">Contact</a>
-                    </div>
-
-                    {/* Contact & Social */}
-                    <div className="text-xs text-gray-500 space-y-1 md:text-right">
-                        <div>
-                            <a href="mailto:mawprint@gmail.com" className="hover:text-red-500 transition-colors">
-                                mawprint@gmail.com
-                            </a>
+                    {footer.columns.map((col) => (
+                        <div key={col.title} className="md:col-span-2">
+                            <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-paper/50">{col.title}</p>
+                            <ul className="mt-4 space-y-2.5">
+                                {col.links.map((l) => (
+                                    <li key={l.label}>
+                                        <a href={l.href} className="text-[15px] text-paper-3 transition-colors hover:text-paper">{l.label}</a>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div>Colombo, Sri Lanka</div>
+                    ))}
+
+                    <div className="md:col-span-3">
+                        <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-paper/50">Contact</p>
+                        <ul className="mt-4 space-y-2.5 text-[15px] text-paper-3">
+                            <li><a href={`mailto:${brand.email}`} className="hover:text-paper">{brand.email}</a></li>
+                            <li><a href={brand.phoneHref} className="hover:text-paper">{brand.phone}</a></li>
+                            <li><a href={brand.whatsappHref} target="_blank" rel="noreferrer" className="hover:text-paper">WhatsApp {brand.whatsapp}</a></li>
+                            <li>{brand.city}</li>
+                            <li className="font-mono text-[12px] text-paper/60">{brand.hours}</li>
+                        </ul>
                     </div>
                 </div>
 
-                {/* Bottom line */}
-                <div className="mt-6 pt-4 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-2 md:space-y-0">
-                    <div>© {new Date().getFullYear()} MawPrint. All rights reserved.</div>
-                    <div className="flex space-x-4">
-                        <button className="hover:text-red-500 transition-colors">Privacy</button>
-                        <button className="hover:text-red-500 transition-colors">Terms</button>
-                    </div>
+                <div className="mt-14 flex flex-col gap-4 border-t border-paper/15 pt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/50 md:flex-row md:items-center md:justify-between">
+                    <p>© {new Date().getFullYear()} {brand.legalName}. All rights reserved.</p>
+                    <p className="flex items-center gap-3">
+                        <RegMark size={16} className="text-paper/40" />
+                        Sublimation · DTF · Colombo
+                    </p>
                 </div>
             </div>
         </footer>
     );
-};
-
-export default Footer;
+}

@@ -1,108 +1,124 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { MapPin } from 'lucide-react';
+import Button from './ui/Button';
+import Marquee from './ui/Marquee';
+import CropMarks, { RegMark } from './ui/CropMarks';
+import { brand, hero, work } from '../content/site';
 
-export default function impactdrivenhero() {
+const ease = [0.22, 1, 0.36, 1];
+
+export default function Hero() {
+    const reduce = useReducedMotion();
+    const rise = (delay) => ({
+        initial: reduce ? false : { opacity: 0, y: 28 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.8, delay, ease },
+    });
+
+    const tiles = [work[0], work[1], work[3]];
+
     return (
-        <section id="hero">
-            <div className="min-h-screen bg-white flex items-center justify-center px-4 py-8 pt-32 md:pt-40">
-                <style>{`
-        @keyframes floatUp {
-          0% {
-            transform: translateY(300px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.6;
-          }
-          90% {
-            opacity: 0.6;
-          }
-          100% {
-            transform: translateY(-300px);
-            opacity: 0;
-          }
-        }
-        
-        .floating-dot {
-          animation: floatUp linear infinite;
-        }
-      `}</style>
-                <div className="max-w-6xl w-full text-center">
+        <section id="hero" className="relative overflow-hidden pt-[72px]">
+            {/* Faint registration marks in the corners */}
+            <RegMark className="absolute left-5 top-24 text-ink/20 md:left-8" />
+            <RegMark className="absolute right-5 top-24 text-ink/20 md:right-8" />
 
-                    {/* Trust Badge */}
-                    <div className="flex justify-center mb-8 md:mb-12 relative">
-                        <div className="bg-black rounded-full px-4 py-2 md:px-6 md:py-3 flex items-center space-x-2 relative z-10">
-                            {/* Customer avatars */}
-                            <div className="flex -space-x-2">
-                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 border-2 border-white"></div>
-                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-orange-400 to-red-500 border-2 border-white"></div>
-                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white"></div>
-                            </div>
-                            <span className="text-white text-sm md:text-base font-medium">
-                                Trusted by 100+ customers
-                            </span>
+            <div className="mx-auto grid max-w-shell grid-cols-1 gap-12 px-5 pb-16 pt-14 md:px-8 md:pt-20 lg:grid-cols-12 lg:gap-8 lg:pb-24 lg:pt-24">
+                {/* Copy */}
+                <div className="lg:col-span-7">
+                    <motion.p {...rise(0)} className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-muted">
+                        <span className="inline-block h-[6px] w-[6px] rounded-full bg-red" aria-hidden="true" />
+                        {hero.eyebrow}
+                    </motion.p>
+
+                    <h1 className="mt-6 font-display text-display-xl text-ink">
+                        {hero.headline.map((line, i) => (
+                            <motion.span key={i} {...rise(0.08 + i * 0.09)} className="block">
+                                {i === 1 ? (
+                                    <>
+                                        {line.split(' ').slice(0, 2).join(' ')}{' '}
+                                        <em className="font-light italic text-red">{line.split(' ').slice(2).join(' ')}</em>
+                                    </>
+                                ) : line}
+                            </motion.span>
+                        ))}
+                    </h1>
+
+                    <motion.p {...rise(0.4)} className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl">
+                        {hero.lede}
+                    </motion.p>
+
+                    <motion.div {...rise(0.5)} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <Button href="#contact" variant="primary" arrow>
+                            {hero.primaryCta}
+                        </Button>
+                        <Button href="#work" variant="ghost">
+                            {hero.secondaryCta}
+                        </Button>
+                    </motion.div>
+
+                    <motion.dl {...rise(0.6)} className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 sm:grid-cols-3">
+                        <div>
+                            <dt className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-muted">Based in</dt>
+                            <dd className="mt-1.5 flex items-center gap-1.5 text-[15px] font-medium text-ink">
+                                <MapPin size={14} className="text-red" aria-hidden="true" />
+                                {brand.city}
+                            </dd>
                         </div>
-
-                        {/* Animated Dots */}
-                        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                            {[...Array(80)].map((_, i) => (
-                                <div
-                                    key={i}
-                                    className="floating-dot absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-gradient-to-r from-red-600 to-black rounded-full opacity-60"
-                                    style={{
-                                        left: `${Math.random() * 100}%`,
-                                        animationDelay: `${Math.random() * 4}s`,
-                                        animationDuration: `${3 + Math.random() * 2}s`,
-                                    }}
-                                />
-                            ))}
+                        <div>
+                            <dt className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-muted">Production</dt>
+                            <dd className="mt-1.5 text-[15px] font-medium text-ink">100% in-house</dd>
                         </div>
-                    </div>
-
-                    {/* Main Heading */}
-                    <div className="mb-8 md:mb-12">
-                        <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
-                            We are a Creative-Driven
-                        </h1>
-
-                        {/* Highlighted tags */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
-                            <span className="bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl lg:text-1xl font-semibold">
-                                Sublimation Printing
-                            </span>
-                            <span className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900">&</span>
-                            <span className="border-2 border-gray-300 text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl lg:text-2xl font-semibold">
-                                Branding
-                            </span>
+                        <div>
+                            <dt className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-muted">Quotes</dt>
+                            <dd className="mt-1.5 text-[15px] font-medium text-ink">Within 1 working day</dd>
                         </div>
+                    </motion.dl>
+                </div>
 
-                        <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                            Solutions Company
-                        </h2>
-                    </div>
-
-                    {/* Description */}
-                    <div className="mb-8 md:mb-8">
-                        <p className="text-gray-600 text-lg md:text-xl lg:text-1xl max-w-2xl mx-auto leading-relaxed px-1">
-                            Mawprint turns your ideas into eye-catching prints. Whether it's a flag, banner, or apparel, we deliver bold, custom designs with quality that speaks for itself.
-                        </p>
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="flex justify-center">
-                        <button
-                            className="group bg-gradient-to-r from-red-600 to-black hover:from-black hover:to-red-600 text-white font-semibold px-8 py-4 md:px-10 md:py-5 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-3"
-                            onClick={() => {
-                                const el = document.getElementById('contact');
-                                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }}
+                {/* Image composition */}
+                <div className="relative lg:col-span-5">
+                    <div className="grid grid-cols-5 grid-rows-6 gap-3 md:gap-4" style={{ aspectRatio: '5 / 6' }}>
+                        <motion.figure
+                            {...rise(0.25)}
+                            className="relative col-span-3 row-span-4 overflow-hidden rounded-[6px] bg-paper-2"
                         >
-                            <span>Let&apos;s Talk</span>
-                            <svg className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </button>
+                            <img src={tiles[0].src} alt={tiles[0].alt} className="h-full w-full object-cover" loading="eager" fetchPriority="high" />
+                            <CropMarks className="text-ink/60" inset={-6} />
+                        </motion.figure>
+                        <motion.figure
+                            {...rise(0.38)}
+                            className="relative col-span-2 row-span-3 overflow-hidden rounded-[6px] bg-paper-2"
+                        >
+                            <img src={tiles[1].src} alt={tiles[1].alt} className="h-full w-full object-cover" loading="eager" />
+                        </motion.figure>
+                        <motion.figure
+                            {...rise(0.5)}
+                            className="relative col-span-2 row-span-3 overflow-hidden rounded-[6px] bg-paper-2"
+                        >
+                            <img src={tiles[2].src} alt={tiles[2].alt} className="h-full w-full object-cover" loading="lazy" />
+                        </motion.figure>
+                        <motion.div
+                            {...rise(0.6)}
+                            className="col-span-3 row-span-2 flex flex-col justify-between rounded-[6px] bg-ink p-4 text-paper sm:p-5"
+                        >
+                            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-paper-3 sm:text-[10.5px]">Job sheet</p>
+                            <div>
+                                <p className="font-display text-[19px] leading-tight sm:text-2xl">Proof → Print → Hang</p>
+                                <p className="mt-1 text-[12px] leading-snug text-paper-3 sm:text-[13px]">48h turnaround after approval.</p>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
+            </div>
+
+            {/* Ticker */}
+            <div className="border-y border-line bg-paper-2/60">
+                <Marquee
+                    items={hero.ticker}
+                    className="mx-auto max-w-shell py-3.5 font-mono text-[12px] uppercase tracking-[0.18em] text-ink-soft"
+                />
             </div>
         </section>
     );
